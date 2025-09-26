@@ -7,6 +7,7 @@ from django.db.models import Q
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .forms import ProductForm, ReviewForm
 from django.contrib import messages
+from .models import Product, Category, Vendor # Add Vendor
 
 # A simple decorator to check if the user is a vendor
 def vendor_required(function):
@@ -16,6 +17,15 @@ def vendor_required(function):
         else:
             return redirect('index') # Or a "permission denied" page
     return wrap
+
+def vendor_storefront(request, vendor_id):
+    vendor = get_object_or_404(Vendor, id=vendor_id)
+    products = Product.objects.filter(vendor=vendor)
+    context = {
+        'vendor': vendor,
+        'products': products,
+    }
+    return render(request, 'shop/vendor_storefront.html', context)
 
 @login_required
 @vendor_required

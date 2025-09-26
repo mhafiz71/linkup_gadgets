@@ -54,11 +54,21 @@
                 <p>GH₵ {{ cart.get_total_price }}</p>
             </div>
             <p class="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at checkout.</p>
-            <div class="mt-6">
-                <a href="#" class="flex items-center justify-center rounded-md border border-transparent bg-[#1E2A47] px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-gray-800">
-                    Proceed to Checkout
-                </a>
-            </div>
+            <!-- This is the new, correct, and functional version -->
+<div class="mt-6">
+    {% if user.is_authenticated %}
+        <!-- If the user is logged in, link directly to the order creation page -->
+        <a href="{% url 'orders:order_create' %}" class="flex items-center justify-center rounded-md border border-transparent bg-[#1E2A47] px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-gray-800">
+            Proceed to Checkout
+        </a>
+    {% else %}
+        <!-- If the user is NOT logged in, link to the login page.
+             The 'next' parameter tells Django where to redirect after a successful login. -->
+        <a href="{% url 'accounts:login' %}?next={% url 'orders:order_create' %}" class="flex items-center justify-center rounded-md border border-transparent bg-[#1E2A47] px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-gray-800">
+            Log In to Continue
+        </a>
+    {% endif %}
+</div>
         </div>
     {% endif %}
 </div>

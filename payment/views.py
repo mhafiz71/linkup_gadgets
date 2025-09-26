@@ -13,6 +13,7 @@ def payment_process(request):
     context = {
         'order': order,
         'paystack_public_key': settings.PAYSTACK_PUBLIC_KEY,
+        'paystack_currency': settings.PAYSTACK_CURRENCY,
         'amount_in_kobo': amount_in_kobo,
     }
     return render(request, 'payment/process.html', context)

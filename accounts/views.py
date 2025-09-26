@@ -51,8 +51,12 @@ def login_view(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
-                # Redirect to a dashboard or homepage
-                return redirect('index')
+                next_url = request.GET.get('next')
+                if next_url:
+                    return redirect(next_url)
+                else:
+                    return redirect('index')
+
             else:
                 messages.error(request, 'Invalid username or password.')
         else:

@@ -42,3 +42,12 @@ def index(request):
 
 # def terms(request):
 #     return render(request, 'core/terms.html')
+
+def about_view(request):
+    return render(request, 'core/about.html')
+
+def terms_view(request):
+    return render(request, 'core/terms.html')
+
+def vendor_policies_view(request):
+    return render(request, 'core/vendor_policies.html')

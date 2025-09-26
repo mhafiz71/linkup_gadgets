@@ -20,7 +20,8 @@
         var handler = PaystackPop.setup({
             key: '{{ paystack_public_key }}',
             email: '{{ order.email }}',
-            amount: {{ amount_in_kobo }}, // Amount in kobo
+            amount: '{{ amount_in_kobo }}',
+            currency: '{{ paystack_currency }}', // Amount in kobo
             ref: '' + Math.floor((Math.random() * 1000000000) + 1), // Generate a random reference
             callback: function(response) {
                 // Redirect to your callback URL with the reference

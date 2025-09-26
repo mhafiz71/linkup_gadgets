@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}{{ vendor.shop_name }}'s Storefront{% endblock %}
+{% block content %}
+<div class="max-w-7xl mx-auto py-16 px-4">
+    <div class="text-center">
+        {% if vendor.logo %}
+        <img class="w-24 h-24 rounded-full mx-auto" src="{{ vendor.logo.url }}" alt="{{ vendor.shop_name }} logo">
+        {% endif %}
+        <h1 class="text-4xl font-bold mt-4">{{ vendor.shop_name }}</h1>
+        <p class="mt-2 text-lg text-gray-600">{{ vendor.description }}</p>
+    </div>
+
+    <div class="mt-12">
+        <h2 class="text-2xl font-semibold">Products from this vendor</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-6">
+            {% for product in products %}
+            <div class="bg-white border border-gray-200 rounded-xl shadow-md p-4 text-center hover:shadow-xl transition-shadow">
+                <a href="{% url 'shop:product_detail' slug=product.slug %}">
+                    <img src="{{ product.image.url }}" alt="{{ product.name }}" class="mx-auto h-48 w-full object-contain">
+                    <h3 class="mt-4 font-semibold text-lg">{{ product.name }}</h3>
+                    <p class="text-lg text-gray-800 font-bold">GH₵ {{ product.price }}</p>
+                </a>
+            </div>
+            {% empty %}
+            <p class="col-span-full text-center text-gray-500">This vendor has no products listed yet.</p>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,140 +1,210 @@
 {% load static tailwind_tags %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- The title block allows child templates to set their own unique page title -->
+    <title>
+      {% block title %}LinkUp Gadgets - Ghana's Tech Marketplace{% endblock %}
+    </title>
 
-    
-<!-- The title block allows child templates to set their own unique page title -->
-<title>{% block title %}LinkUp Gadgets - Ghana's Tech Marketplace{% endblock %}</title>
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
 
-<!-- Google Fonts: Poppins -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Alpine.js for interactive components like dropdowns -->
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
 
-<!-- Alpine.js for interactive components like dropdowns -->
-<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <!-- Custom global styles -->
+    <style>
+      /* Apply Poppins as the default font for the entire site */
+      body {
+        font-family: "Poppins", sans-serif;
+      }
+    </style>
 
-<!-- Custom global styles -->
-<style>
-    /* Apply Poppins as the default font for the entire site */
-    body {
-        font-family: 'Poppins', sans-serif;
-    }
-</style>
-
-<!-- This tag loads the compiled Tailwind CSS file -->
-{% tailwind_css %}
-
-  
-
-</head>
-<body class="bg-white text-gray-800">
-<header class="bg-[#1E2A47] text-white sticky top-0 z-50 shadow-md">
-    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- This tag loads the compiled Tailwind CSS file -->
+    {% tailwind_css %}
+  </head>
+  <body class="bg-white text-gray-800">
+    <header class="bg-[#1E2A47] text-white sticky top-0 z-50 shadow-md">
+      <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-20">
-            <!-- Logo -->
-            <div class="flex items-center">
-                <a href="{% url 'index' %}" class="text-2xl font-bold">
-                    <span class="text-[#FBBF24]">LinkUp</span> Gadgets
-                </a>
-            </div>
+          <!-- Logo -->
+          <div class="flex items-center">
+            <a href="{% url 'index' %}" class="text-2xl font-bold">
+              <span class="text-[#FBBF24]">LinkUp</span> Gadgets
+            </a>
+          </div>
 
-            <!-- Main Navigation Links -->
-            <div class="hidden md:flex items-center space-x-6">
-                <a href="{% url 'index' %}" class="hover:text-[#FBBF24] transition font-medium">Home</a>
-                <a href="{% url 'shop:shop_view' %}" class="hover:text-[#FBBF24] transition font-medium">Shop</a>
-                <a href="#" class="hover:text-[#FBBF24] transition font-medium">Categories</a>
-                <a href="#" class="hover:text-[#FBBF24] transition font-medium">Sell With Us</a>
-            </div>
+          <!-- Main Navigation Links -->
+          <div class="hidden md:flex items-center space-x-6">
+            <a
+              href="{% url 'index' %}"
+              class="hover:text-[#FBBF24] transition font-medium"
+              >Home</a
+            >
+            <a
+              href="{% url 'shop:shop_view' %}"
+              class="hover:text-[#FBBF24] transition font-medium"
+              >Shop</a
+            >
 
-            <!-- Cart and User Authentication Section -->
-            <div class="flex items-center space-x-4">
-                <a href="{% url 'cart:cart_detail' %}" class="relative hover:text-[#FBBF24] transition">
-    <svg ...></svg>
-    <span class="absolute -top-2 -right-2 bg-[#FBBF24] text-black text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
-        {{ cart|length }}
-    </span>
-</a>
+            <a
+              href="{% url 'shop:shop_view' %}"
+              class="hover:text-[#FBBF24] transition font-medium"
+              >Categories</a
+            >
 
-                {% if user.is_authenticated %}
-                    <!-- User Dropdown Menu -->
-                    <div class="relative" x-data="{ open: false }" @click.away="open = false">
-                        <button @click="open = !open" class="flex items-center space-x-1 hover:text-[#FBBF24] transition">
-                            <span>Hi, {{ user.username }}</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" /></svg>
-                        </button>
-                        <div x-show="open" x-transition class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 text-gray-800 ring-1 ring-black ring-opacity-5">
-                            <a href="{% url 'accounts:profile' %}" class="block px-4 py-2 text-sm hover:bg-gray-100">My Account</a>
-                            {% if user.vendor %}
-                                <a href="{% url 'shop:vendor_dashboard' %}" class="block px-4 py-2 text-sm hover:bg-gray-100">Vendor Dashboard</a>
-                            {% endif %}
-                            <a href="{% url 'accounts:logout' %}" class="block px-4 py-2 text-sm hover:bg-gray-100">Logout</a>
-                        </div>
-                    </div>
-                {% else %}
-                    <!-- Login/Register Buttons -->
-                    <div class="hidden md:flex items-center space-x-2">
-                        <a href="{% url 'accounts:login' %}" class="text-sm font-medium hover:text-[#FBBF24] transition">Log In</a>
-                        <a href="{% url 'accounts:register' %}" class="text-sm font-medium bg-white text-[#1E2A47] px-4 py-2 rounded-md hover:bg-gray-200 transition">Register</a>
-                    </div>
+            <a
+              href="{% url 'accounts:register' %}"
+              class="hover:text-[#FBBF24] transition font-medium"
+              >Sell With Us</a
+            >
+          </div>
+
+          <!-- Cart and User Authentication Section -->
+          <div class="flex items-center space-x-4">
+            <a
+              href="{% url 'cart:cart_detail' %}"
+              class="relative hover:text-[#FBBF24] transition"
+            >
+              <svg ...></svg>
+              <span
+                class="absolute -top-2 -right-2 bg-[#FBBF24] text-black text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center"
+              >
+                {{ cart|length }}
+              </span>
+            </a>
+
+            {% if user.is_authenticated %}
+            <!-- User Dropdown Menu -->
+            <div
+              class="relative"
+              x-data="{ open: false }"
+              @click.away="open = false"
+            >
+              <button
+                @click="open = !open"
+                class="flex items-center space-x-1 hover:text-[#FBBF24] transition"
+              >
+                <span>Hi, {{ user.username }}</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="w-4 h-4"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="m19.5 8.25-7.5 7.5-7.5-7.5"
+                  />
+                </svg>
+              </button>
+              <div
+                x-show="open"
+                x-transition
+                class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 text-gray-800 ring-1 ring-black ring-opacity-5"
+              >
+                <a
+                  href="{% url 'accounts:profile' %}"
+                  class="block px-4 py-2 text-sm hover:bg-gray-100"
+                  >My Account</a
+                >
+                {% if user.vendor %}
+                <a
+                  href="{% url 'shop:vendor_dashboard' %}"
+                  class="block px-4 py-2 text-sm hover:bg-gray-100"
+                  >Vendor Dashboard</a
+                >
                 {% endif %}
+                <a
+                  href="{% url 'accounts:logout' %}"
+                  class="block px-4 py-2 text-sm hover:bg-gray-100"
+                  >Logout</a
+                >
+              </div>
             </div>
+            {% else %}
+            <!-- Login/Register Buttons -->
+            <div class="hidden md:flex items-center space-x-2">
+              <a
+                href="{% url 'accounts:login' %}"
+                class="text-sm font-medium hover:text-[#FBBF24] transition"
+                >Log In</a
+              >
+              <a
+                href="{% url 'accounts:register' %}"
+                class="text-sm font-medium bg-white text-[#1E2A47] px-4 py-2 rounded-md hover:bg-gray-200 transition"
+                >Register</a
+              >
+            </div>
+            {% endif %}
+          </div>
         </div>
-    </nav>
-</header>
+      </nav>
+    </header>
 
+    <main>
+      {% block content %}
+      <!-- Child template content goes here -->
+      {% endblock %}
+    </main>
 
-<main>
-    {% block content %}
-    <!-- Child template content goes here -->
-    {% endblock %}
-</main>
-
-<footer class="bg-[#1E2A47] text-white mt-16">
-    <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8 grid grid-cols-2 md:grid-cols-4 gap-8">
+    <footer class="bg-[#1E2A47] text-white mt-16">
+      <div
+        class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8 grid grid-cols-2 md:grid-cols-4 gap-8"
+      >
         <div>
-            <h3 class="font-bold text-lg">About Us</h3>
-            <ul class="mt-4 space-y-2 text-sm text-gray-300">
-                <li><a href="#" class="hover:text-white">Our Story</a></li>
-                <li><a href="#" class="hover:text-white">Careers</a></li>
-            </ul>
+          <h3 class="font-bold text-lg">About Us</h3>
+          <ul class="mt-4 space-y-2 text-sm text-gray-300">
+            <li><a href="{% url 'about' %}" class="hover:text-white">Our Story</a></li>
+            <li><a href="#" class="hover:text-white">Careers</a></li>
+          </ul>
         </div>
-         <div>
-            <h3 class="font-bold text-lg">Customer Service</h3>
-            <ul class="mt-4 space-y-2 text-sm text-gray-300">
-                <li><a href="#" class="hover:text-white">Help & FAQ</a></li>
-                <li><a href="#" class="hover:text-white">Returns & Refunds</a></li>
-            </ul>
+        <div>
+          <h3 class="font-bold text-lg">Customer Service</h3>
+          <ul class="mt-4 space-y-2 text-sm text-gray-300">
+            <li><a href="#" class="hover:text-white">Help & FAQ</a></li>
+            <li><a href="#" class="hover:text-white">Returns & Refunds</a></li>
+          </ul>
         </div>
-         <div>
-            <h3 class="font-bold text-lg">For Vendors</h3>
-            <ul class="mt-4 space-y-2 text-sm text-gray-300">
-                <li><a href="#" class="hover:text-white">Sell on LinkUp</a></li>
-                <li><a href="#" class="hover:text-white">Vendor Policies</a></li>
-            </ul>
+        <div>
+          <h3 class="font-bold text-lg">For Vendors</h3>
+          <ul class="mt-4 space-y-2 text-sm text-gray-300">
+            <li><a href="{% url 'accounts:register' %}" class="hover:text-white">Sell on LinkUp</a></li>
+            <li><a href="{% url 'vendor_policies' %}" class="hover:text-white">Vendor Policies</a></li>
+          </ul>
         </div>
-         <div>
-            <h3 class="font-bold text-lg">Connect With Us</h3>
-            <ul class="mt-4 space-y-2 text-sm text-gray-300">
-                <li><a href="#" class="hover:text-white">Facebook</a></li>
-                <li><a href="#" class="hover:text-white">Instagram</a></li>
-            </ul>
+        <div>
+          <h3 class="font-bold text-lg">Connect With Us</h3>
+          <ul class="mt-4 space-y-2 text-sm text-gray-300">
+            <li><a href="#" class="hover:text-white">Facebook</a></li>
+            <li><a href="#" class="hover:text-white">Instagram</a></li>
+          </ul>
         </div>
-    </div>
-    <div class="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8 border-t border-gray-700 text-center text-sm text-gray-400">
-        &copy; {% now "Y" %} LinkUp Gadgets. All rights reserved. | <a href="#" class="hover:text-white">Terms & Privacy</a>
-    </div>
-</footer>
+      </div>
+      <div
+        class="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8 border-t border-gray-700 text-center text-sm text-gray-400"
+      >
+        &copy; {% now "Y" %} LinkUp Gadgets. All rights reserved. |
+        <a href="{% url 'terms' %}" class="hover:text-white">Terms & Privacy</a>
+      </div>
+    </footer>
 
-<!-- Optional block for page-specific JavaScript files -->
-{% block javascript %}
-{% endblock %}
-
-  
-
-</body>
+    <!-- Optional block for page-specific JavaScript files -->
+    {% block javascript %} {% endblock %}
+  </body>
 </html>
