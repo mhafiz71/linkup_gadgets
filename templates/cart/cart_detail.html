@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block title %}Your Shopping Cart - LinkUp Gadgets{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-16">
+    <h1 class="text-3xl font-bold text-gray-900">Your Shopping Cart</h1>
+
+    {% if cart|length == 0 %}
+        <div class="mt-8 text-center">
+            <p class="text-gray-600 text-lg">Your cart is empty.</p>
+            <a href="{% url 'index' %}" class="mt-4 inline-block bg-[#FBBF24] text-black font-bold py-3 px-8 rounded-lg hover:bg-yellow-400 transition">
+                Start Shopping
+            </a>
+        </div>
+    {% else %}
+        <div class="mt-8 flow-root">
+            <ul role="list" class="-my-6 divide-y divide-gray-200">
+                {% for item in cart %}
+                    <li class="flex py-6">
+                        <div class="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
+                            <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" class="h-full w-full object-cover object-center">
+                        </div>
+
+                        <div class="ml-4 flex flex-1 flex-col">
+                            <div>
+                                <div class="flex justify-between text-base font-medium text-gray-900">
+                                    <h3>
+                                        <a href="{% url 'shop:product_detail' slug=item.product.slug %}">{{ item.product.name }}</a>
+                                    </h3>
+                                    <p class="ml-4">GH₵ {{ item.total_price }}</p>
+                                </div>
+                                <p class="mt-1 text-sm text-gray-500">Qty: {{ item.quantity }}</p>
+                            </div>
+                            <div class="flex flex-1 items-end justify-between text-sm">
+                                <p class="text-gray-500">Unit Price: GH₵ {{ item.price }}</p>
+
+                                <div class="flex">
+                                    <form action="{% url 'cart:remove_from_cart' item.product.id %}" method="post">
+                                        {% csrf_token %}
+                                        <button type="submit" class="font-medium text-indigo-600 hover:text-indigo-500">Remove</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="border-t border-gray-200 px-4 py-6 sm:px-6 mt-8">
+            <div class="flex justify-between text-base font-medium text-gray-900">
+                <p>Subtotal</p>
+                <p>GH₵ {{ cart.get_total_price }}</p>
+            </div>
+            <p class="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at checkout.</p>
+            <div class="mt-6">
+                <a href="#" class="flex items-center justify-center rounded-md border border-transparent bg-[#1E2A47] px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-gray-800">
+                    Proceed to Checkout
+                </a>
+            </div>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

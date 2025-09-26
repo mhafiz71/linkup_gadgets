@@ -1,0 +1,381 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}LinkUp Gadgets - Connecting Ghana's Tech Market{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="relative bg-gradient-to-r from-emerald-500 to-sky-500 py-20">
+    <div class="container mx-auto px-4">
+        <div class="flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
+                    Connecting Ghana's Tech Market
+                </h1>
+                <p class="text-white text-xl mb-8 max-w-lg">
+                    Shop the latest gadgets from trusted vendors and enjoy fast delivery across Ghana.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="{% url 'shop' %}" class="bg-white text-emerald-600 hover:bg-gray-100 px-8 py-3 rounded-lg font-medium transition duration-300 shadow-lg hover:shadow-xl">
+                        Shop Now
+                    </a>
+                    <a href="{% url 'sell_with_us' %}" class="bg-transparent border-2 border-white text-white hover:bg-white hover:text-emerald-600 px-8 py-3 rounded-lg font-medium transition duration-300">
+                        Sell With Us
+                    </a>
+                </div>
+                <div class="mt-10 flex items-center">
+                    <div class="flex -space-x-2">
+                        <img src="https://placehold.co/100/eee/999?text=U1" alt="User" class="w-10 h-10 rounded-full border-2 border-white">
+                        <img src="https://placehold.co/100/eee/999?text=U2" alt="User" class="w-10 h-10 rounded-full border-2 border-white">
+                        <img src="https://placehold.co/100/eee/999?text=U3" alt="User" class="w-10 h-10 rounded-full border-2 border-white">
+                    </div>
+                    <p class="text-white ml-4"><span class="font-bold">1,000+</span> vendors trust us</p>
+                </div>
+            </div>
+            <div class="md:w-1/2">
+                <img src="https://placehold.co/600x400/eee/999?text=Tech+People" alt="Tech People" class="rounded-lg shadow-2xl">
+            </div>
+        </div>
+    </div>
+    <div class="absolute bottom-0 left-0 right-0">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120" class="fill-white">
+            <path d="M0,64L80,69.3C160,75,320,85,480,80C640,75,800,53,960,48C1120,43,1280,53,1360,58.7L1440,64L1440,120L1360,120C1280,120,1120,120,960,120C800,120,640,120,480,120C320,120,160,120,80,120L0,120Z"></path>
+        </svg>
+    </div>
+</section>
+
+<!-- Featured Products Section -->
+<section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+        <div class="flex justify-between items-end mb-10">
+            <div>
+                <span class="text-emerald-600 font-medium">Discover</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Featured Products</h2>
+            </div>
+            <a href="{% url 'shop' %}" class="text-emerald-600 hover:text-emerald-700 font-medium flex items-center">
+                View All <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+            <!-- Product Card 1 -->
+            <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition duration-300 border border-gray-100">
+                <div class="relative">
+                    <img src="https://placehold.co/300x300/eee/999?text=iPhone" alt="iPhone" class="w-full h-64 object-cover">
+                    <span class="absolute top-3 right-3 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full">NEW</span>
+                    <button class="absolute top-3 left-3 bg-white p-2 rounded-full shadow-md hover:bg-gray-100 transition duration-300">
+                        <i class="far fa-heart text-gray-600"></i>
+                    </button>
+                </div>
+                <div class="p-5">
+                    <div class="flex items-center justify-between mb-2">
+                        <p class="text-emerald-600 text-sm font-medium">Apple</p>
+                        <div class="flex items-center">
+                            <i class="fas fa-star text-yellow-400 text-xs"></i>
+                            <span class="text-gray-600 text-sm ml-1">4.8 (128)</span>
+                        </div>
+                    </div>
+                    <h3 class="font-bold text-lg mb-3 text-gray-800">iPhone 14 Pro</h3>
+                    <div class="flex justify-between items-center">
+                        <span class="font-bold text-lg text-gray-800">GH₵ 8,999</span>
+                        <button class="bg-emerald-500 hover:bg-emerald-600 text-white p-2 rounded-lg transition duration-300">
+                            <i class="fas fa-shopping-cart mr-1"></i> Add
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product Card 2 -->
+            <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition duration-300 border border-gray-100">
+                <div class="relative">
+                    <img src="https://placehold.co/300x300/eee/999?text=Samsung" alt="Samsung" class="w-full h-64 object-cover">
+                    <button class="absolute top-3 left-3 bg-white p-2 rounded-full shadow-md hover:bg-gray-100 transition duration-300">
+                        <i class="far fa-heart text-gray-600"></i>
+                    </button>
+                </div>
+                <div class="p-5">
+                    <div class="flex items-center justify-between mb-2">
+                        <p class="text-emerald-600 text-sm font-medium">Samsung</p>
+                        <div class="flex items-center">
+                            <i class="fas fa-star text-yellow-400 text-xs"></i>
+                            <span class="text-gray-600 text-sm ml-1">4.0 (95)</span>
+                        </div>
+                    </div>
+                    <h3 class="font-bold text-lg mb-3 text-gray-800">Samsung Galaxy S23</h3>
+                    <div class="flex justify-between items-center">
+                        <span class="font-bold text-lg text-gray-800">GH₵ 7,499</span>
+                        <button class="bg-emerald-500 hover:bg-emerald-600 text-white p-2 rounded-lg transition duration-300">
+                            <i class="fas fa-shopping-cart mr-1"></i> Add
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product Card 3 -->
+            <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition duration-300 border border-gray-100">
+                <div class="relative">
+                    <img src="https://placehold.co/300x300/eee/999?text=MacBook" alt="MacBook" class="w-full h-64 object-cover">
+                    <span class="absolute top-3 right-3 bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full">SALE</span>
+                    <button class="absolute top-3 left-3 bg-white p-2 rounded-full shadow-md hover:bg-gray-100 transition duration-300">
+                        <i class="far fa-heart text-gray-600"></i>
+                    </button>
+                </div>
+                <div class="p-5">
+                    <div class="flex items-center justify-between mb-2">
+                        <p class="text-emerald-600 text-sm font-medium">Apple</p>
+                        <div class="flex items-center">
+                            <i class="fas fa-star text-yellow-400 text-xs"></i>
+                            <span class="text-gray-600 text-sm ml-1">5.0 (210)</span>
+                        </div>
+                    </div>
+                    <h3 class="font-bold text-lg mb-3 text-gray-800">MacBook Air M2</h3>
+                    <div class="flex justify-between items-center">
+                        <span class="font-bold text-lg text-gray-800">GH₵ 12,999</span>
+                        <button class="bg-emerald-500 hover:bg-emerald-600 text-white p-2 rounded-lg transition duration-300">
+                            <i class="fas fa-shopping-cart mr-1"></i> Add
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product Card 4 -->
+            <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition duration-300 border border-gray-100">
+                <div class="relative">
+                    <img src="https://placehold.co/300x300/eee/999?text=Headphones" alt="Headphones" class="w-full h-64 object-cover">
+                    <button class="absolute top-3 left-3 bg-white p-2 rounded-full shadow-md hover:bg-gray-100 transition duration-300">
+                        <i class="far fa-heart text-gray-600"></i>
+                    </button>
+                </div>
+                <div class="p-5">
+                    <div class="flex items-center justify-between mb-2">
+                        <p class="text-emerald-600 text-sm font-medium">Sony</p>
+                        <div class="flex items-center">
+                            <i class="fas fa-star text-yellow-400 text-xs"></i>
+                            <span class="text-gray-600 text-sm ml-1">4.5 (156)</span>
+                        </div>
+                    </div>
+                    <h3 class="font-bold text-lg mb-3 text-gray-800">Sony WH-1000XM5</h3>
+                    <div class="flex justify-between items-center">
+                        <span class="font-bold text-lg text-gray-800">GH₵ 2,499</span>
+                        <button class="bg-emerald-500 hover:bg-emerald-600 text-white p-2 rounded-lg transition duration-300">
+                            <i class="fas fa-shopping-cart mr-1"></i> Add
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Popular Categories Section -->
+<section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+            <span class="text-emerald-600 font-medium">Browse</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mt-2">Popular Categories</h2>
+        </div>
+        
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+            <!-- Category 1 -->
+            <a href="#" class="group">
+                <div class="bg-white rounded-xl shadow-sm p-6 flex flex-col items-center transition duration-300 hover:shadow-md hover:translate-y-[-5px]">
+                    <div class="bg-emerald-50 w-16 h-16 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-mobile-alt text-emerald-500 text-2xl"></i>
+                    </div>
+                    <p class="text-gray-800 font-medium">Phones</p>
+                    <span class="text-xs text-gray-500 mt-1">120+ Products</span>
+                </div>
+            </a>
+            
+            <!-- Category 2 -->
+            <a href="#" class="group">
+                <div class="bg-white rounded-xl shadow-sm p-6 flex flex-col items-center transition duration-300 hover:shadow-md hover:translate-y-[-5px]">
+                    <div class="bg-emerald-50 w-16 h-16 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-laptop text-emerald-500 text-2xl"></i>
+                    </div>
+                    <p class="text-gray-800 font-medium">Laptops</p>
+                    <span class="text-xs text-gray-500 mt-1">85+ Products</span>
+                </div>
+            </a>
+            
+            <!-- Category 3 -->
+            <a href="#" class="group">
+                <div class="bg-white rounded-xl shadow-sm p-6 flex flex-col items-center transition duration-300 hover:shadow-md hover:translate-y-[-5px]">
+                    <div class="bg-emerald-50 w-16 h-16 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-headphones text-emerald-500 text-2xl"></i>
+                    </div>
+                    <p class="text-gray-800 font-medium">Audio</p>
+                    <span class="text-xs text-gray-500 mt-1">95+ Products</span>
+                </div>
+            </a>
+            
+            <!-- Category 4 -->
+            <a href="#" class="group">
+                <div class="bg-white rounded-xl shadow-sm p-6 flex flex-col items-center transition duration-300 hover:shadow-md hover:translate-y-[-5px]">
+                    <div class="bg-emerald-50 w-16 h-16 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-camera text-emerald-500 text-2xl"></i>
+                    </div>
+                    <p class="text-gray-800 font-medium">Cameras</p>
+                    <span class="text-xs text-gray-500 mt-1">40+ Products</span>
+                </div>
+            </a>
+            
+            <!-- Category 5 -->
+            <a href="#" class="group">
+                <div class="bg-white rounded-xl shadow-sm p-6 flex flex-col items-center transition duration-300 hover:shadow-md hover:translate-y-[-5px]">
+                    <div class="bg-emerald-50 w-16 h-16 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-tablet-alt text-emerald-500 text-2xl"></i>
+                    </div>
+                    <p class="text-gray-800 font-medium">Tablets</p>
+                    <span class="text-xs text-gray-500 mt-1">35+ Products</span>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Delivery Partners Section -->
+<section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-10">
+            <span class="text-emerald-600 font-medium">Fast Delivery</span>
+            <h2 class="text-3xl font-bold text-gray-800 mt-2">Our Delivery Partners</h2>
+        </div>
+        
+        <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16">
+            <div class="grayscale hover:grayscale-0 transition duration-300 opacity-70 hover:opacity-100">
+                <img src="https://placehold.co/120x60/eee/999?text=Glovo" alt="Glovo" class="h-12">
+            </div>
+            <div class="grayscale hover:grayscale-0 transition duration-300 opacity-70 hover:opacity-100">
+                <img src="https://placehold.co/120x60/eee/999?text=Bolt" alt="Bolt" class="h-12">
+            </div>
+            <div class="grayscale hover:grayscale-0 transition duration-300 opacity-70 hover:opacity-100">
+                <img src="https://placehold.co/120x60/eee/999?text=DHL" alt="DHL" class="h-12">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- New Arrivals Section -->
+<section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+        <div class="flex justify-between items-end mb-10">
+            <div>
+                <span class="text-emerald-600 font-medium">Just Landed</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800">New Arrivals</h2>
+            </div>
+            <a href="{% url 'shop' %}" class="text-emerald-600 hover:text-emerald-700 font-medium flex items-center">
+                View All <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+            <!-- Product Card 1 -->
+            <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition duration-300 border border-gray-100">
+                <div class="relative">
+                    <img src="https://placehold.co/300x300/eee/999?text=Drone" alt="Drone" class="w-full h-64 object-cover">
+                    <span class="absolute top-3 right-3 bg-emerald-500 text-white text-xs font-bold px-3 py-1 rounded-full">NEW</span>
+                    <button class="absolute top-3 left-3 bg-white p-2 rounded-full shadow-md hover:bg-gray-100 transition duration-300">
+                        <i class="far fa-heart text-gray-600"></i>
+                    </button>
+                </div>
+                <div class="p-5">
+                    <div class="flex items-center justify-between mb-2">
+                        <p class="text-emerald-600 text-sm font-medium">DJI</p>
+                        <div class="flex items-center">
+                            <i class="fas fa-star text-yellow-400 text-xs"></i>
+                            <span class="text-gray-600 text-sm ml-1">4.9 (42)</span>
+                        </div>
+                    </div>
+                    <h3 class="font-bold text-lg mb-3 text-gray-800">DJI Mini 3 Pro</h3>
+                    <div class="flex justify-between items-center">
+                        <span class="font-bold text-lg text-gray-800">GH₵ 5,999</span>
+                        <button class="bg-emerald-500 hover:bg-emerald-600 text-white p-2 rounded-lg transition duration-300">
+                            <i class="fas fa-shopping-cart mr-1"></i> Add
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product Card 2 -->
+            <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition duration-300 border border-gray-100">
+                <div class="relative">
+                    <img src="https://placehold.co/300x300/eee/999?text=GoPro" alt="GoPro" class="w-full h-64 object-cover">
+                    <button class="absolute top-3 left-3 bg-white p-2 rounded-full shadow-md hover:bg-gray-100 transition duration-300">
+                        <i class="far fa-heart text-gray-600"></i>
+                    </button>
+                </div>
+                <div class="p-5">
+                    <div class="flex items-center justify-between mb-2">
+                        <p class="text-emerald-600 text-sm font-medium">GoPro</p>
+                        <div class="flex items-center">
+                            <i class="fas fa-star text-yellow-400 text-xs"></i>
+                            <span class="text-gray-600 text-sm ml-1">4.7 (36)</span>
+                        </div>
+                    </div>
+                    <h3 class="font-bold text-lg mb-3 text-gray-800">GoPro HERO11 Black</h3>
+                    <div class="flex justify-between items-center">
+                        <span class="font-bold text-lg text-gray-800">GH₵ 3,499</span>
+                        <button class="bg-emerald-500 hover:bg-emerald-600 text-white p-2 rounded-lg transition duration-300">
+                            <i class="fas fa-shopping-cart mr-1"></i> Add
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product Card 3 -->
+            <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition duration-300 border border-gray-100">
+                <div class="relative">
+                    <img src="https://placehold.co/300x300/eee/999?text=Watch" alt="Watch" class="w-full h-64 object-cover">
+                    <span class="absolute top-3 right-3 bg-emerald-500 text-white text-xs font-bold px-3 py-1 rounded-full">NEW</span>
+                    <button class="absolute top-3 left-3 bg-white p-2 rounded-full shadow-md hover:bg-gray-100 transition duration-300">
+                        <i class="far fa-heart text-gray-600"></i>
+                    </button>
+                </div>
+                <div class="p-5">
+                    <div class="flex items-center justify-between mb-2">
+                        <p class="text-emerald-600 text-sm font-medium">Apple</p>
+                        <div class="flex items-center">
+                            <i class="fas fa-star text-yellow-400 text-xs"></i>
+                            <span class="text-gray-600 text-sm ml-1">4.8 (53)</span>
+                        </div>
+                    </div>
+                    <h3 class="font-bold text-lg mb-3 text-gray-800">Apple Watch Series 8</h3>
+                    <div class="flex justify-between items-center">
+                        <span class="font-bold text-lg text-gray-800">GH₵ 2,999</span>
+                        <button class="bg-emerald-500 hover:bg-emerald-600 text-white p-2 rounded-lg transition duration-300">
+                            <i class="fas fa-shopping-cart mr-1"></i> Add
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product Card 4 -->
+            <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition duration-300 border border-gray-100">
+                <div class="relative">
+                    <img src="https://placehold.co/300x300/eee/999?text=Earbuds" alt="Earbuds" class="w-full h-64 object-cover">
+                    <button class="absolute top-3 left-3 bg-white p-2 rounded-full shadow-md hover:bg-gray-100 transition duration-300">
+                        <i class="far fa-heart text-gray-600"></i>
+                    </button>
+                </div>
+                <div class="p-5">
+                    <div class="flex items-center justify-between mb-2">
+                        <p class="text-emerald-600 text-sm font-medium">Samsung</p>
+                        <div class="flex items-center">
+                            <i class="fas fa-star text-yellow-400 text-xs"></i>
+                            <span class="text-gray-600 text-sm ml-1">4.6 (29)</span>
+                        </div>
+                    </div>
+                    <h3 class="font-bold text-lg mb-3 text-gray-800">Galaxy Buds Pro 2</h3>
+                    <div class="flex justify-between items-center">
+                        <span class="font-bold text-lg text-gray-800">GH₵ 1,299</span>
+                        <button class="bg-emerald-500 hover:bg-emerald-600 text-white p-2 rounded-lg transition duration-300">
+                            <i class="fas fa-shopping-cart mr-1"></i> Add
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

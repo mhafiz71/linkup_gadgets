@@ -1,0 +1,358 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Sell With Us - LinkUp Gadgets{% endblock %}
+
+{% block content %}
+<!-- Sell With Us Header -->
+<section class="bg-gradient-to-r from-teal-500 to-blue-600 text-white py-16">
+    <div class="container mx-auto px-4 text-center">
+        <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">Become a Vendor on LinkUp Gadgets</h1>
+        <p class="text-lg mb-8 max-w-3xl mx-auto">Join Ghana's fastest growing tech marketplace and reach thousands of customers nationwide.</p>
+        <a href="#register" class="bg-white text-teal-600 hover:bg-gray-100 px-6 py-3 rounded-md font-medium transition duration-300 inline-block">Register Now</a>
+    </div>
+</section>
+
+<!-- Benefits Section -->
+<section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+        <h2 class="text-2xl md:text-3xl font-bold mb-2 text-center">Why Sell With Us?</h2>
+        <p class="text-gray-600 mb-12 text-center max-w-3xl mx-auto">LinkUp Gadgets offers a seamless platform for vendors to showcase and sell their tech products</p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Benefit 1 -->
+            <div class="bg-gray-50 p-6 rounded-lg text-center">
+                <div class="bg-teal-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-users text-teal-600 text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-3">Reach More Customers</h3>
+                <p class="text-gray-600">Access our growing customer base across Ghana and expand your market reach.</p>
+            </div>
+            
+            <!-- Benefit 2 -->
+            <div class="bg-gray-50 p-6 rounded-lg text-center">
+                <div class="bg-teal-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-truck text-teal-600 text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-3">Seamless Logistics</h3>
+                <p class="text-gray-600">We handle delivery through our trusted partners, so you can focus on your products.</p>
+            </div>
+            
+            <!-- Benefit 3 -->
+            <div class="bg-gray-50 p-6 rounded-lg text-center">
+                <div class="bg-teal-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-chart-line text-teal-600 text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-3">Growth Opportunities</h3>
+                <p class="text-gray-600">Access analytics, marketing tools, and promotions to help grow your business.</p>
+            </div>
+            
+            <!-- Benefit 4 -->
+            <div class="bg-gray-50 p-6 rounded-lg text-center">
+                <div class="bg-teal-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-money-bill-wave text-teal-600 text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-3">Competitive Commission</h3>
+                <p class="text-gray-600">Enjoy some of the most competitive commission rates in the market.</p>
+            </div>
+            
+            <!-- Benefit 5 -->
+            <div class="bg-gray-50 p-6 rounded-lg text-center">
+                <div class="bg-teal-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-shield-alt text-teal-600 text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-3">Secure Platform</h3>
+                <p class="text-gray-600">Our secure payment system ensures you get paid promptly and safely.</p>
+            </div>
+            
+            <!-- Benefit 6 -->
+            <div class="bg-gray-50 p-6 rounded-lg text-center">
+                <div class="bg-teal-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-headset text-teal-600 text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-3">Dedicated Support</h3>
+                <p class="text-gray-600">Our vendor support team is available to help you succeed on our platform.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- How It Works Section -->
+<section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+        <h2 class="text-2xl md:text-3xl font-bold mb-2 text-center">How It Works</h2>
+        <p class="text-gray-600 mb-12 text-center max-w-3xl mx-auto">Getting started as a vendor is simple and straightforward</p>
+        
+        <div class="flex flex-col md:flex-row justify-center items-center md:items-start space-y-8 md:space-y-0 md:space-x-8">
+            <!-- Step 1 -->
+            <div class="bg-white p-6 rounded-lg shadow-md text-center md:w-1/4">
+                <div class="bg-teal-500 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-4 text-white font-bold">1</div>
+                <h3 class="text-xl font-bold mb-3">Register</h3>
+                <p class="text-gray-600">Complete our vendor application form with your business details.</p>
+            </div>
+            
+            <!-- Step 2 -->
+            <div class="bg-white p-6 rounded-lg shadow-md text-center md:w-1/4">
+                <div class="bg-teal-500 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-4 text-white font-bold">2</div>
+                <h3 class="text-xl font-bold mb-3">Verification</h3>
+                <p class="text-gray-600">We'll verify your business information and approve your account.</p>
+            </div>
+            
+            <!-- Step 3 -->
+            <div class="bg-white p-6 rounded-lg shadow-md text-center md:w-1/4">
+                <div class="bg-teal-500 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-4 text-white font-bold">3</div>
+                <h3 class="text-xl font-bold mb-3">List Products</h3>
+                <p class="text-gray-600">Upload your products with descriptions, images, and pricing.</p>
+            </div>
+            
+            <!-- Step 4 -->
+            <div class="bg-white p-6 rounded-lg shadow-md text-center md:w-1/4">
+                <div class="bg-teal-500 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-4 text-white font-bold">4</div>
+                <h3 class="text-xl font-bold mb-3">Start Selling</h3>
+                <p class="text-gray-600">Receive orders, fulfill them, and grow your business with us.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+        <h2 class="text-2xl md:text-3xl font-bold mb-2 text-center">Vendor Success Stories</h2>
+        <p class="text-gray-600 mb-12 text-center max-w-3xl mx-auto">Hear from vendors who have grown their business with LinkUp Gadgets</p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Testimonial 1 -->
+            <div class="bg-gray-50 p-6 rounded-lg">
+                <div class="flex items-center mb-4">
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                <p class="text-gray-600 italic mb-6">"Joining LinkUp Gadgets was the best business decision I made. My sales have increased by 200% in just 6 months!"</p>
+                <div class="flex items-center">
+                    <div class="bg-gray-300 rounded-full w-12 h-12 mr-4"></div>
+                    <div>
+                        <h4 class="font-bold">Kofi Mensah</h4>
+                        <p class="text-gray-600 text-sm">TechHub Ghana</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Testimonial 2 -->
+            <div class="bg-gray-50 p-6 rounded-lg">
+                <div class="flex items-center mb-4">
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                <p class="text-gray-600 italic mb-6">"The platform is so easy to use, and the support team is always available to help. I've been able to reach customers across Ghana."</p>
+                <div class="flex items-center">
+                    <div class="bg-gray-300 rounded-full w-12 h-12 mr-4"></div>
+                    <div>
+                        <h4 class="font-bold">Ama Darko</h4>
+                        <p class="text-gray-600 text-sm">Accra Mobile Store</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Testimonial 3 -->
+            <div class="bg-gray-50 p-6 rounded-lg">
+                <div class="flex items-center mb-4">
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+                <p class="text-gray-600 italic mb-6">"The logistics support has been a game-changer for my business. I no longer worry about deliveries and can focus on sourcing quality products."</p>
+                <div class="flex items-center">
+                    <div class="bg-gray-300 rounded-full w-12 h-12 mr-4"></div>
+                    <div>
+                        <h4 class="font-bold">Kwame Osei</h4>
+                        <p class="text-gray-600 text-sm">Digital World Ghana</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Registration Form Section -->
+<section id="register" class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+        <h2 class="text-2xl md:text-3xl font-bold mb-2 text-center">Register as a Vendor</h2>
+        <p class="text-gray-600 mb-8 text-center max-w-3xl mx-auto">Fill out the form below to start your vendor journey with LinkUp Gadgets</p>
+        
+        <div class="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-md">
+            <form>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <!-- Business Information -->
+                    <div class="col-span-2">
+                        <h3 class="text-xl font-bold mb-4">Business Information</h3>
+                    </div>
+                    
+                    <div>
+                        <label for="business-name" class="block text-gray-700 mb-2">Business Name *</label>
+                        <input type="text" id="business-name" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500" required>
+                    </div>
+                    
+                    <div>
+                        <label for="business-type" class="block text-gray-700 mb-2">Business Type *</label>
+                        <select id="business-type" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500" required>
+                            <option value="">Select Business Type</option>
+                            <option value="retailer">Retailer</option>
+                            <option value="wholesaler">Wholesaler</option>
+                            <option value="manufacturer">Manufacturer</option>
+                            <option value="distributor">Distributor</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label for="business-email" class="block text-gray-700 mb-2">Business Email *</label>
+                        <input type="email" id="business-email" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500" required>
+                    </div>
+                    
+                    <div>
+                        <label for="business-phone" class="block text-gray-700 mb-2">Business Phone *</label>
+                        <input type="tel" id="business-phone" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500" required>
+                    </div>
+                    
+                    <div class="col-span-2">
+                        <label for="business-address" class="block text-gray-700 mb-2">Business Address *</label>
+                        <textarea id="business-address" rows="3" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500" required></textarea>
+                    </div>
+                    
+                    <!-- Contact Person Information -->
+                    <div class="col-span-2">
+                        <h3 class="text-xl font-bold mb-4 mt-4">Contact Person Information</h3>
+                    </div>
+                    
+                    <div>
+                        <label for="contact-name" class="block text-gray-700 mb-2">Full Name *</label>
+                        <input type="text" id="contact-name" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500" required>
+                    </div>
+                    
+                    <div>
+                        <label for="contact-position" class="block text-gray-700 mb-2">Position *</label>
+                        <input type="text" id="contact-position" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500" required>
+                    </div>
+                    
+                    <div>
+                        <label for="contact-email" class="block text-gray-700 mb-2">Email *</label>
+                        <input type="email" id="contact-email" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500" required>
+                    </div>
+                    
+                    <div>
+                        <label for="contact-phone" class="block text-gray-700 mb-2">Phone *</label>
+                        <input type="tel" id="contact-phone" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500" required>
+                    </div>
+                    
+                    <!-- Product Information -->
+                    <div class="col-span-2">
+                        <h3 class="text-xl font-bold mb-4 mt-4">Product Information</h3>
+                    </div>
+                    
+                    <div class="col-span-2">
+                        <label for="product-categories" class="block text-gray-700 mb-2">Product Categories *</label>
+                        <div class="grid grid-cols-2 md:grid-cols-3 gap-2">
+                            <div>
+                                <input type="checkbox" id="cat-smartphones" class="mr-2">
+                                <label for="cat-smartphones">Smartphones</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="cat-laptops" class="mr-2">
+                                <label for="cat-laptops">Laptops</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="cat-audio" class="mr-2">
+                                <label for="cat-audio">Audio</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="cat-cameras" class="mr-2">
+                                <label for="cat-cameras">Cameras</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="cat-tablets" class="mr-2">
+                                <label for="cat-tablets">Tablets</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="cat-accessories" class="mr-2">
+                                <label for="cat-accessories">Accessories</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-span-2">
+                        <label for="product-description" class="block text-gray-700 mb-2">Brief Description of Products *</label>
+                        <textarea id="product-description" rows="4" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500" required></textarea>
+                    </div>
+                    
+                    <!-- Terms and Conditions -->
+                    <div class="col-span-2 mt-4">
+                        <div class="flex items-start">
+                            <input type="checkbox" id="terms" class="mt-1 mr-2" required>
+                            <label for="terms" class="text-gray-700">I agree to the <a href="{% url 'terms' %}" class="text-teal-500 hover:underline">Terms and Conditions</a> and Privacy Policy of LinkUp Gadgets.</label>
+                        </div>
+                    </div>
+                    
+                    <!-- Submit Button -->
+                    <div class="col-span-2 mt-6">
+                        <button type="submit" class="bg-teal-500 hover:bg-teal-600 text-white px-6 py-3 rounded-md font-medium transition duration-300 w-full">Submit Application</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+        <h2 class="text-2xl md:text-3xl font-bold mb-2 text-center">Frequently Asked Questions</h2>
+        <p class="text-gray-600 mb-12 text-center max-w-3xl mx-auto">Find answers to common questions about selling on LinkUp Gadgets</p>
+        
+        <div class="max-w-3xl mx-auto space-y-6">
+            <!-- FAQ Item 1 -->
+            <div class="bg-gray-50 rounded-lg p-6">
+                <h3 class="font-bold text-lg mb-2">How much does it cost to become a vendor?</h3>
+                <p class="text-gray-600">Registration as a vendor is completely free. We only charge a commission on successful sales, which varies by product category.</p>
+            </div>
+            
+            <!-- FAQ Item 2 -->
+            <div class="bg-gray-50 rounded-lg p-6">
+                <h3 class="font-bold text-lg mb-2">How long does the verification process take?</h3>
+                <p class="text-gray-600">Our verification process typically takes 2-3 business days once all required documents are submitted.</p>
+            </div>
+            
+            <!-- FAQ Item 3 -->
+            <div class="bg-gray-50 rounded-lg p-6">
+                <h3 class="font-bold text-lg mb-2">How do I receive payments for my sales?</h3>
+                <p class="text-gray-600">We process payments to vendors on a bi-weekly basis via bank transfer or mobile money, depending on your preference.</p>
+            </div>
+            
+            <!-- FAQ Item 4 -->
+            <div class="bg-gray-50 rounded-lg p-6">
+                <h3 class="font-bold text-lg mb-2">What happens if a customer returns a product?</h3>
+                <p class="text-gray-600">We handle the return process according to our return policy. If the return is due to product defects, the cost will be deducted from your account.</p>
+            </div>
+            
+            <!-- FAQ Item 5 -->
+            <div class="bg-gray-50 rounded-lg p-6">
+                <h3 class="font-bold text-lg mb-2">Can I sell both new and used products?</h3>
+                <p class="text-gray-600">Yes, you can sell both new and refurbished/used products, but they must be clearly labeled as such and meet our quality standards.</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

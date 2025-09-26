@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %}My Account{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-16">
+    <h1 class="text-3xl font-bold">My Order History</h1>
+
+    <div class="mt-8 bg-white shadow overflow-hidden sm:rounded-md">
+        <ul class="divide-y divide-gray-200">
+            {% for order in orders %}
+            <li>
+                <div class="px-4 py-4 sm:px-6">
+                    <div class="flex items-center justify-between">
+                        <p class="text-sm font-medium text-indigo-600 truncate">Order #{{ order.id|truncatechars:8 }}</p>
+                        <div class="ml-2 flex-shrink-0 flex">
+                            <p class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full {% if order.paid %}bg-green-100 text-green-800{% else %}bg-yellow-100 text-yellow-800{% endif %}">
+                                {% if order.paid %}Paid{% else %}Pending{% endif %}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="mt-2 sm:flex sm:justify-between">
+                        <div class="sm:flex"><p class="flex items-center text-sm text-gray-500">Total: <strong>GH₵ {{ order.total_paid }}</strong></p></div>
+                        <div class="mt-2 flex items-center text-sm text-gray-500 sm:mt-0"><p>Placed on: {{ order.created_at|date:"F j, Y" }}</p></div>
+                    </div>
+                </div>
+            </li>
+            {% empty %}
+            <li class="px-4 py-4 text-center text-gray-500">You have not placed any orders yet.</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}

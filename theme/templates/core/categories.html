@@ -1,0 +1,245 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Categories - LinkUp Gadgets{% endblock %}
+
+{% block content %}
+<!-- Categories Header -->
+<section class="bg-gray-100 py-10">
+    <div class="container mx-auto px-4">
+        <h1 class="text-3xl font-bold mb-2">Product Categories</h1>
+        <nav class="flex" aria-label="Breadcrumb">
+            <ol class="inline-flex items-center space-x-1 md:space-x-3">
+                <li class="inline-flex items-center">
+                    <a href="{% url 'index' %}" class="text-gray-700 hover:text-teal-500 transition duration-300">
+                        <i class="fas fa-home mr-1"></i> Home
+                    </a>
+                </li>
+                <li>
+                    <div class="flex items-center">
+                        <i class="fas fa-chevron-right text-gray-400 mx-2 text-sm"></i>
+                        <span class="text-teal-600">Categories</span>
+                    </div>
+                </li>
+            </ol>
+        </nav>
+    </div>
+</section>
+
+<!-- Categories Grid -->
+<section class="py-16">
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+            <!-- Category 1: Smartphones -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300">
+                <div class="relative">
+                    <img src="https://placehold.co/400x300/eee/999?text=Smartphones" alt="Smartphones" class="w-full h-48 object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-70"></div>
+                    <div class="absolute bottom-0 left-0 p-4 text-white">
+                        <h3 class="text-xl font-bold">Smartphones</h3>
+                        <p class="text-sm">24 products</p>
+                    </div>
+                </div>
+                <div class="p-4">
+                    <ul class="space-y-1 text-sm">
+                        <li><a href="#" class="text-gray-700 hover:text-teal-500 transition duration-300">iPhones</a></li>
+                        <li><a href="#" class="text-gray-700 hover:text-teal-500 transition duration-300">Samsung Galaxy</a></li>
+                        <li><a href="#" class="text-gray-700 hover:text-teal-500 transition duration-300">Google Pixel</a></li>
+                        <li><a href="#" class="text-gray-700 hover:text-teal-500 transition duration-300">Xiaomi</a></li>
+                    </ul>
+                    <a href="#" class="mt-4 inline-block text-teal-500 hover:text-teal-600 transition duration-300 font-medium">View All <i class="fas fa-arrow-right ml-1"></i></a>
+                </div>
+            </div>
+            
+            <!-- Category 2: Laptops -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300">
+                <div class="relative">
+                    <img src="https://placehold.co/400x300/eee/999?text=Laptops" alt="Laptops" class="w-full h-48 object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-70"></div>
+                    <div class="absolute bottom-0 left-0 p-4 text-white">
+                        <h3 class="text-xl font-bold">Laptops</h3>
+                        <p class="text-sm">18 products</p>
+                    </div>
+                </div>
+                <div class="p-4">
+                    <ul class="space-y-1 text-sm">
+                        <li><a href="#" class="text-gray-700 hover:text-teal-500 transition duration-300">MacBooks</a></li>
+                        <li><a href="#" class="text-gray-700 hover:text-teal-500 transition duration-300">Gaming Laptops</a></li>
+                        <li><a href="#" class="text-gray-700 hover:text-teal-500 transition duration-300">Ultrabooks</a></li>
+                        <li><a href="#" class="text-gray-700 hover:text-teal-500 transition duration-300">Chromebooks</a></li>
+                    </ul>
+                    <a href="#" class="mt-4 inline-block text-teal-500 hover:text-teal-600 transition duration-300 font-medium">View All <i class="fas fa-arrow-right ml-1"></i></a>
+                </div>
+            </div>
+            
+            <!-- Category 3: Audio -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300">
+                <div class="relative">
+                    <img src="https://placehold.co/400x300/eee/999?text=Audio" alt="Audio" class="w-full h-48 object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-70"></div>
+                    <div class="absolute bottom-0 left-0 p-4 text-white">
+                        <h3 class="text-xl font-bold">Audio</h3>
+                        <p class="text-sm">32 products</p>
+                    </div>
+                </div>
+                <div class="p-4">
+                    <ul class="space-y-1 text-sm">
+                        <li><a href="#" class="text-gray-700 hover:text-teal-500 transition duration-300">Headphones</a></li>
+                        <li><a href="#" class="text-gray-700 hover:text-teal-500 transition duration-300">Earbuds</a></li>
+                        <li><a href="#" class="text-gray-700 hover:text-teal-500 transition duration-300">Speakers</a></li>
+                        <li><a href="#" class="text-gray-700 hover:text-teal-500 transition duration-300">Microphones</a></li>
+                    </ul>
+                    <a href="#" class="mt-4 inline-block text-teal-500 hover:text-teal-600 transition duration-300 font-medium">View All <i class="fas fa-arrow-right ml-1"></i></a>
+                </div>
+            </div>
+            
+            <!-- Category 4: Cameras -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300">
+                <div class="relative">
+                    <img src="https://placehold.co/400x300/eee/999?text=Cameras" alt="Cameras" class="w-full h-48 object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-70"></div>
+                    <div class="absolute bottom-0 left-0 p-4 text-white">
+                        <h3 class="text-xl font-bold">Cameras</h3>
+                        <p class="text-sm">12 products</p>
+                    </div>
+                </div>
+                <div class="p-4">
+                    <ul class="space-y-1 text-sm">
+                        <li><a href="#" class="text-gray-700 hover:text-teal-500 transition duration-300">DSLR Cameras</a></li>
+                        <li><a href="#" class="text-gray-700 hover:text-teal-500 transition duration-300">Mirrorless Cameras</a></li>
+                        <li><a href="#" class="text-gray-700 hover:text-teal-500 transition duration-300">Action Cameras</a></li>
+                        <li><a href="#" class="text-gray-700 hover:text-teal-500 transition duration-300">Lenses</a></li>
+                    </ul>
+                    <a href="#" class="mt-4 inline-block text-teal-500 hover:text-teal-600 transition duration-300 font-medium">View All <i class="fas fa-arrow-right ml-1"></i></a>
+                </div>
+            </div>
+            
+            <!-- Category 5: Tablets -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300">
+                <div class="relative">
+                    <img src="https://placehold.co/400x300/eee/999?text=Tablets" alt="Tablets" class="w-full h-48 object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-70"></div>
+                    <div class="absolute bottom-0 left-0 p-4 text-white">
+                        <h3 class="text-xl font-bold">Tablets</h3>
+                        <p class="text-sm">9 products</p>
+                    </div>
+                </div>
+                <div class="p-4">
+                    <ul class="space-y-1 text-sm">
+                        <li><a href="#" class="text-gray-700 hover:text-teal-500 transition duration-300">iPads</a></li>
+                        <li><a href="#" class="text-gray-700 hover:text-teal-500 transition duration-300">Samsung Tablets</a></li>
+                        <li><a href="#" class="text-gray-700 hover:text-teal-500 transition duration-300">Amazon Fire</a></li>
+                        <li><a href="#" class="text-gray-700 hover:text-teal-500 transition duration-300">Android Tablets</a></li>
+                    </ul>
+                    <a href="#" class="mt-4 inline-block text-teal-500 hover:text-teal-600 transition duration-300 font-medium">View All <i class="fas fa-arrow-right ml-1"></i></a>
+                </div>
+            </div>
+            
+            <!-- Category 6: Wearables -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300">
+                <div class="relative">
+                    <img src="https://placehold.co/400x300/eee/999?text=Wearables" alt="Wearables" class="w-full h-48 object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-70"></div>
+                    <div class="absolute bottom-0 left-0 p-4 text-white">
+                        <h3 class="text-xl font-bold">Wearables</h3>
+                        <p class="text-sm">15 products</p>
+                    </div>
+                </div>
+                <div class="p-4">
+                    <ul class="space-y-1 text-sm">
+                        <li><a href="#" class="text-gray-700 hover:text-teal-500 transition duration-300">Smartwatches</a></li>
+                        <li><a href="#" class="text-gray-700 hover:text-teal-500 transition duration-300">Fitness Trackers</a></li>
+                        <li><a href="#" class="text-gray-700 hover:text-teal-500 transition duration-300">Smart Rings</a></li>
+                        <li><a href="#" class="text-gray-700 hover:text-teal-500 transition duration-300">VR Headsets</a></li>
+                    </ul>
+                    <a href="#" class="mt-4 inline-block text-teal-500 hover:text-teal-600 transition duration-300 font-medium">View All <i class="fas fa-arrow-right ml-1"></i></a>
+                </div>
+            </div>
+            
+            <!-- Category 7: Gaming -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300">
+                <div class="relative">
+                    <img src="https://placehold.co/400x300/eee/999?text=Gaming" alt="Gaming" class="w-full h-48 object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-70"></div>
+                    <div class="absolute bottom-0 left-0 p-4 text-white">
+                        <h3 class="text-xl font-bold">Gaming</h3>
+                        <p class="text-sm">22 products</p>
+                    </div>
+                </div>
+                <div class="p-4">
+                    <ul class="space-y-1 text-sm">
+                        <li><a href="#" class="text-gray-700 hover:text-teal-500 transition duration-300">Consoles</a></li>
+                        <li><a href="#" class="text-gray-700 hover:text-teal-500 transition duration-300">Controllers</a></li>
+                        <li><a href="#" class="text-gray-700 hover:text-teal-500 transition duration-300">Gaming Headsets</a></li>
+                        <li><a href="#" class="text-gray-700 hover:text-teal-500 transition duration-300">Gaming Chairs</a></li>
+                    </ul>
+                    <a href="#" class="mt-4 inline-block text-teal-500 hover:text-teal-600 transition duration-300 font-medium">View All <i class="fas fa-arrow-right ml-1"></i></a>
+                </div>
+            </div>
+            
+            <!-- Category 8: Smart Home -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300">
+                <div class="relative">
+                    <img src="https://placehold.co/400x300/eee/999?text=Smart+Home" alt="Smart Home" class="w-full h-48 object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-70"></div>
+                    <div class="absolute bottom-0 left-0 p-4 text-white">
+                        <h3 class="text-xl font-bold">Smart Home</h3>
+                        <p class="text-sm">19 products</p>
+                    </div>
+                </div>
+                <div class="p-4">
+                    <ul class="space-y-1 text-sm">
+                        <li><a href="#" class="text-gray-700 hover:text-teal-500 transition duration-300">Smart Speakers</a></li>
+                        <li><a href="#" class="text-gray-700 hover:text-teal-500 transition duration-300">Smart Displays</a></li>
+                        <li><a href="#" class="text-gray-700 hover:text-teal-500 transition duration-300">Smart Lighting</a></li>
+                        <li><a href="#" class="text-gray-700 hover:text-teal-500 transition duration-300">Security Cameras</a></li>
+                    </ul>
+                    <a href="#" class="mt-4 inline-block text-teal-500 hover:text-teal-600 transition duration-300 font-medium">View All <i class="fas fa-arrow-right ml-1"></i></a>
+                </div>
+            </div>
+            
+            <!-- Category 9: Accessories -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300">
+                <div class="relative">
+                    <img src="https://placehold.co/400x300/eee/999?text=Accessories" alt="Accessories" class="w-full h-48 object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-70"></div>
+                    <div class="absolute bottom-0 left-0 p-4 text-white">
+                        <h3 class="text-xl font-bold">Accessories</h3>
+                        <p class="text-sm">45 products</p>
+                    </div>
+                </div>
+                <div class="p-4">
+                    <ul class="space-y-1 text-sm">
+                        <li><a href="#" class="text-gray-700 hover:text-teal-500 transition duration-300">Phone Cases</a></li>
+                        <li><a href="#" class="text-gray-700 hover:text-teal-500 transition duration-300">Chargers & Cables</a></li>
+                        <li><a href="#" class="text-gray-700 hover:text-teal-500 transition duration-300">Power Banks</a></li>
+                        <li><a href="#" class="text-gray-700 hover:text-teal-500 transition duration-300">Screen Protectors</a></li>
+                    </ul>
+                    <a href="#" class="mt-4 inline-block text-teal-500 hover:text-teal-600 transition duration-300 font-medium">View All <i class="fas fa-arrow-right ml-1"></i></a>
+                </div>
+            </div>
+            
+            <!-- Category 10: Drones -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300">
+                <div class="relative">
+                    <img src="https://placehold.co/400x300/eee/999?text=Drones" alt="Drones" class="w-full h-48 object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-70"></div>
+                    <div class="absolute bottom-0 left-0 p-4 text-white">
+                        <h3 class="text-xl font-bold">Drones</h3>
+                        <p class="text-sm">8 products</p>
+                    </div>
+                </div>
+                <div class="p-4">
+                    <ul class="space-y-1 text-sm">
+                        <li><a href="#" class="text-gray-700 hover:text-teal-500 transition duration-300">Consumer Drones</a></li>
+                        <li><a href="#" class="text-gray-700 hover:text-teal-500 transition duration-300">Professional Drones</a></li>
+                        <li><a href="#" class="text-gray-700 hover:text-teal-500 transition duration-300">Mini Drones</a></li>
+                        <li><a href="#" class="text-gray-700 hover:text-teal-500 transition duration-300">Drone Accessories</a></li>
+                    </ul>
+                    <a href="#" class="mt-4 inline-block text-teal-500 hover:text-teal-600 transition duration-300 font-medium">View All <i class="fas fa-arrow-right ml-1"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

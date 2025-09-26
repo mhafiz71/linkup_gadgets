@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Hero Section -->
+    <section class="bg-[#1E2A47] text-white rounded-lg my-8 px-8 py-12 md:py-20 flex justify-between items-center">
+        <div class="md:w-1/2">
+            <h1 class="text-4xl md:text-5xl font-bold leading-tight">Connecting Ghana's Tech Market. Discover & Deliver with Ease.</h1>
+            <p class="mt-4 text-lg">Your one-stop marketplace for the latest gadgets and accessories.</p>
+            <a href="{% url 'accounts:register' %}" class="mt-8 inline-block bg-[#FBBF24] text-black font-bold py-3 px-8 rounded-lg hover:bg-yellow-400 transition-transform hover:scale-105">
+                Start Selling Today!
+            </a>
+        </div>
+        <div class="hidden md:block md:w-1/2">
+            <img src="https://i.imgur.com/kPwxC1D.png" alt="Happy people with phones" class="w-full h-auto">
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="my-16">
+        <h2 class="text-3xl font-bold text-center text-gray-800">Featured Products</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-8">
+            {% for product in featured_products %}
+            <div class="bg-white border border-gray-200 rounded-xl shadow-md p-4 text-center hover:shadow-xl transition-shadow">
+                <a href="{% url 'shop:product_detail' slug=product.slug %}">
+                    <img src="{{ product.image.url }}" alt="{{ product.name }}" class="mx-auto h-48 w-full object-contain">
+                    <h3 class="mt-4 font-semibold text-lg">{{ product.name }}</h3>
+                    <p class="text-lg text-gray-800 font-bold">GH₵ {{ product.price }}</p>
+                    <p class="text-sm text-gray-500">Sold by: {{ product.vendor.shop_name }}</p>
+                </a>
+            </div>
+            {% empty %}
+            <p class="col-span-4 text-center text-gray-500">No featured products available right now.</p>
+            {% endfor %}
+        </div>
+    </section>
+
+    <!-- All other sections (Categories, Delivery Banner, New Arrivals) go here... -->
+
+</div>
+{% endblock %}

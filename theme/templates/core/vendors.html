@@ -1,0 +1,476 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Our Vendors - LinkUp Gadgets{% endblock %}
+
+{% block content %}
+<!-- Vendors Hero Section -->
+<section class="bg-gradient-to-r from-teal-500 to-blue-600 text-white py-12">
+    <div class="container mx-auto px-4 text-center">
+        <h1 class="text-3xl md:text-4xl font-bold mb-4">Our Trusted Vendors</h1>
+        <p class="text-lg mb-4 max-w-3xl mx-auto">Discover the best tech brands and retailers on LinkUp Gadgets</p>
+    </div>
+</section>
+
+<!-- Featured Vendors Section -->
+<section class="py-12 bg-white">
+    <div class="container mx-auto px-4">
+        <h2 class="text-2xl font-bold mb-8 text-center">Featured Vendors</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Featured Vendor 1 -->
+            <div class="bg-gray-50 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300">
+                <div class="h-40 bg-gray-200 flex items-center justify-center">
+                    <!-- Vendor logo placeholder -->
+                    <div class="text-2xl font-bold text-gray-400">TechHub Ghana</div>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <span class="text-gray-600 ml-2">4.5 (120 reviews)</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">TechHub Ghana</h3>
+                    <p class="text-gray-600 mb-4">Premium smartphones, laptops, and accessories from authorized distributors.</p>
+                    <div class="flex items-center text-gray-600 mb-4">
+                        <i class="fas fa-map-marker-alt mr-2 text-teal-500"></i>
+                        <span>Accra, Ghana</span>
+                    </div>
+                    <a href="#" class="bg-teal-500 hover:bg-teal-600 text-white px-4 py-2 rounded-md font-medium transition duration-300 inline-block">
+                        Visit Store
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Featured Vendor 2 -->
+            <div class="bg-gray-50 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300">
+                <div class="h-40 bg-gray-200 flex items-center justify-center">
+                    <!-- Vendor logo placeholder -->
+                    <div class="text-2xl font-bold text-gray-400">Digital World</div>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <span class="text-gray-600 ml-2">5.0 (98 reviews)</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Digital World</h3>
+                    <p class="text-gray-600 mb-4">Specializing in high-end cameras, drones, and professional photography equipment.</p>
+                    <div class="flex items-center text-gray-600 mb-4">
+                        <i class="fas fa-map-marker-alt mr-2 text-teal-500"></i>
+                        <span>Kumasi, Ghana</span>
+                    </div>
+                    <a href="#" class="bg-teal-500 hover:bg-teal-600 text-white px-4 py-2 rounded-md font-medium transition duration-300 inline-block">
+                        Visit Store
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Featured Vendor 3 -->
+            <div class="bg-gray-50 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300">
+                <div class="h-40 bg-gray-200 flex items-center justify-center">
+                    <!-- Vendor logo placeholder -->
+                    <div class="text-2xl font-bold text-gray-400">AudioMax</div>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <span class="text-gray-600 ml-2">4.0 (75 reviews)</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">AudioMax</h3>
+                    <p class="text-gray-600 mb-4">Premium audio equipment including headphones, speakers, and home theater systems.</p>
+                    <div class="flex items-center text-gray-600 mb-4">
+                        <i class="fas fa-map-marker-alt mr-2 text-teal-500"></i>
+                        <span>Accra, Ghana</span>
+                    </div>
+                    <a href="#" class="bg-teal-500 hover:bg-teal-600 text-white px-4 py-2 rounded-md font-medium transition duration-300 inline-block">
+                        Visit Store
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Vendor Categories Section -->
+<section class="py-12 bg-gray-50">
+    <div class="container mx-auto px-4">
+        <h2 class="text-2xl font-bold mb-8 text-center">Browse Vendors by Category</h2>
+        
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <!-- Category 1 -->
+            <a href="#" class="bg-white rounded-lg p-6 text-center shadow-sm hover:shadow-md transition duration-300">
+                <div class="bg-blue-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-mobile-alt text-blue-600 text-2xl"></i>
+                </div>
+                <h3 class="font-bold">Smartphones</h3>
+                <p class="text-gray-600 text-sm mt-2">42 Vendors</p>
+            </a>
+            
+            <!-- Category 2 -->
+            <a href="#" class="bg-white rounded-lg p-6 text-center shadow-sm hover:shadow-md transition duration-300">
+                <div class="bg-green-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-laptop text-green-600 text-2xl"></i>
+                </div>
+                <h3 class="font-bold">Computers</h3>
+                <p class="text-gray-600 text-sm mt-2">38 Vendors</p>
+            </a>
+            
+            <!-- Category 3 -->
+            <a href="#" class="bg-white rounded-lg p-6 text-center shadow-sm hover:shadow-md transition duration-300">
+                <div class="bg-red-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-headphones text-red-600 text-2xl"></i>
+                </div>
+                <h3 class="font-bold">Audio</h3>
+                <p class="text-gray-600 text-sm mt-2">27 Vendors</p>
+            </a>
+            
+            <!-- Category 4 -->
+            <a href="#" class="bg-white rounded-lg p-6 text-center shadow-sm hover:shadow-md transition duration-300">
+                <div class="bg-purple-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-camera text-purple-600 text-2xl"></i>
+                </div>
+                <h3 class="font-bold">Cameras</h3>
+                <p class="text-gray-600 text-sm mt-2">19 Vendors</p>
+            </a>
+            
+            <!-- Category 5 -->
+            <a href="#" class="bg-white rounded-lg p-6 text-center shadow-sm hover:shadow-md transition duration-300">
+                <div class="bg-yellow-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-tablet-alt text-yellow-600 text-2xl"></i>
+                </div>
+                <h3 class="font-bold">Tablets</h3>
+                <p class="text-gray-600 text-sm mt-2">23 Vendors</p>
+            </a>
+            
+            <!-- Category 6 -->
+            <a href="#" class="bg-white rounded-lg p-6 text-center shadow-sm hover:shadow-md transition duration-300">
+                <div class="bg-indigo-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-gamepad text-indigo-600 text-2xl"></i>
+                </div>
+                <h3 class="font-bold">Gaming</h3>
+                <p class="text-gray-600 text-sm mt-2">15 Vendors</p>
+            </a>
+            
+            <!-- Category 7 -->
+            <a href="#" class="bg-white rounded-lg p-6 text-center shadow-sm hover:shadow-md transition duration-300">
+                <div class="bg-teal-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-home text-teal-600 text-2xl"></i>
+                </div>
+                <h3 class="font-bold">Smart Home</h3>
+                <p class="text-gray-600 text-sm mt-2">12 Vendors</p>
+            </a>
+            
+            <!-- Category 8 -->
+            <a href="#" class="bg-white rounded-lg p-6 text-center shadow-sm hover:shadow-md transition duration-300">
+                <div class="bg-pink-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-plug text-pink-600 text-2xl"></i>
+                </div>
+                <h3 class="font-bold">Accessories</h3>
+                <p class="text-gray-600 text-sm mt-2">56 Vendors</p>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- All Vendors Section -->
+<section class="py-12 bg-white">
+    <div class="container mx-auto px-4">
+        <div class="flex justify-between items-center mb-8">
+            <h2 class="text-2xl font-bold">All Vendors</h2>
+            
+            <!-- Filter and Sort -->
+            <div class="flex space-x-4">
+                <div class="relative">
+                    <select class="appearance-none bg-gray-50 border rounded-md px-4 py-2 pr-8 focus:outline-none focus:ring-2 focus:ring-teal-500">
+                        <option>Sort by: Featured</option>
+                        <option>Sort by: Rating (High to Low)</option>
+                        <option>Sort by: Rating (Low to High)</option>
+                        <option>Sort by: Name (A-Z)</option>
+                        <option>Sort by: Name (Z-A)</option>
+                    </select>
+                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+                
+                <button class="bg-gray-50 hover:bg-gray-100 border rounded-md px-4 py-2 flex items-center focus:outline-none focus:ring-2 focus:ring-teal-500">
+                    <i class="fas fa-filter mr-2"></i> Filter
+                </button>
+            </div>
+        </div>
+        
+        <!-- Vendors Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Vendor 1 -->
+            <div class="bg-gray-50 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition duration-300">
+                <div class="h-32 bg-gray-200 flex items-center justify-center">
+                    <!-- Vendor logo placeholder -->
+                    <div class="text-xl font-bold text-gray-400">TechHub Ghana</div>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center mb-3">
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <span class="text-gray-600 ml-2">4.5</span>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">TechHub Ghana</h3>
+                    <p class="text-gray-600 text-sm mb-3">Premium smartphones, laptops, and accessories</p>
+                    <a href="#" class="text-teal-500 hover:text-teal-600 font-medium inline-flex items-center text-sm">
+                        Visit Store <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Vendor 2 -->
+            <div class="bg-gray-50 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition duration-300">
+                <div class="h-32 bg-gray-200 flex items-center justify-center">
+                    <!-- Vendor logo placeholder -->
+                    <div class="text-xl font-bold text-gray-400">Digital World</div>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center mb-3">
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <span class="text-gray-600 ml-2">5.0</span>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Digital World</h3>
+                    <p class="text-gray-600 text-sm mb-3">Cameras, drones, and photography equipment</p>
+                    <a href="#" class="text-teal-500 hover:text-teal-600 font-medium inline-flex items-center text-sm">
+                        Visit Store <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Vendor 3 -->
+            <div class="bg-gray-50 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition duration-300">
+                <div class="h-32 bg-gray-200 flex items-center justify-center">
+                    <!-- Vendor logo placeholder -->
+                    <div class="text-xl font-bold text-gray-400">AudioMax</div>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center mb-3">
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <span class="text-gray-600 ml-2">4.0</span>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">AudioMax</h3>
+                    <p class="text-gray-600 text-sm mb-3">Premium audio equipment and accessories</p>
+                    <a href="#" class="text-teal-500 hover:text-teal-600 font-medium inline-flex items-center text-sm">
+                        Visit Store <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Vendor 4 -->
+            <div class="bg-gray-50 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition duration-300">
+                <div class="h-32 bg-gray-200 flex items-center justify-center">
+                    <!-- Vendor logo placeholder -->
+                    <div class="text-xl font-bold text-gray-400">Mobile Masters</div>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center mb-3">
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <span class="text-gray-600 ml-2">4.0</span>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Mobile Masters</h3>
+                    <p class="text-gray-600 text-sm mb-3">Smartphones and mobile accessories</p>
+                    <a href="#" class="text-teal-500 hover:text-teal-600 font-medium inline-flex items-center text-sm">
+                        Visit Store <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Vendor 5 -->
+            <div class="bg-gray-50 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition duration-300">
+                <div class="h-32 bg-gray-200 flex items-center justify-center">
+                    <!-- Vendor logo placeholder -->
+                    <div class="text-xl font-bold text-gray-400">Laptop Hub</div>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center mb-3">
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <span class="text-gray-600 ml-2">3.5</span>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Laptop Hub</h3>
+                    <p class="text-gray-600 text-sm mb-3">Laptops, desktops, and computer accessories</p>
+                    <a href="#" class="text-teal-500 hover:text-teal-600 font-medium inline-flex items-center text-sm">
+                        Visit Store <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Vendor 6 -->
+            <div class="bg-gray-50 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition duration-300">
+                <div class="h-32 bg-gray-200 flex items-center justify-center">
+                    <!-- Vendor logo placeholder -->
+                    <div class="text-xl font-bold text-gray-400">Smart Living</div>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center mb-3">
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <span class="text-gray-600 ml-2">4.5</span>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Smart Living</h3>
+                    <p class="text-gray-600 text-sm mb-3">Smart home devices and automation solutions</p>
+                    <a href="#" class="text-teal-500 hover:text-teal-600 font-medium inline-flex items-center text-sm">
+                        Visit Store <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Vendor 7 -->
+            <div class="bg-gray-50 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition duration-300">
+                <div class="h-32 bg-gray-200 flex items-center justify-center">
+                    <!-- Vendor logo placeholder -->
+                    <div class="text-xl font-bold text-gray-400">Game Zone</div>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center mb-3">
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <span class="text-gray-600 ml-2">4.0</span>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Game Zone</h3>
+                    <p class="text-gray-600 text-sm mb-3">Gaming consoles, games, and accessories</p>
+                    <a href="#" class="text-teal-500 hover:text-teal-600 font-medium inline-flex items-center text-sm">
+                        Visit Store <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Vendor 8 -->
+            <div class="bg-gray-50 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition duration-300">
+                <div class="h-32 bg-gray-200 flex items-center justify-center">
+                    <!-- Vendor logo placeholder -->
+                    <div class="text-xl font-bold text-gray-400">Wearable Tech</div>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center mb-3">
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <span class="text-gray-600 ml-2">4.0</span>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Wearable Tech</h3>
+                    <p class="text-gray-600 text-sm mb-3">Smartwatches, fitness trackers, and wearables</p>
+                    <a href="#" class="text-teal-500 hover:text-teal-600 font-medium inline-flex items-center text-sm">
+                        Visit Store <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Vendor 9 -->
+            <div class="bg-gray-50 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition duration-300">
+                <div class="h-32 bg-gray-200 flex items-center justify-center">
+                    <!-- Vendor logo placeholder -->
+                    <div class="text-xl font-bold text-gray-400">Drone Masters</div>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center mb-3">
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <span class="text-gray-600 ml-2">5.0</span>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Drone Masters</h3>
+                    <p class="text-gray-600 text-sm mb-3">Drones and aerial photography equipment</p>
+                    <a href="#" class="text-teal-500 hover:text-teal-600 font-medium inline-flex items-center text-sm">
+                        Visit Store <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Pagination -->
+        <div class="mt-12 flex justify-center">
+            <nav class="inline-flex rounded-md shadow">
+                <a href="#" class="py-2 px-4 bg-white border border-gray-300 text-gray-700 rounded-l-md hover:bg-gray-50">
+                    <i class="fas fa-chevron-left"></i>
+                </a>
+                <a href="#" class="py-2 px-4 bg-teal-500 text-white border border-teal-500 hover:bg-teal-600">1</a>
+                <a href="#" class="py-2 px-4 bg-white border border-gray-300 text-gray-700 hover:bg-gray-50">2</a>
+                <a href="#" class="py-2 px-4 bg-white border border-gray-300 text-gray-700 hover:bg-gray-50">3</a>
+                <a href="#" class="py-2 px-4 bg-white border border-gray-300 text-gray-700 hover:bg-gray-50">4</a>
+                <a href="#" class="py-2 px-4 bg-white border border-gray-300 text-gray-700 hover:bg-gray-50">5</a>
+                <a href="#" class="py-2 px-4 bg-white border border-gray-300 text-gray-700 rounded-r-md hover:bg-gray-50">
+                    <i class="fas fa-chevron-right"></i>
+                </a>
+            </nav>
+        </div>
+    </div>
+</section>
+
+<!-- Become a Vendor CTA -->
+<section class="py-12 bg-gradient-to-r from-teal-500 to-blue-600 text-white">
+    <div class="container mx-auto px-4 text-center">
+        <h2 class="text-2xl md:text-3xl font-bold mb-4">Want to Sell on LinkUp Gadgets?</h2>
+        <p class="text-lg mb-8 max-w-3xl mx-auto">Join our growing community of tech vendors and reach thousands of customers across Ghana.</p>
+        <a href="{% url 'sell_with_us' %}" class="bg-white text-teal-600 hover:bg-gray-100 px-6 py-3 rounded-md font-medium transition duration-300 inline-block">
+            Become a Vendor
+        </a>
+    </div>
+</section>
+{% endblock %}

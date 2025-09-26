@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}Make Payment{% endblock %}
+
+{% block content %}
+<div class="max-w-md mx-auto px-4 sm:px-6 lg:px-8 my-16 text-center">
+    <h1 class="text-3xl font-bold">Complete Your Payment</h1>
+    <p class="mt-4 text-lg">You are about to pay <strong class="text-gray-900">GH₵ {{ order.total_paid }}</strong> for Order #{{ order.id|truncatechars:8 }}.</p>
+    
+    <form id="paymentForm" class="mt-8">
+        <script src="https://js.paystack.co/v1/inline.js"></script>
+        <button type="button" onclick="payWithPaystack()" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700">
+            Pay with Paystack
+        </button>
+    </form>
+</div>
+
+<script>
+    function payWithPaystack() {
+        var handler = PaystackPop.setup({
+            key: '{{ paystack_public_key }}',
+            email: '{{ order.email }}',
+            amount: {{ amount_in_kobo }}, // Amount in kobo
+            ref: '' + Math.floor((Math.random() * 1000000000) + 1), // Generate a random reference
+            callback: function(response) {
+                // Redirect to your callback URL with the reference
+                window.location.href = '{% url "payment:callback" %}?reference=' + response.reference;
+            },
+            onClose: function() {
+                // Redirect to a failed page if the user closes the popup
+                window.location.href = '{% url "payment:failed" %}';
+            }
+        });
+        handler.openIframe();
+    }
+</script>
+{% endblock %}

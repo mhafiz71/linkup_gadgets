@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block title %}Add New Product - Vendor Dashboard{% endblock %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 my-16">
+    <div class="bg-white p-8 rounded-lg shadow-lg">
+        <h1 class="text-3xl font-bold text-gray-900">Add a New Product</h1>
+        <p class="text-gray-600 mt-2">Fill out the details below to list a new item in your shop.</p>
+
+        <form method="POST" enctype="multipart/form-data" class="mt-8 space-y-6">
+            {% csrf_token %}
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Product Name -->
+                <div>
+                    <label for="{{ form.name.id_for_label }}" class="block text-sm font-medium text-gray-700">Product Name</label>
+                    {% render_field form.name class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" %}
+                    {% if form.name.errors %}<p class="text-red-500 text-xs mt-1">{{ form.name.errors.0 }}</p>{% endif %}
+                </div>
+
+                <!-- Category -->
+                <div>
+                    <label for="{{ form.category.id_for_label }}" class="block text-sm font-medium text-gray-700">Category</label>
+                    {% render_field form.category class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" %}
+                    {% if form.category.errors %}<p class="text-red-500 text-xs mt-1">{{ form.category.errors.0 }}</p>{% endif %}
+                </div>
+            </div>
+
+            <!-- Description -->
+            <div>
+                <label for="{{ form.description.id_for_label }}" class="block text-sm font-medium text-gray-700">Description</label>
+                {% render_field form.description class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" rows="4" %}
+                {% if form.description.errors %}<p class="text-red-500 text-xs mt-1">{{ form.description.errors.0 }}</p>{% endif %}
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Price -->
+                <div>
+                    <label for="{{ form.price.id_for_label }}" class="block text-sm font-medium text-gray-700">Price (GH₵)</label>
+                    {% render_field form.price class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" %}
+                    {% if form.price.errors %}<p class="text-red-500 text-xs mt-1">{{ form.price.errors.0 }}</p>{% endif %}
+                </div>
+
+                <!-- Stock Quantity -->
+                <div>
+                    <label for="{{ form.stock_quantity.id_for_label }}" class="block text-sm font-medium text-gray-700">Stock Quantity</label>
+                    {% render_field form.stock_quantity class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" %}
+                    {% if form.stock_quantity.errors %}<p class="text-red-500 text-xs mt-1">{{ form.stock_quantity.errors.0 }}</p>{% endif %}
+                </div>
+            </div>
+            
+            <!-- Image Upload -->
+            <div>
+                <label for="{{ form.image.id_for_label }}" class="block text-sm font-medium text-gray-700">Product Image</label>
+                {% render_field form.image class="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-600 hover:file:bg-indigo-100" %}
+                {% if form.image.errors %}<p class="text-red-500 text-xs mt-1">{{ form.image.errors.0 }}</p>{% endif %}
+            </div>
+
+            <!-- Is Featured Checkbox -->
+            <div class="flex items-start">
+                <div class="flex items-center h-5">
+                    {% render_field form.is_featured class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded" %}
+                </div>
+                <div class="ml-3 text-sm">
+                    <label for="{{ form.is_featured.id_for_label }}" class="font-medium text-gray-700">Feature this product?</label>
+                    <p class="text-gray-500">Featured products appear on the homepage.</p>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex items-center justify-end space-x-4 border-t border-gray-200 pt-6">
+                <a href="{% url 'shop:vendor_dashboard' %}" class="bg-gray-200 text-gray-800 font-bold py-2 px-6 rounded-lg hover:bg-gray-300">
+                    Cancel
+                </a>
+                <button type="submit" class="bg-[#FBBF24] text-black font-bold py-2 px-6 rounded-lg hover:bg-yellow-400">
+                    Save Product
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,294 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}About Us - LinkUp Gadgets{% endblock %}
+
+{% block content %}
+<!-- About Hero Section -->
+<section class="bg-gradient-to-r from-teal-500 to-blue-600 text-white py-16">
+    <div class="container mx-auto px-4 text-center">
+        <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">About LinkUp Gadgets</h1>
+        <p class="text-lg mb-8 max-w-3xl mx-auto">Connecting Ghana's Tech Market & Delivering with Ease</p>
+    </div>
+</section>
+
+<!-- Our Story Section -->
+<section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+        <div class="flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8">
+                <img src="{% static 'images/about-story.jpg' %}" alt="Our Story" class="rounded-lg shadow-lg w-full h-auto" onerror="this.src='https://via.placeholder.com/600x400?text=Our+Story'">
+            </div>
+            <div class="md:w-1/2">
+                <h2 class="text-2xl md:text-3xl font-bold mb-4">Our Story</h2>
+                <p class="text-gray-600 mb-4">Founded in 2022, LinkUp Gadgets was born out of a vision to transform how Ghanaians access and purchase technology products. We recognized the challenges that consumers faced: limited access to authentic products, inconsistent pricing, and unreliable delivery services.</p>
+                <p class="text-gray-600 mb-4">Starting with just a small team of tech enthusiasts in Accra, we've grown into Ghana's premier multi-vendor marketplace for technology products. Our journey has been driven by a passion for innovation and a commitment to customer satisfaction.</p>
+                <p class="text-gray-600">Today, LinkUp Gadgets connects thousands of customers with trusted vendors across the country, offering a wide range of products from smartphones and laptops to smart home devices and accessories.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Mission & Vision Section -->
+<section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Mission -->
+            <div class="bg-white p-8 rounded-lg shadow-md">
+                <div class="bg-teal-100 rounded-full w-16 h-16 flex items-center justify-center mb-6">
+                    <i class="fas fa-bullseye text-teal-600 text-2xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-4">Our Mission</h3>
+                <p class="text-gray-600">To provide Ghanaians with seamless access to authentic technology products through a trusted marketplace that empowers both consumers and vendors. We strive to make the latest technology accessible to everyone while supporting local businesses and driving digital inclusion across Ghana.</p>
+            </div>
+            
+            <!-- Vision -->
+            <div class="bg-white p-8 rounded-lg shadow-md">
+                <div class="bg-blue-100 rounded-full w-16 h-16 flex items-center justify-center mb-6">
+                    <i class="fas fa-eye text-blue-600 text-2xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-4">Our Vision</h3>
+                <p class="text-gray-600">To become Africa's leading technology marketplace, known for reliability, authenticity, and innovation. We envision a future where every Ghanaian has access to quality technology products that enhance their lives, and where local tech vendors thrive in a supportive ecosystem.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Core Values Section -->
+<section class="py-16 bg-white">
+    <div class="container mx-auto px-4 text-center">
+        <h2 class="text-2xl md:text-3xl font-bold mb-4">Our Core Values</h2>
+        <p class="text-gray-600 mb-12 max-w-3xl mx-auto">These principles guide everything we do at LinkUp Gadgets</p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Value 1 -->
+            <div class="p-6">
+                <div class="bg-teal-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
+                    <i class="fas fa-check-circle text-teal-600 text-3xl"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-3">Authenticity</h3>
+                <p class="text-gray-600">We guarantee that all products sold on our platform are genuine and sourced from authorized channels. We have zero tolerance for counterfeit products.</p>
+            </div>
+            
+            <!-- Value 2 -->
+            <div class="p-6">
+                <div class="bg-teal-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
+                    <i class="fas fa-users text-teal-600 text-3xl"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-3">Customer First</h3>
+                <p class="text-gray-600">Our customers are at the heart of everything we do. We continuously strive to improve their experience and exceed their expectations.</p>
+            </div>
+            
+            <!-- Value 3 -->
+            <div class="p-6">
+                <div class="bg-teal-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
+                    <i class="fas fa-handshake text-teal-600 text-3xl"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-3">Integrity</h3>
+                <p class="text-gray-600">We operate with honesty and transparency in all our dealings with customers, vendors, and partners. We do what we say and say what we do.</p>
+            </div>
+            
+            <!-- Value 4 -->
+            <div class="p-6">
+                <div class="bg-teal-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
+                    <i class="fas fa-rocket text-teal-600 text-3xl"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-3">Innovation</h3>
+                <p class="text-gray-600">We embrace technology and continuously innovate to improve our platform, processes, and services to better serve our community.</p>
+            </div>
+            
+            <!-- Value 5 -->
+            <div class="p-6">
+                <div class="bg-teal-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
+                    <i class="fas fa-globe-africa text-teal-600 text-3xl"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-3">Community Impact</h3>
+                <p class="text-gray-600">We are committed to making a positive impact in Ghana by supporting local businesses, creating jobs, and promoting digital literacy.</p>
+            </div>
+            
+            <!-- Value 6 -->
+            <div class="p-6">
+                <div class="bg-teal-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
+                    <i class="fas fa-shield-alt text-teal-600 text-3xl"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-3">Security</h3>
+                <p class="text-gray-600">We prioritize the security of our platform and protect our customers' data and transactions with the highest standards of security measures.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Team Section -->
+<section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4 text-center">
+        <h2 class="text-2xl md:text-3xl font-bold mb-4">Meet Our Leadership Team</h2>
+        <p class="text-gray-600 mb-12 max-w-3xl mx-auto">The passionate individuals driving LinkUp Gadgets forward</p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Team Member 1 -->
+            <div class="bg-white rounded-lg overflow-hidden shadow-md">
+                <div class="h-64 bg-gray-200"><!-- Team member image placeholder --></div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-1">Kwame Adu</h3>
+                    <p class="text-teal-600 mb-4">Chief Executive Officer</p>
+                    <p class="text-gray-600 mb-4">Tech entrepreneur with over 10 years of experience in e-commerce and digital marketplaces.</p>
+                    <div class="flex justify-center space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-blue-500"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-blue-400"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Team Member 2 -->
+            <div class="bg-white rounded-lg overflow-hidden shadow-md">
+                <div class="h-64 bg-gray-200"><!-- Team member image placeholder --></div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-1">Abena Osei</h3>
+                    <p class="text-teal-600 mb-4">Chief Operations Officer</p>
+                    <p class="text-gray-600 mb-4">Operations expert with extensive experience in supply chain management and logistics across West Africa.</p>
+                    <div class="flex justify-center space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-blue-500"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-blue-400"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Team Member 3 -->
+            <div class="bg-white rounded-lg overflow-hidden shadow-md">
+                <div class="h-64 bg-gray-200"><!-- Team member image placeholder --></div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-1">Kofi Mensah</h3>
+                    <p class="text-teal-600 mb-4">Chief Technology Officer</p>
+                    <p class="text-gray-600 mb-4">Software engineer and tech innovator with a passion for creating scalable e-commerce solutions.</p>
+                    <div class="flex justify-center space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-blue-500"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-blue-400"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Team Member 4 -->
+            <div class="bg-white rounded-lg overflow-hidden shadow-md">
+                <div class="h-64 bg-gray-200"><!-- Team member image placeholder --></div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-1">Ama Darko</h3>
+                    <p class="text-teal-600 mb-4">Head of Vendor Relations</p>
+                    <p class="text-gray-600 mb-4">Relationship builder with expertise in vendor management and business development in the tech sector.</p>
+                    <div class="flex justify-center space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-blue-500"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-blue-400"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Achievements Section -->
+<section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+        <h2 class="text-2xl md:text-3xl font-bold mb-12 text-center">Our Achievements</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+            <!-- Achievement 1 -->
+            <div>
+                <div class="text-4xl font-bold text-teal-600 mb-2">10,000+</div>
+                <p class="text-gray-600">Products Available</p>
+            </div>
+            
+            <!-- Achievement 2 -->
+            <div>
+                <div class="text-4xl font-bold text-teal-600 mb-2">500+</div>
+                <p class="text-gray-600">Verified Vendors</p>
+            </div>
+            
+            <!-- Achievement 3 -->
+            <div>
+                <div class="text-4xl font-bold text-teal-600 mb-2">50,000+</div>
+                <p class="text-gray-600">Happy Customers</p>
+            </div>
+            
+            <!-- Achievement 4 -->
+            <div>
+                <div class="text-4xl font-bold text-teal-600 mb-2">16</div>
+                <p class="text-gray-600">Regions Covered</p>
+            </div>
+        </div>
+        
+        <div class="mt-16">
+            <h3 class="text-xl font-bold mb-6 text-center">Awards & Recognition</h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Award 1 -->
+                <div class="bg-gray-50 p-6 rounded-lg text-center">
+                    <div class="bg-yellow-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-trophy text-yellow-600 text-2xl"></i>
+                    </div>
+                    <h4 class="font-bold mb-2">Best E-commerce Platform</h4>
+                    <p class="text-gray-600">Ghana Technology Awards, 2023</p>
+                </div>
+                
+                <!-- Award 2 -->
+                <div class="bg-gray-50 p-6 rounded-lg text-center">
+                    <div class="bg-yellow-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-award text-yellow-600 text-2xl"></i>
+                    </div>
+                    <h4 class="font-bold mb-2">Tech Startup of the Year</h4>
+                    <p class="text-gray-600">West African Business Excellence Awards, 2022</p>
+                </div>
+                
+                <!-- Award 3 -->
+                <div class="bg-gray-50 p-6 rounded-lg text-center">
+                    <div class="bg-yellow-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-star text-yellow-600 text-2xl"></i>
+                    </div>
+                    <h4 class="font-bold mb-2">Customer Service Excellence</h4>
+                    <p class="text-gray-600">Ghana Customer Service Awards, 2023</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Partners Section -->
+<section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4 text-center">
+        <h2 class="text-2xl md:text-3xl font-bold mb-4">Our Partners</h2>
+        <p class="text-gray-600 mb-12 max-w-3xl mx-auto">We collaborate with leading brands and service providers</p>
+        
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center">
+            <!-- Partner logos would go here, using placeholders for now -->
+            <div class="bg-white p-4 rounded-lg shadow-sm h-24 flex items-center justify-center">
+                <div class="text-gray-400 font-bold">Partner 1</div>
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow-sm h-24 flex items-center justify-center">
+                <div class="text-gray-400 font-bold">Partner 2</div>
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow-sm h-24 flex items-center justify-center">
+                <div class="text-gray-400 font-bold">Partner 3</div>
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow-sm h-24 flex items-center justify-center">
+                <div class="text-gray-400 font-bold">Partner 4</div>
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow-sm h-24 flex items-center justify-center">
+                <div class="text-gray-400 font-bold">Partner 5</div>
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow-sm h-24 flex items-center justify-center">
+                <div class="text-gray-400 font-bold">Partner 6</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Join Us Section -->
+<section class="py-16 bg-gradient-to-r from-teal-500 to-blue-600 text-white">
+    <div class="container mx-auto px-4 text-center">
+        <h2 class="text-2xl md:text-3xl font-bold mb-4">Join the LinkUp Gadgets Family</h2>
+        <p class="text-lg mb-8 max-w-3xl mx-auto">Whether you're a customer looking for quality tech products or a vendor wanting to expand your reach, we invite you to be part of our growing community.</p>
+        <div class="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-4">
+            <a href="{% url 'shop' %}" class="bg-white text-teal-600 hover:bg-gray-100 px-6 py-3 rounded-md font-medium transition duration-300 inline-block">Shop Now</a>
+            <a href="{% url 'sell_with_us' %}" class="bg-transparent border-2 border-white text-white hover:bg-white hover:text-teal-600 px-6 py-3 rounded-md font-medium transition duration-300 inline-block">Become a Vendor</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

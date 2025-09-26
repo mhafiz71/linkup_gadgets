@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="max-w-xl mx-auto text-center my-16">
+    <h1 class="text-3xl font-bold text-red-600">Payment Failed</h1>
+    <p class="mt-4 text-lg">Your payment could not be processed. Please try again.</p>
+    <a href="{% url 'orders:order_create' %}" class="mt-8 inline-block bg-gray-800 text-white font-bold py-3 px-8 rounded-lg">Try Again</a>
+</div>
+{% endblock %}

@@ -1,0 +1,10 @@
+% extends 'base.html' %}
+{% block content %}
+<div class="max-w-xl mx-auto text-center my-16">
+<h1 class="text-3xl font-bold text-green-600">Payment Successful!</h1>
+<p class="mt-4 text-lg">Thank you for your purchase. Your order has been confirmed.</p>
+<p class="mt-2 text-gray-600">Your Order ID is: <strong>{{ order.id }}</strong></p>
+<p class="mt-1 text-gray-600">Paystack Reference: <strong>{{ order.paystack_reference }}</strong></p>
+<a href="{% url 'index' %}" class="mt-8 inline-block bg-[#FBBF24] text-black font-bold py-3 px-8 rounded-lg">Continue Shopping</a>
+</div>
+{% endblock %}
