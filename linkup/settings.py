@@ -109,6 +109,10 @@ DATABASES = {
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles' # ADD THIS LINE
 
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),  # Make sure this points to your static folder
+]
+
 # Use WhiteNoise storage only when not in DEBUG mode
 if not DEBUG:
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
