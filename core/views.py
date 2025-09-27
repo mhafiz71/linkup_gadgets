@@ -3,13 +3,13 @@ from shop.models import Product, Category
 
 def index(request):
     # Fetch featured products (limit to 4 for the main section)
-    featured_products = Product.objects.filter(is_featured=True)[:4]
+    featured_products = Product.objects.filter(is_featured=True).order_by('-created_at')[:4]
     
     # Fetch new arrivals (latest 4 products)
     new_arrivals = Product.objects.all().order_by('-created_at')[:4]
 
-    # Fetch all categories
-    categories = Category.objects.all()
+    # THE FIX: Fetch only the first 4 categories
+    categories = Category.objects.all()[:4]
 
     context = {
         'featured_products': featured_products,
@@ -17,7 +17,6 @@ def index(request):
         'categories': categories,
     }
     return render(request, 'core/index.html', context)
-
 
 # def shop(request):
 #     return render(request, 'core/shop.html')
@@ -51,3 +50,6 @@ def terms_view(request):
 
 def vendor_policies_view(request):
     return render(request, 'core/vendor_policies.html')
+
+def faq_view(request):
+    return render(request, 'core/faq.html')

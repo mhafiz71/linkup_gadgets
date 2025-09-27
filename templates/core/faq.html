@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block title %}Help & FAQ - LinkUp Gadgets{% endblock %}
+
+{% block content %}
+<div class="bg-gray-50">
+  <div class="mx-auto max-w-7xl px-6 py-16 sm:py-24 lg:px-8">
+    <div class="mx-auto max-w-4xl text-center">
+      <h2 class="text-2xl font-bold leading-10 tracking-tight text-gray-900">Frequently Asked Questions</h2>
+      <p class="mt-2 text-base leading-7 text-gray-600">Have a question? We're here to help. If you don't see your question here, feel free to contact our support team.</p>
+    </div>
+    <div class="mt-16">
+      <dl class="space-y-8" x-data="{ active: 1 }">
+
+        <!-- Question 1 -->
+        <div class="rounded-lg bg-white p-6 shadow">
+          <dt>
+            <button @click="active = (active === 1 ? null : 1)" type="button" class="flex w-full items-start justify-between text-left text-gray-900">
+              <span class="text-base font-semibold leading-7">How do I make a purchase?</span>
+              <span class="ml-6 flex h-7 items-center">
+                <svg class="h-6 w-6" :class="{ '-rotate-180': active === 1, 'rotate-0': active !== 1 }" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
+              </span>
+            </button>
+          </dt>
+          <dd class="mt-2 pr-12" x-show="active === 1" x-transition>
+            <p class="text-base leading-7 text-gray-600">Simply browse our products, add items to your cart, and click "Proceed to Checkout". If you're not logged in, you'll be prompted to log in or register. Then, enter your shipping details and complete the payment using Paystack with your Mobile Money or card.</p>
+          </dd>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="rounded-lg bg-white p-6 shadow">
+          <dt>
+            <button @click="active = (active === 2 ? null : 2)" type="button" class="flex w-full items-start justify-between text-left text-gray-900">
+              <span class="text-base font-semibold leading-7">Is it safe to pay online?</span>
+              <span class="ml-6 flex h-7 items-center">
+                <svg class="h-6 w-6" :class="{ '-rotate-180': active === 2, 'rotate-0': active !== 2 }" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
+              </span>
+            </button>
+          </dt>
+          <dd class="mt-2 pr-12" x-show="active === 2" x-transition>
+            <p class="text-base leading-7 text-gray-600">Absolutely. All payments are processed by Paystack, a leading and highly secure payment gateway in Africa. We do not see or store any of your sensitive payment information on our servers.</p>
+          </dd>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="rounded-lg bg-white p-6 shadow">
+          <dt>
+            <button @click="active = (active === 3 ? null : 3)" type="button" class="flex w-full items-start justify-between text-left text-gray-900">
+              <span class="text-base font-semibold leading-7">How can I become a vendor?</span>
+              <span class="ml-6 flex h-7 items-center">
+                <svg class="h-6 w-6" :class="{ '-rotate-180': active === 3, 'rotate-0': active !== 3 }" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
+              </span>
+            </button>
+          </dt>
+          <dd class="mt-2 pr-12" x-show="active === 3" x-transition>
+            <p class="text-base leading-7 text-gray-600">We'd love to have you! Simply click on the "Register" button in the top right, fill out your personal details, and make sure to check the "Register as a Vendor?" box. You will then be prompted to fill out your shop details.</p>
+          </dd>
+        </div>
+
+      </dl>
+    </div>
+  </div>
+</div>
+{% endblock %}

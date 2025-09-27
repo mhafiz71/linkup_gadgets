@@ -34,6 +34,13 @@ def register(request):
             user.set_password(user_form.cleaned_data['password'])
             user.save()
 
+            subject = 'Welcome to LinkUp Gadgets!'
+            html_message = render_to_string('emails/welcome_email.html', {'user': user})
+            plain_message = strip_tags(html_message)
+            from_email = settings.DEFAULT_FROM_EMAIL
+            to = user.email
+            send_mail(subject, plain_message, from_email, [to], html_message=html_message)
+            
             if is_vendor:
                 vendor = vendor_form.save(commit=False)
                 vendor.user = user

@@ -30,6 +30,13 @@ def payment_callback(request):
     order.paystack_reference = reference
     order.save()
     
+    subject = f'Your LinkUp Gadgets Order Confirmation (#{order.id|truncatechars:8})'
+    html_message = render_to_string('emails/order_confirmation_email.html', {'order': order})
+    plain_message = strip_tags(html_message)
+    from_email = settings.DEFAULT_FROM_EMAIL
+    to = order.email
+    send_mail(subject, plain_message, from_email, [to], html_message=html_message)
+    
     # Clear the cart
     cart = Cart(request)
     cart.clear()

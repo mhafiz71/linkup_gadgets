@@ -2,33 +2,74 @@
 
 {% block content %}
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <!-- Hero Section -->
-    <section class="bg-[#1E2A47] text-white rounded-lg my-8 px-8 py-12 md:py-20 flex justify-between items-center">
+    <section class="bg-[#1E2A47] text-white rounded-lg my-8 px-8 py-12 md:py-20 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
         <div class="md:w-1/2">
             <h1 class="text-4xl md:text-5xl font-bold leading-tight">Connecting Ghana's Tech Market. Discover & Deliver with Ease.</h1>
-            <p class="mt-4 text-lg">Your one-stop marketplace for the latest gadgets and accessories.</p>
+            <p class="mt-4 text-lg text-gray-300">Your one-stop marketplace for the latest gadgets and accessories from trusted local vendors.</p>
             <a href="{% url 'accounts:register' %}" class="mt-8 inline-block bg-[#FBBF24] text-black font-bold py-3 px-8 rounded-lg hover:bg-yellow-400 transition-transform hover:scale-105">
                 Start Selling Today!
             </a>
         </div>
-        <div class="hidden md:block md:w-1/2">
+        <div class="hidden md:block md:w-1/2 mt-8 md:mt-0">
             <img src="https://i.imgur.com/kPwxC1D.png" alt="Happy people with phones" class="w-full h-auto">
         </div>
     </section>
 
-    <!-- Featured Products -->
     <section class="my-16">
         <h2 class="text-3xl font-bold text-center text-gray-800">Featured Products</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-8">
-    {% for product in featured_products %}
-        {% include 'components/product_card.html' with product=product %}
-    {% empty %}
-        <p class="col-span-4 text-center text-gray-500">No featured products available right now.</p>
-    {% endfor %}
-</div>
+            {% for product in featured_products %}
+                {% include 'components/product_card.html' with product=product %}
+            {% empty %}
+                <p class="col-span-4 text-center text-gray-500">No featured products available right now.</p>
+            {% endfor %}
+        </div>
     </section>
 
-    <!-- All other sections (Categories, Delivery Banner, New Arrivals) go here... -->
+    <section class="my-16">
+        <h2 class="text-3xl font-bold text-center text-gray-800">Popular Categories</h2>
+        <div class="flex justify-center flex-wrap gap-6 mt-8">
+            {% for category in categories %}
+            <a href="{% url 'shop:shop_view' %}?category={{ category.slug }}" class="flex flex-col items-center space-y-2 p-4 rounded-lg hover:bg-gray-100 transition text-center w-24">
+                <div class="bg-gray-100 p-4 rounded-full flex items-center justify-center h-16 w-16">
+                    <svg class="h-8 w-8 text-gray-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        {% if 'phone' in category.name|lower %}
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" />
+                        {% elif 'laptop' in category.name|lower %}
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25A2.25 2.25 0 015.25 3h13.5A2.25 2.25 0 0121 5.25z" />
+                        {% elif 'watch' in category.name|lower %}
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 8.25l-2.25 2.25 2.25 2.25M7.5 12h9m-9 3.75h9m-9 3.75h9M3 12a9 9 0 1118 0 9 9 0 01-18 0z" />
+                        {% else %}
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.998 15.998 0 011.622-3.385m5.043.025a15.998 15.998 0 001.622-3.385m3.388 1.62a15.998 15.998 0 00-1.622-3.385m-5.043-.025a15.998 15.998 0 01-3.388-1.621m-1.622 3.385a15.998 15.998 0 01-3.388 1.621" />
+                        {% endif %}
+                    </svg>
+                </div>
+                <span class="font-semibold text-sm">{{ category.name }}</span>
+            </a>
+            {% endfor %}
+        </div>
+    </section>
 
+    <section class="my-12">
+        <div class="bg-gray-100 rounded-lg p-6 text-center">
+            <p class="font-bold text-lg text-gray-800">Seamless Delivery Powered by Ghana's Best</p>
+            <div class="mt-4 flex justify-center items-center space-x-8">
+                <span class="text-2xl font-bold text-blue-600">Glovo</span>
+                <span class="text-2xl font-bold text-green-500">Bolt</span>
+                <span class="text-2xl font-bold text-yellow-500">DHL</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="my-16">
+        <h2 class="text-3xl font-bold text-center text-gray-800">New Arrivals</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-8">
+            {% for product in new_arrivals %}
+                {% include 'components/product_card.html' with product=product %}
+            {% empty %}
+                <p class="col-span-4 text-center text-gray-500">No new arrivals to show right now.</p>
+            {% endfor %}
+        </div>
+    </section>
 </div>
 {% endblock %}
