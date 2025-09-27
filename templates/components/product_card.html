@@ -1,0 +1,60 @@
+{% load widget_tweaks %}
+
+<div
+    class="group relative flex flex-col overflow-hidden rounded-lg border border-gray-200 bg-white shadow-md hover:shadow-xl transition-shadow">
+    <div class="aspect-h-4 aspect-w-3 bg-gray-200 sm:aspect-none group-hover:opacity-75 h-48">
+        <a href="{% url 'shop:product_detail' slug=product.slug %}">
+            <img src="{{ product.image.url }}" alt="{{ product.name }}"
+                class="h-full w-full object-contain object-center" />
+        </a>
+    </div>
+    <div class="flex flex-1 flex-col space-y-2 p-4">
+        <h3 class="text-sm font-medium text-gray-900">
+            <a href="{% url 'shop:product_detail' slug=product.slug %}">
+                <span aria-hidden="true" class="absolute inset-0"></span>
+                {{ product.name }}
+            </a>
+        </h3>
+        <p class="text-sm text-gray-500">{{ product.vendor.shop_name }}</p>
+
+        <!-- Star Rating Display -->
+        <div class="flex items-center">
+            {% with rating=product.average_rating|floatformat:0 %}
+                {% for i in "12345" %}
+                <svg class="h-4 w-4 flex-shrink-0 {% if i <= rating %}text-yellow-400{% else %}text-gray-300{% endif %}"
+                    fill="currentColor" viewBox="0 0 20 20">
+                    <path
+                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+                {% endfor %}
+            {% endwith %}
+            {% if product.reviews.count > 0 %}
+            <span class="ml-2 text-xs text-gray-500">{{ product.reviews.count }} review{{
+                product.reviews.count|pluralize
+                }}</span>
+            {% else %}
+            <span class="ml-2 text-xs text-gray-500">No reviews yet</span>
+            {% endif %}
+        </div>
+
+        <div class="flex flex-1 flex-col justify-end">
+            <p class="text-base font-medium text-gray-900">GH₵ {{ product.price }}</p>
+        </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="p-4 pt-0 space-y-2">
+        <a href="{% url 'shop:product_detail' slug=product.slug %}"
+            class="w-full flex items-center justify-center rounded-md bg-white px-4 py-2 text-sm font-medium text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
+            View Product
+        </a>
+        <form action="{% url 'cart:add_to_cart' product.id %}" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="quantity" value="1" />
+            <button type-="submit"
+                class="w-full flex items-center justify-center rounded-md bg-[#1E2A47] px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-gray-800">
+                Add to Cart
+            </button>
+        </form>
+    </div>
+</div>

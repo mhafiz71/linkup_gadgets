@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}Confirm Order Cancellation{% endblock %}
+
+{% block content %}
+<div class="max-w-2xl mx-auto py-16 px-4">
+    <div class="bg-white p-8 rounded-lg shadow-lg text-center">
+        <!-- Warning Icon -->
+        <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-red-100">
+          <svg class="h-6 w-6 text-red-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+          </svg>
+        </div>
+        
+        <h1 class="mt-5 text-3xl font-bold text-gray-900">Confirm Order Cancellation</h1>
+        
+        <div class="mt-4 text-gray-600 text-lg">
+            <p>
+                Are you sure you want to permanently cancel Order #<strong class="text-gray-800">{{ order.id|truncatechars:8 }}</strong>?
+            </p>
+            <p class="mt-2 text-sm text-red-500">This action cannot be undone.</p>
+        </div>
+
+        <form method="POST" class="mt-8">
+            {% csrf_token %}
+            <div class="flex items-center justify-center space-x-4">
+                <a href="{% url 'accounts:order_detail' order.id %}" class="inline-flex justify-center rounded-md bg-white px-4 py-2 text-sm font-medium text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
+                    No, Go Back
+                </a>
+                <button type="submit" class="inline-flex justify-center rounded-md bg-red-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-red-500">
+                    Yes, Cancel Order
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

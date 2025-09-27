@@ -20,4 +20,13 @@ class UserRegisterForm(forms.ModelForm):
 class VendorRegisterForm(forms.ModelForm):
     class Meta:
         model = Vendor
-        fields = ['shop_name', 'logo']
+        fields = ['shop_name', 'logo', 'banner_image', 'phone_number', 'location', 'address']
+        
+class UserEditForm(forms.ModelForm):
+    class Meta:
+        model = User
+        # We only allow editing these fields. Username changes can be complex,
+        # and password changes should have their own dedicated, secure form.
+        fields = ['first_name', 'last_name', 'email']
+        
+        

@@ -3,9 +3,35 @@
 
 {% block content %}
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-16">
+    {% if vendor.banner_image %}
+        <div class="mb-8">
+            <img class="w-full h-64 object-cover rounded-lg shadow-lg" src="{{ vendor.banner_image.url }}" alt="{{ vendor.shop_name }} banner">
+        </div>
+    {% endif %}
+
     <div class="flex justify-between items-center">
         <h1 class="text-3xl font-bold">Welcome, {{ vendor.shop_name }}</h1>
         <a href="{% url 'shop:add_product' %}" class="bg-[#FBBF24] text-black font-bold py-2 px-4 rounded-lg hover:bg-yellow-400">Add New Product</a>
+    </div>
+
+    <!-- VENDOR INFO SECTION -->
+    <div class="mt-4 p-4 bg-gray-50 border border-gray-200 rounded-lg">
+        <h3 class="text-lg font-semibold text-gray-800">Your Shop Information</h3>
+        <a href="{% url 'shop:edit_vendor_info' %}" class="text-sm font-medium text-indigo-600 hover:text-indigo-500">Edit Info</a>
+        <dl class="mt-2 grid grid-cols-1 gap-x-4 gap-y-4 sm:grid-cols-2">
+            <div class="sm:col-span-1">
+                <dt class="text-sm font-medium text-gray-500">Location</dt>
+                <dd class="mt-1 text-sm text-gray-900">{{ vendor.location|default:"Not provided" }}</dd>
+            </div>
+            <div class="sm:col-span-1">
+                <dt class="text-sm font-medium text-gray-500">Address</dt>
+                <dd class="mt-1 text-sm text-gray-900">{{ vendor.address|default:"Not provided" }}</dd>
+            </div>
+            <div class="sm:col-span-1">
+                <dt class="text-sm font-medium text-gray-500">Phone</dt>
+                <dd class="mt-1 text-sm text-gray-900">{{ vendor.phone_number|default:"Not provided" }}</dd>
+            </div>
+        </dl>
     </div>
 
     <!-- Sales Overview -->

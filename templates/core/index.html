@@ -20,19 +20,12 @@
     <section class="my-16">
         <h2 class="text-3xl font-bold text-center text-gray-800">Featured Products</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-8">
-            {% for product in featured_products %}
-            <div class="bg-white border border-gray-200 rounded-xl shadow-md p-4 text-center hover:shadow-xl transition-shadow">
-                <a href="{% url 'shop:product_detail' slug=product.slug %}">
-                    <img src="{{ product.image.url }}" alt="{{ product.name }}" class="mx-auto h-48 w-full object-contain">
-                    <h3 class="mt-4 font-semibold text-lg">{{ product.name }}</h3>
-                    <p class="text-lg text-gray-800 font-bold">GH₵ {{ product.price }}</p>
-                    <p class="text-sm text-gray-500">Sold by: {{ product.vendor.shop_name }}</p>
-                </a>
-            </div>
-            {% empty %}
-            <p class="col-span-4 text-center text-gray-500">No featured products available right now.</p>
-            {% endfor %}
-        </div>
+    {% for product in featured_products %}
+        {% include 'components/product_card.html' with product=product %}
+    {% empty %}
+        <p class="col-span-4 text-center text-gray-500">No featured products available right now.</p>
+    {% endfor %}
+</div>
     </section>
 
     <!-- All other sections (Categories, Delivery Banner, New Arrivals) go here... -->

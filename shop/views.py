@@ -5,7 +5,7 @@ from orders.models import OrderItem
 from .forms import ProductForm
 from django.db.models import Q
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from .forms import ProductForm, ReviewForm
+from .forms import ProductForm, ReviewForm, VendorEditForm
 from django.contrib import messages
 from .models import Product, Category, Vendor # Add Vendor
 
@@ -156,3 +156,20 @@ def shop_view(request):
         'query': query,
     }
     return render(request, 'shop/shop_view.html', context)
+
+
+@login_required
+@vendor_required
+def edit_vendor_info(request):
+    vendor = request.user.vendor
+    if request.method == 'POST':
+        # Remember request.FILES for image uploads
+        form = VendorEditForm(request.POST, request.FILES, instance=vendor)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Your store information has been updated successfully!')
+            return redirect('shop:vendor_dashboard')
+    else:
+        form = VendorEditForm(instance=vendor)
+
+    return render(request, 'shop/vendor_info_edit.html', {'form': form})

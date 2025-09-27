@@ -53,22 +53,13 @@
             </div>
             
             <!-- Products Grid -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8">
-                {% for product in products %}
-                <div class="bg-white border border-gray-200 rounded-xl shadow-md p-4 text-center hover:shadow-xl transition-shadow">
-                    <a href="{% url 'shop:product_detail' slug=product.slug %}">
-                        <img src="{{ product.image.url }}" alt="{{ product.name }}" class="mx-auto h-48 w-full object-contain">
-                        <h3 class="mt-4 font-semibold text-lg">{{ product.name }}</h3>
-                        <p class="text-lg text-gray-800 font-bold">GH₵ {{ product.price }}</p>
-                        <p class="text-sm text-gray-500">Sold by: {{ product.vendor.shop_name }}</p>
-                    </a>
-                </div>
-                {% empty %}
-                <div class="col-span-full text-center py-12">
-                    <p class="text-gray-600 text-lg">No products found matching your criteria.</p>
-                </div>
-                {% endfor %}
-            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-6">
+    {% for product in products %}
+        {% include 'components/product_card.html' with product=product %}
+    {% empty %}
+        <p class="col-span-full text-center text-gray-500">This vendor has no products listed yet.</p>
+    {% endfor %}
+</div>
 
             <!-- Pagination -->
             <nav class="mt-12 flex items-center justify-between border-t border-gray-200 px-4 sm:px-0">

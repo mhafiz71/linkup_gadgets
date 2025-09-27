@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block title %}Edit Your Store Information{% endblock %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto py-16 px-4">
+    <div class="bg-white p-8 rounded-lg shadow-lg">
+        <h1 class="text-3xl font-bold text-gray-900">Edit Your Store Information</h1>
+        <p class="mt-2 text-gray-600">Update the details that appear on your public storefront.</p>
+
+        <form method="POST" enctype="multipart/form-data" class="mt-8 space-y-6">
+            {% csrf_token %}
+
+            {% for field in form %}
+            <div>
+                <label for="{{ field.id_for_label }}" class="block text-sm font-medium text-gray-700">
+                    {{ field.label }}
+                </label>
+
+                {% if field.name == 'logo' or field.name == 'banner_image' %}
+                    <p class="text-xs text-gray-500 mb-2">
+                        Current: {% if field.value %}{{ field.value.name|truncatechars:30 }}{% else %}None{% endif %}
+                    </p>
+                    {% render_field field class="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-600 hover:file:bg-indigo-100" %}
+                {% elif field.name == 'description' %}
+                    {% render_field field class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" rows="4" %}
+                {% else %}
+                    {% render_field field class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" %}
+                {% endif %}
+
+                {% if field.help_text %}
+                    <p class="mt-1 text-xs text-gray-500">{{ field.help_text }}</p>
+                {% endif %}
+                {% if field.errors %}
+                    <p class="text-red-500 text-xs mt-1">{{ field.errors.0 }}</p>
+                {% endif %}
+            </div>
+            {% endfor %}
+
+            <!-- Action Buttons -->
+            <div class="flex items-center justify-end space-x-4 border-t border-gray-200 pt-6">
+                <a href="{% url 'shop:vendor_dashboard' %}"
+                   class="bg-gray-200 text-gray-800 font-bold py-2 px-6 rounded-lg hover:bg-gray-300">
+                    Cancel
+                </a>
+                <button type="submit"
+                        class="bg-[#FBBF24] text-black font-bold py-2 px-6 rounded-lg hover:bg-yellow-400">
+                    Save Changes
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

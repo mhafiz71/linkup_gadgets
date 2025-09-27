@@ -1,30 +1,69 @@
-{% extends 'base.html' %}
-{% block title %}{{ vendor.shop_name }}'s Storefront{% endblock %}
-{% block content %}
+{% extends 'base.html' %} {% block title %}{{ vendor.shop_name }}'s
+Storefront{%endblock %} {% block content %}
 <div class="max-w-7xl mx-auto py-16 px-4">
-    <div class="text-center">
-        {% if vendor.logo %}
-        <img class="w-24 h-24 rounded-full mx-auto" src="{{ vendor.logo.url }}" alt="{{ vendor.shop_name }} logo">
-        {% endif %}
-        <h1 class="text-4xl font-bold mt-4">{{ vendor.shop_name }}</h1>
-        <p class="mt-2 text-lg text-gray-600">{{ vendor.description }}</p>
+
+  {% if vendor.banner_image %}
+  <div class="h-64">
+    <img class="h-full w-full object-cover" src="{{ vendor.banner_image.url }}" alt="{{ vendor.shop_name }} banner" />
+  </div>
+  {% endif %}
+
+  <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+    <div class="border-b border-gray-200 pb-10">
+      <div class="lg:flex lg:items-center lg:justify-between">
+        <div class="min-w-0 flex-1">
+          <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
+            
+            <span>
+              {% if vendor.logo %}
+              <img class="w-24 h-24 rounded-full" src="{{ vendor.logo.url }}" alt="{{ vendor.shop_name }} logo">
+              {% endif %}
+              
+            </span>
+            <br>
+            {{ vendor.shop_name }}
+            
+          </h1>
+          <p class="mt-1 text-lg text-gray-500">
+            {{ vendor.description|default:"" }}
+          </p>
+        </div>
+
+        <!-- VENDOR INFO ICONS -->
+        <div
+          class="mt-6 flex flex-col justify-stretch space-y-3 sm:flex-row sm:space-x-4 sm:space-y-0 lg:mt-0 lg:flex-shrink-0">
+          {% if vendor.location %}
+          <span class="inline-flex items-center text-sm font-medium text-gray-600">
+            <svg class="mr-1.5 h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd"
+                d="M9.69 18.933l.003.001C9.89 19.02 10 19 10 19s.11.02.308-.066l.002-.001.006-.003.018-.008a5.741 5.741 0 00.281-.14c.186-.1.4-.27.61-.453l2.839-2.025A15.823 15.823 0 0016 11.63c0-1.284-.57-2.486-1.5-3.336a4.825 4.825 0 00-6.992 0C6.57 9.144 6 10.346 6 11.63c0 .52.098 1.02.285 1.485A15.823 15.823 0 008.25 16l2.839 2.025c.21.183.424.353.61.453.097.052.192.1.28.14l.018.008.006.003zM10 11.25a2.25 2.25 0 100-4.5 2.25 2.25 0 000 4.5z"
+                clip-rule="evenodd" />
+            </svg>
+            {{ vendor.location }}
+          </span>
+          {% endif %} {% if vendor.phone_number %}
+          <span class="inline-flex items-center text-sm font-medium text-gray-600">
+            <svg class="mr-1.5 h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+              <path
+                d="M2 3.5A1.5 1.5 0 013.5 2h1.148a1.5 1.5 0 011.465 1.175l.716 3.223a1.5 1.5 0 01-1.052 1.767l-.933.267c-.41.117-.643.555-.48.95a11.542 11.542 0 006.254 6.254c.395.163.833-.07.95-.48l.267-.933a1.5 1.5 0 011.767-1.052l3.223.716A1.5 1.5 0 0118 15.352V16.5a1.5 1.5 0 01-1.5 1.5h-1.528a1.5 1.5 0 01-1.348-.884c-.598-1.26-1.42-2.426-2.37-3.483a11.542 11.542 0 01-3.483-2.37A1.5 1.5 0 012 5.028V3.5z" />
+            </svg>
+            {{ vendor.phone_number }}
+          </span>
+          {% endif %}
+        </div>
+      </div>
     </div>
 
     <div class="mt-12">
-        <h2 class="text-2xl font-semibold">Products from this vendor</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-6">
-            {% for product in products %}
-            <div class="bg-white border border-gray-200 rounded-xl shadow-md p-4 text-center hover:shadow-xl transition-shadow">
-                <a href="{% url 'shop:product_detail' slug=product.slug %}">
-                    <img src="{{ product.image.url }}" alt="{{ product.name }}" class="mx-auto h-48 w-full object-contain">
-                    <h3 class="mt-4 font-semibold text-lg">{{ product.name }}</h3>
-                    <p class="text-lg text-gray-800 font-bold">GH₵ {{ product.price }}</p>
-                </a>
-            </div>
-            {% empty %}
-            <p class="col-span-full text-center text-gray-500">This vendor has no products listed yet.</p>
-            {% endfor %}
-        </div>
+      <h2 class="text-2xl font-semibold">Products from this vendor</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-6">
+        {% for product in products %}
+        {% include 'components/product_card.html' with product=product %}
+        {% empty %}
+        <p class="col-span-full text-center text-gray-500">This vendor has no products listed yet.</p>
+        {% endfor %}
+      </div>
     </div>
+  </div>
+  {% endblock %}
 </div>
-{% endblock %}

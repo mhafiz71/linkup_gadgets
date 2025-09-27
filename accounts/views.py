@@ -4,8 +4,21 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
 from orders.models import Order, OrderItem
 from django.db import transaction
-from .forms import UserRegisterForm, VendorRegisterForm
+from .forms import UserRegisterForm, VendorRegisterForm, UserEditForm
 from django.contrib.auth.decorators import login_required
+from django.http import Http404
+from django.contrib import messages
+from django.shortcuts import get_object_or_404
+
+@login_required
+def order_detail(request, order_id):
+    try:
+        # Ensure the order belongs to the logged-in user to prevent unauthorized access
+        order = Order.objects.get(id=order_id, user=request.user)
+    except Order.DoesNotExist:
+        raise Http404("Order not found")
+        
+    return render(request, 'accounts/order_detail.html', {'order': order})
 
 @transaction.atomic
 def register(request):
@@ -77,3 +90,44 @@ def customer_profile(request):
         'orders': orders,
     }
     return render(request, 'accounts/profile.html', context)
+
+@login_required
+def delete_order(request, order_id):
+    """
+    Handles the deletion of a user's order with a confirmation step.
+    """
+    # Ensure the order exists and belongs to the logged-in user for security
+    order = get_object_or_404(Order, id=order_id, user=request.user)
+    
+    # We'll only allow deleting orders that have not been marked as paid
+    if order.paid:
+        messages.error(request, 'Cannot cancel an order that has already been paid.')
+        return redirect('accounts:order_detail', order_id=order.id)
+
+    if request.method == 'POST':
+        # If the form is submitted, it's a confirmation.
+        order_id_copy = str(order.id) # Copy the ID before it's deleted
+        order.delete()
+        messages.success(request, f"Order #{order_id_copy[:8]} has been successfully cancelled.")
+        return redirect('accounts:profile') # Redirect to the order history page
+    
+    # If it's a GET request, show the confirmation page.
+    return render(request, 'accounts/delete_order_confirm.html', {'order': order})
+
+
+@login_required
+def edit_profile(request):
+    if request.method == 'POST':
+        # Pass instance=request.user to pre-fill the form and save to the correct user
+        form = UserEditForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Your profile has been updated successfully!')
+            return redirect('accounts:profile')
+    else:
+        # On a GET request, show the form pre-filled with the user's current data
+        form = UserEditForm(instance=request.user)
+    
+    return render(request, 'accounts/profile_edit.html', {'form': form})
+
+

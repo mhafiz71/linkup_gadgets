@@ -1,6 +1,6 @@
 from django import forms
 from .models import Product
-from .models import Review
+from .models import Review, Vendor
 
 class ProductForm(forms.ModelForm):
     class Meta:
@@ -26,3 +26,8 @@ class ReviewForm(forms.ModelForm):
                 'class': 'w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500'
             }),
         }
+        
+class VendorEditForm(forms.ModelForm):
+    class Meta:
+        model = Vendor
+        fields = ['shop_name', 'description', 'logo', 'banner_image', 'phone_number', 'location', 'address']

@@ -76,16 +76,35 @@
           <div class="flex items-center space-x-4">
             <a
               href="{% url 'cart:cart_detail' %}"
-              class="relative hover:text-[#FBBF24] transition"
+              class="group -m-2 flex items-center p-2"
             >
-              <svg ...></svg>
-              <span
-                class="absolute -top-2 -right-2 bg-[#FBBF24] text-black text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center"
-              >
-                {{ cart|length }}
-              </span>
-            </a>
+              <div class="relative">
+                <!-- A more standard 'shopping bag' icon for e-commerce -->
+                <svg
+                  class="h-6 w-6 flex-shrink-0 text-white group-hover:text-[#FBBF24] transition"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.658-.463 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"
+                  />
+                </svg>
 
+                <!-- Notification Bubble: Only shows if cart has items -->
+                {% if cart|length > 0 %}
+                <span
+                  class="absolute -top-2 -right-2 h-5 w-5 rounded-full bg-[#FBBF24] flex items-center justify-center text-xs font-bold text-black"
+                >
+                  {{ cart|length }}
+                </span>
+                {% endif %}
+              </div>
+            </a>
             {% if user.is_authenticated %}
             <!-- User Dropdown Menu -->
             <div
@@ -170,7 +189,9 @@
         <div>
           <h3 class="font-bold text-lg">About Us</h3>
           <ul class="mt-4 space-y-2 text-sm text-gray-300">
-            <li><a href="{% url 'about' %}" class="hover:text-white">Our Story</a></li>
+            <li>
+              <a href="{% url 'about' %}" class="hover:text-white">Our Story</a>
+            </li>
             <li><a href="#" class="hover:text-white">Careers</a></li>
           </ul>
         </div>
@@ -184,8 +205,16 @@
         <div>
           <h3 class="font-bold text-lg">For Vendors</h3>
           <ul class="mt-4 space-y-2 text-sm text-gray-300">
-            <li><a href="{% url 'accounts:register' %}" class="hover:text-white">Sell on LinkUp</a></li>
-            <li><a href="{% url 'vendor_policies' %}" class="hover:text-white">Vendor Policies</a></li>
+            <li>
+              <a href="{% url 'accounts:register' %}" class="hover:text-white"
+                >Sell on LinkUp</a
+              >
+            </li>
+            <li>
+              <a href="{% url 'vendor_policies' %}" class="hover:text-white"
+                >Vendor Policies</a
+              >
+            </li>
           </ul>
         </div>
         <div>

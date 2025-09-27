@@ -1,8 +1,48 @@
 {% extends 'base.html' %}
-{% block title %}About Us{% endblock %}
+{% block title %}About Us - LinkUp Gadgets{% endblock %}
+
 {% block content %}
-<div class="max-w-4xl mx-auto py-16 px-4">
-    <h1 class="text-4xl font-bold">About LinkUp Gadgets</h1>
-    <p class="mt-4 text-lg text-gray-700">This is the about page. Content coming soon!</p>
+<div class="bg-white">
+  <main class="isolate">
+    <!-- Hero section -->
+    <div class="relative isolate -z-10">
+      <div class="absolute inset-x-0 top-1/2 -z-10 flex -translate-y-1/2 justify-center overflow-hidden [mask-image:radial-gradient(50%_45%_at_50%_55%,white,transparent)]">
+        <svg class="h-[60rem] w-[100rem] flex-none stroke-gray-200" aria-hidden="true">
+          <defs><pattern id="e9033f3e-f665-41a6-84ef-756f6778e6fe" width="200" height="200" x="50%" y="50%" patternUnits="userSpaceOnUse" patternTransform="translate(-100 0)"><path d="M.5 200V.5H200" fill="none"/></pattern></defs>
+          <svg x="50%" y="50%" class="overflow-visible fill-gray-50"><path d="M-300 0h201v201h-201Z M300 200h201v201h-201Z" stroke-width="0"/></svg>
+          <rect width="100%" height="100%" stroke-width="0" fill="url(#e9033f3e-f665-41a6-84ef-756f6778e6fe)"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Content section -->
+    <div class="mx-auto max-w-7xl px-6 lg:px-8 mt-16">
+      <div class="mx-auto max-w-2xl lg:mx-0">
+        <p class="text-lg font-semibold leading-8 tracking-tight text-indigo-600">Our Story</p>
+        <h1 class="mt-2 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">Connecting Ghana's Tech Future</h1>
+        <p class="mt-6 text-xl leading-8 text-gray-700">At LinkUp Gadgets, we believe that technology is the great equalizer. Our mission began with a simple idea: create a trusted online marketplace that empowers local electronics vendors and brings the latest technology to every doorstep in Ghana.</p>
+      </div>
+      <div class="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 lg:mx-0 lg:mt-20 lg:max-w-none lg:grid-cols-12">
+        <div class="relative lg:order-last lg:col-span-5">
+          <figure class="border-l border-indigo-600 pl-8">
+            <blockquote class="text-xl font-semibold leading-8 tracking-tight text-gray-900">
+              <p>“We saw a gap between hardworking local vendors with amazing products and customers who wanted quality and convenience. We decided to build the bridge.”</p>
+            </blockquote>
+            <figcaption class="mt-8 flex gap-x-4">
+              <div class="text-sm leading-6">
+                <div class="font-semibold text-gray-900">Kofi Ampofo</div>
+                <div class="text-gray-600">Co-Founder, LinkUp Gadgets</div>
+              </div>
+            </figcaption>
+          </figure>
+        </div>
+        <div class="max-w-xl text-base leading-7 text-gray-700 lg:col-span-7">
+          <p>We are more than just a marketplace; we are a community. We started LinkUp Gadgets in Accra after noticing how difficult it was for customers to find genuine products without the risk of fraud, and for small business owners to reach a wider audience beyond their physical stores. We provide a platform with secure payments through Paystack, integrated logistics, and the tools for vendors to build their digital storefront with confidence.</p>
+          <h2 class="mt-16 text-2xl font-bold tracking-tight text-gray-900">Our Vision</h2>
+          <p class="mt-6">Our vision is to be the most trusted and reliable tech ecosystem in West Africa, fostering economic growth for local entrepreneurs and making technology accessible and affordable for everyone. We are committed to authenticity, security, and exceptional customer service.</p>
+        </div>
+      </div>
+    </div>
+  </main>
 </div>
 {% endblock %}

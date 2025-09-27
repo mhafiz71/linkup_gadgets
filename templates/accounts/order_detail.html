@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+{% block title %}Order Details - {{ order.id|truncatechars:8 }}{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-16">
+    <!-- Header -->
+    <div class="md:flex md:items-center md:justify-between">
+        <div class="min-w-0 flex-1">
+            <h1 class="text-3xl font-bold leading-7 text-gray-900 sm:truncate sm:tracking-tight">Order Details</h1>
+            <p class="mt-2 text-sm text-gray-500">Order #{{ order.id }}</p>
+        </div>
+        <div class="mt-4 flex md:ml-4 md:mt-0">
+            <a href="{% url 'accounts:profile' %}" class="inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
+                &larr; Back to Order History
+            </a>
+
+            {% if not order.paid %}
+            <a href="{% url 'accounts:delete_order' order.id %}" class="inline-flex items-center rounded-md bg-red-50 px-3 py-2 text-sm font-semibold text-red-700 shadow-sm ring-1 ring-inset ring-red-600/20 hover:bg-red-100">
+                Cancel Order
+            </a>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Order Summary Grid -->
+    <div class="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div class="rounded-lg bg-gray-50 p-5">
+            <dt class="truncate text-sm font-medium text-gray-500">Order Date</dt>
+            <dd class="mt-1 text-xl font-semibold tracking-tight text-gray-900">{{ order.created_at|date:"F j, Y" }}</dd>
+        </div>
+        <div class="rounded-lg bg-gray-50 p-5">
+            <dt class="truncate text-sm font-medium text-gray-500">Total Amount</dt>
+            <dd class="mt-1 text-xl font-semibold tracking-tight text-gray-900">GH₵ {{ order.total_paid }}</dd>
+        </div>
+        <div class="rounded-lg bg-gray-50 p-5">
+            <dt class="truncate text-sm font-medium text-gray-500">Payment Status</dt>
+            <dd class="mt-1">
+                <span class="inline-flex items-center rounded-md {% if order.paid %}bg-green-100 text-green-800{% else %}bg-yellow-100 text-yellow-800{% endif %} px-2 py-1 text-xs font-medium">
+                    {% if order.paid %}Paid{% else %}Pending{% endif %}
+                </span>
+            </dd>
+        </div>
+        <div class="rounded-lg bg-gray-50 p-5">
+            <dt class="truncate text-sm font-medium text-gray-500">Paystack Reference</dt>
+            <dd class="mt-1 text-xl font-semibold tracking-tight text-gray-900">{{ order.paystack_reference|default:"N/A"|truncatechars:10 }}</dd>
+        </div>
+    </div>
+    
+    <!-- Order Items and Shipping Details -->
+    <div class="mt-8 grid grid-cols-1 gap-y-16 lg:grid-cols-3 lg:gap-x-8">
+        <!-- Itemized List -->
+        <div class="lg:col-span-2">
+            <h2 class="text-lg font-medium text-gray-900">Items in this Order</h2>
+            <div class="mt-4 divide-y divide-gray-200 border-b border-t border-gray-200">
+                {% for item in order.items.all %}
+                <div class="flex py-6">
+                    <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" class="h-24 w-24 flex-none rounded-lg bg-gray-100 object-cover object-center">
+                    <div class="ml-4 flex flex-auto flex-col">
+                        <div>
+                            <h3 class="font-medium text-gray-900"><a href="{% url 'shop:product_detail' item.product.slug %}">{{ item.product.name }}</a></h3>
+                            <p class="text-sm text-gray-600">Sold by: {{ item.product.vendor.shop_name }}</p>
+                        </div>
+                        <div class="mt-6 flex flex-1 items-end">
+                            <dl class="flex space-x-4 divide-x divide-gray-200 text-sm">
+                                <div class="flex flex-col px-4 text-center first:pl-0">
+                                    <dt class="font-medium text-gray-900">{{ item.quantity }}</dt>
+                                    <dd class="mt-1 text-gray-500">Quantity</dd>
+                                </div>
+                                <div class="flex flex-col pl-4 text-center">
+                                    <dt class="font-medium text-gray-900">GH₵ {{ item.price }}</dt>
+                                    <dd class="mt-1 text-gray-500">Price</dd>
+                                </div>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Shipping and Contact Information -->
+        <div class="lg:col-span-1">
+            <div class="rounded-lg bg-gray-50 px-4 py-6 sm:p-6 lg:p-8">
+                <h2 class="text-lg font-medium text-gray-900">Shipping Information</h2>
+                <dl class="mt-6 space-y-4 text-sm">
+                    <div class="flex justify-between">
+                        <dt class="text-gray-500">Recipient</dt>
+                        <dd class="font-medium text-gray-900">{{ order.full_name }}</dd>
+                    </div>
+                    <div class="flex flex-col">
+                        <dt class="text-gray-500">Address</dt>
+                        <dd class="font-medium text-gray-900 text-right">{{ order.address }}, {{ order.city }}</dd>
+                    </div>
+                    <div class="flex justify-between">
+                        <dt class="text-gray-500">Email</dt>
+                        <dd class="font-medium text-gray-900">{{ order.email }}</dd>
+                    </div>
+                    <div class="flex justify-between">
+                        <dt class="text-gray-500">Phone</dt>
+                        <dd class="font-medium text-gray-900">{{ order.phone }}</dd>
+                    </div>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
