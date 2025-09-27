@@ -27,3 +27,29 @@ def remove_from_cart(request, product_id):
 def cart_detail(request):
     cart = Cart(request)
     return render(request, 'cart/cart_detail.html', {'cart': cart})
+
+
+@require_POST
+def update_cart(request, product_id):
+    """
+    Updates the quantity of a product in the cart.
+    """
+    cart = Cart(request)
+    product = get_object_or_404(Product, id=product_id)
+    
+    try:
+        quantity = int(request.POST.get('quantity'))
+        if quantity <= 0:
+            # If quantity is 0 or less, remove the item
+            cart.remove(product)
+            messages.info(request, f'"{product.name}" was removed from your cart.')
+        elif quantity > product.stock_quantity:
+            messages.error(request, f'Sorry, only {product.stock_quantity} units of "{product.name}" are available.')
+        else:
+            # Use the 'add' method with override_quantity=True to set the new quantity
+            cart.add(product=product, quantity=quantity, override_quantity=True)
+            messages.success(request, f'Your cart has been updated.')
+    except (ValueError, TypeError):
+        messages.error(request, 'Invalid quantity specified.')
+        
+    return redirect('cart:cart_detail')

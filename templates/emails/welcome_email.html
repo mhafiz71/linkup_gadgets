@@ -11,4 +11,71 @@
     <br>
     <p>Best regards,<br>The LinkUp Gadgets Team</p>
 </body>
+</html><!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Welcome to LinkUp Gadgets</title>
+</head>
+<body style="margin: 0; padding: 0; font-family: Arial, sans-serif; line-height: 1.6; background-color: #f4f4f4;">
+
+    <!-- Wrapper table for email client compatibility -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#f4f4f4">
+        <tr>
+            <td align="center" style="padding: 20px 0;">
+                
+                <!-- Main container table -->
+                <table width="600" border="0" cellpadding="0" cellspacing="0" style="width: 100%; max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+
+                    <!-- Red Accent Bar -->
+                    <tr>
+                        <td style="height: 5px; background-color: #FBBF24;"></td>
+                    </tr>
+
+                    <!-- Main Banner -->
+                    <tr>
+                        <td align="center" style="background-color: #1E2A47; padding: 40px 20px; color: #ffffff;">
+                            <h1 style="margin: 0; font-size: 36px; font-weight: bold;">Welcome to LinkUp Gadgets!</h1>
+                        </td>
+                    </tr>
+
+                    <!-- Email Content Section -->
+                    <tr>
+                        <td style="padding: 40px 30px;">
+                            <h2 style="color: #1E2A47;">We're glad to have you, {{ user.first_name|default:user.username }}!</h2>
+                            <p style="color: #555555;">Thank you for creating an account on Ghana's premier marketplace for electronics. You're all set to explore the latest tech from trusted local vendors.</p>
+                            
+                            <p style="color: #555555; margin-top: 25px;">
+                                You can now browse products, make purchases, and review your favorite items. If you registered as a vendor, you can log in to your dashboard to start listing products.
+                            </p>
+
+                            <!-- Call to Action Button -->
+                            <table border="0" cellpadding="0" cellspacing="0" style="margin: 30px auto;">
+                              <tr>
+                                <td align="center" style="border-radius: 8px;" bgcolor="#FBBF24">
+                                  <a href="{% url 'shop:shop_view' %}" target="_blank" style="font-size: 16px; font-weight: bold; font-family: Arial, sans-serif; color: #000000; text-decoration: none; border-radius: 8px; padding: 14px 25px; border: 1px solid #FBBF24; display: inline-block;">Start Shopping</a>
+                                </td>
+                              </tr>
+                            </table>
+
+                            <p style="color: #555555;">Happy shopping!</p>
+                            <br>
+                            <p style="color: #555555;">Best regards,<br>The LinkUp Gadgets Team</p>
+                        </td>
+                    </tr>
+                    
+                    <!-- Footer -->
+                    <tr>
+                        <td align="center" style="padding: 20px 30px; background-color: #f4f4f4; color: #888888; font-size: 12px;">
+                            <p>You are receiving this email because you signed up for an account on LinkUp Gadgets.</p>
+                            <p>LinkUp Gadgets | Dabali Street, Tamale, Ghana</p>
+                        </td>
+                    </tr>
+                </table>
+
+            </td>
+        </tr>
+    </table>
+
+</body>
 </html>

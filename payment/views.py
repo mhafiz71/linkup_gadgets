@@ -2,6 +2,9 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.conf import settings
 from orders.models import Order
 from cart.cart import Cart
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
 
 def payment_process(request):
     order_id = request.session.get('order_id')
@@ -30,12 +33,15 @@ def payment_callback(request):
     order.paystack_reference = reference
     order.save()
     
-    subject = f'Your LinkUp Gadgets Order Confirmation (#{order.id|truncatechars:8})'
+    # --- SEND ORDER CONFIRMATION EMAIL ---
+    # THE FIX: Use Python's string slicing, not a template filter
+    subject = f'Your LinkUp Gadgets Order Confirmation (#{str(order.id)[:8]})'
     html_message = render_to_string('emails/order_confirmation_email.html', {'order': order})
     plain_message = strip_tags(html_message)
     from_email = settings.DEFAULT_FROM_EMAIL
     to = order.email
     send_mail(subject, plain_message, from_email, [to], html_message=html_message)
+    # --- END OF EMAIL CODE ---
     
     # Clear the cart
     cart = Cart(request)

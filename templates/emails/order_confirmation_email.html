@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Your LinkUp Gadgets Order Confirmation</title>
+</head>
+<body style="margin: 0; padding: 0; font-family: Arial, sans-serif; line-height: 1.6; background-color: #f4f4f4;">
+
+    <!-- Wrapper table for email client compatibility -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#f4f4f4">
+        <tr>
+            <td align="center" style="padding: 20px 0;">
+                
+                <!-- Main container table -->
+                <table width="600" border="0" cellpadding="0" cellspacing="0" style="width: 100%; max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+
+                    <!-- Red Accent Bar -->
+                    <tr>
+                        <td style="height: 5px; background-color: #FBBF24;"></td>
+                    </tr>
+
+                    <!-- Main Banner -->
+                    <tr>
+                        <td align="center" style="background-color: #1E2A47; padding: 40px 20px; color: #ffffff;">
+                            <p style="margin: 0; font-size: 16px;">LinkUp Gadgets received your payment of</p>
+                            <h1 style="margin: 10px 0 0 0; font-size: 42px; font-weight: bold;">GHS {{ order.total_paid }}</h1>
+                        </td>
+                    </tr>
+
+                    <!-- Email Content Section -->
+                    <tr>
+                        <td style="padding: 40px 30px;">
+                            <h2 style="color: #1E2A47;">Thank You for Your Order!</h2>
+                            <p style="color: #555555;">Hi {{ order.user.first_name|default:order.user.username }},</p>
+                            <p style="color: #555555;">We've received your order and are getting it ready. You can find the details below. We will notify you again once your order has been shipped.</p>
+                            
+                            <p style="color: #555555; margin-top: 25px;">
+                                <strong>Order ID:</strong> {{ order.id }}<br>
+                                <strong>Date:</strong> {{ order.created_at|date:"F j, Y" }}
+                            </p>
+                            
+                            <!-- Order Summary Table -->
+                            <h3 style="color: #1E2A47; border-top: 1px solid #dddddd; padding-top: 20px; margin-top: 30px;">Order Summary</h3>
+                            <table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;">
+                                <thead>
+                                    <tr>
+                                        <th style="border-bottom: 2px solid #dddddd; padding: 12px 0; text-align: left; color: #333333;">Product</th>
+                                        <th style="border-bottom: 2px solid #dddddd; padding: 12px 0; text-align: center; color: #333333;">Quantity</th>
+                                        <th style="border-bottom: 2px solid #dddddd; padding: 12px 0; text-align: right; color: #333333;">Price</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for item in order.items.all %}
+                                    <tr>
+                                        <td style="border-bottom: 1px solid #dddddd; padding: 12px 0;">{{ item.product.name }}</td>
+                                        <td style="border-bottom: 1px solid #dddddd; padding: 12px 0; text-align: center;">{{ item.quantity }}</td>
+                                        <td style="border-bottom: 1px solid #dddddd; padding: 12px 0; text-align: right;">GH₵ {{ item.get_total_price }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    
+                    <!-- Footer -->
+                    <tr>
+                        <td align="center" style="padding: 20px 30px; background-color: #f4f4f4; color: #888888; font-size: 12px;">
+                            <p>You are receiving this email because you made a purchase on LinkUp Gadgets.</p>
+                            <p>LinkUp Gadgets | Dabali Street, Tamale, Ghana</p>
+                        </td>
+                    </tr>
+                </table>
+
+            </td>
+        </tr>
+    </table>
+
+</body>
+</html>
