@@ -5,7 +5,7 @@
 
 LinkUp Gadgets is a full-featured, multi-vendor e-commerce marketplace built with Django and modern frontend technologies. The platform is designed to connect electronics vendors in Ghana with customers, providing a secure and seamless online shopping experience. It features individual vendor storefronts, integrated payments with Paystack, a complete shopping cart, a product review system, and dedicated dashboards for both customers and vendors.
 
-**Live Site:** [LinkUp Gadgets on Render](https://linkup-gadgets.onrender.com) _(Replace with your actual Render URL)_
+**Live Site:** [LinkUp Gadgets on Render](https://linkup-gadgets.onrender.com)
 
 ---
 
@@ -146,5 +146,5 @@ The application will be available at `http://127.0.0.1:8000`. You can access the
 
 ## Author
 
--   **[Your Name]** - _Initial work & development_ - [Your GitHub Profile](https://github.com/[your-github-username])
+-   **[mhafiz71]** - _Initial work & development_ - [Your GitHub Profile](https://github.com/mhafiz71/)
 ```
