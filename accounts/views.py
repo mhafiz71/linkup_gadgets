@@ -20,10 +20,10 @@ from orders.models import Order
 @transaction.atomic
 def register(request):
     if request.method == 'POST':
+        registration_type = request.POST.get('registration_type')
         user_form = UserRegisterForm(request.POST)
 
-        # Check which button was pressed
-        if 'submit_vendor' in request.POST:
+        if registration_type == 'vendor':
             vendor_form = VendorRegisterForm(request.POST, request.FILES)
             
             if user_form.is_valid() and vendor_form.is_valid():
@@ -35,30 +35,27 @@ def register(request):
                 vendor.user = user
                 vendor.save()
 
-                # Send email, show success, redirect
                 messages.success(request, f'Vendor account created for {user.username}! You can now log in.')
-                # (You should add the email sending code here too)
                 return redirect('accounts:login')
             else:
                 messages.error(request, 'Please correct the errors below.')
 
-        elif 'submit_customer' in request.POST:
-            vendor_form = VendorRegisterForm() # Create an empty form
+        elif registration_type == 'customer':
+            vendor_form = VendorRegisterForm() # Create an empty form for template context
+            
             if user_form.is_valid():
                 user = user_form.save(commit=False)
                 user.set_password(user_form.cleaned_data['password'])
                 user.save()
 
-                # Send email, show success, redirect
                 messages.success(request, f'Customer account created for {user.username}! You can now log in.')
-                # (You should add the email sending code here too)
                 return redirect('accounts:login')
             else:
                 messages.error(request, 'Please correct the errors in your personal details.')
         
-        else: # Should not happen, but good practice
+        else:
             vendor_form = VendorRegisterForm()
-            messages.error(request, 'An unexpected error occurred. Please try again.')
+            messages.error(request, 'Invalid registration type.')
 
     else: # GET request
         user_form = UserRegisterForm()
