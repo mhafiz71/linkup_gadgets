@@ -1,239 +1,224 @@
 {% load static tailwind_tags %}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- The title block allows child templates to set their own unique page title -->
-    <title>
-      {% block title %}LinkUp Gadgets - Ghana's Tech Marketplace{% endblock %}
-    </title>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Google Fonts: Poppins -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
+  <!-- The title block allows child templates to set their own unique page title -->
+  <title>
+    {% block title %}LinkUp Gadgets - Ghana's Tech Marketplace{% endblock %}
+  </title>
 
-    <!-- Alpine.js for interactive components like dropdowns -->
-    <script
-      defer
-      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
-    ></script>
+  <!-- Google Fonts: Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
-    <!-- Custom global styles -->
-    <style>
-      /* Apply Poppins as the default font for the entire site */
-      body {
-        font-family: "Poppins", sans-serif;
-      }
-    </style>
+  <!-- Alpine.js for interactive components like dropdowns -->
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
-    <!-- This tag loads the compiled Tailwind CSS file -->
-    {% tailwind_css %}
-  </head>
-  <body class="bg-white text-gray-800">
-    <header class="bg-[#1E2A47] text-white sticky top-0 z-50 shadow-md">
-      <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex items-center justify-between h-20">
-          <!-- Logo -->
-          <div class="flex items-center">
-            <a href="{% url 'index' %}" class="text-2xl font-bold">
-              <span class="text-[#FBBF24]">LinkUp</span> Gadgets
-            </a>
-          </div>
+  <!-- Custom global styles -->
+  <style>
+    /* Apply Poppins as the default font for the entire site */
+    body {
+      font-family: "Poppins", sans-serif;
+    }
+  </style>
 
-          <!-- Main Navigation Links -->
-          <div class="hidden md:flex items-center space-x-6">
-            <a
-              href="{% url 'index' %}"
-              class="hover:text-[#FBBF24] transition font-medium"
-              >Home</a
-            >
-            <a
-              href="{% url 'shop:shop_view' %}"
-              class="hover:text-[#FBBF24] transition font-medium"
-              >Shop</a
-            >
+  <!-- This tag loads the compiled Tailwind CSS file -->
+  {% tailwind_css %}
+</head>
 
-            <a
-              href="{% url 'shop:shop_view' %}"
-              class="hover:text-[#FBBF24] transition font-medium"
-              >Categories</a
-            >
+<body class="bg-white text-gray-800">
+  <header class="bg-[#1E2A47] text-white sticky top-0 z-50 shadow-md" x-data="{ mobileMenuOpen: false }">
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <!-- Logo -->
+        <div class="flex items-center">
+          <a href="{% url 'index' %}" class="text-2xl font-bold">
+            <span class="text-[#FBBF24]">LinkUp</span> Gadgets
+          </a>
+        </div>
 
-            <a
-              href="{% url 'accounts:register' %}"
-              class="hover:text-[#FBBF24] transition font-medium"
-              >Sell With Us</a
-            >
-          </div>
+        <!-- Main Navigation Links (Desktop) -->
+        <div class="hidden md:flex items-center space-x-6">
+          <a href="{% url 'index' %}" class="hover:text-[#FBBF24] transition font-medium">Home</a>
+          <a href="{% url 'shop:shop_view' %}" class="hover:text-[#FBBF24] transition font-medium">Shop</a>
+          <a href="{% url 'accounts:register' %}" class="hover:text-[#FBBF24] transition font-medium">Sell With Us</a>
+          <a href="{% url 'faq' %}" class="hover:text-[#FBBF24] transition font-medium">Help</a>
+        </div>
 
-          <!-- Cart and User Authentication Section -->
-          <div class="flex items-center space-x-4">
-            <a
-              href="{% url 'cart:cart_detail' %}"
-              class="group -m-2 flex items-center p-2"
-            >
-              <div class="relative">
-                <!-- A more standard 'shopping bag' icon for e-commerce -->
-                <svg
-                  class="h-6 w-6 flex-shrink-0 text-white group-hover:text-[#FBBF24] transition"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  aria-hidden="true"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.658-.463 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"
-                  />
-                </svg>
-
-                <!-- Notification Bubble: Only shows if cart has items -->
-                {% if cart|length > 0 %}
-                <span
-                  class="absolute -top-2 -right-2 h-5 w-5 rounded-full bg-[#FBBF24] flex items-center justify-center text-xs font-bold text-black"
-                >
-                  {{ cart|length }}
-                </span>
-                {% endif %}
-              </div>
-            </a>
-            {% if user.is_authenticated %}
-            <!-- User Dropdown Menu -->
-            <div
-              class="relative"
-              x-data="{ open: false }"
-              @click.away="open = false"
-            >
-              <button
-                @click="open = !open"
-                class="flex items-center space-x-1 hover:text-[#FBBF24] transition"
-              >
-                <span>Hi, {{ user.username }}</span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  class="w-4 h-4"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="m19.5 8.25-7.5 7.5-7.5-7.5"
-                  />
-                </svg>
-              </button>
-              <div
-                x-show="open"
-                x-transition
-                class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 text-gray-800 ring-1 ring-black ring-opacity-5"
-              >
-                <a
-                  href="{% url 'accounts:profile' %}"
-                  class="block px-4 py-2 text-sm hover:bg-gray-100"
-                  >My Account</a
-                >
-                {% if user.vendor %}
-                <a
-                  href="{% url 'shop:vendor_dashboard' %}"
-                  class="block px-4 py-2 text-sm hover:bg-gray-100"
-                  >Vendor Dashboard</a
-                >
-                {% endif %}
-                <a
-                  href="{% url 'accounts:logout' %}"
-                  class="block px-4 py-2 text-sm hover:bg-gray-100"
-                  >Logout</a
-                >
-              </div>
+        <!-- Cart and User Auth (Desktop) -->
+        <div class="hidden md:flex items-center space-x-4">
+          <!-- Cart Icon -->
+          <a href="{% url 'cart:cart_detail' %}" class="group -m-2 flex items-center p-2">
+            <div class="relative">
+              <svg class="h-6 w-6 flex-shrink-0 text-white group-hover:text-[#FBBF24] transition" fill="none"
+                viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.658-.463 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+              </svg>
+              {% if cart|length > 0 %}<span
+                class="absolute -top-2 -right-2 h-5 w-5 rounded-full bg-[#FBBF24] flex items-center justify-center text-xs font-bold text-black">{{
+                cart|length }}</span>{% endif %}
             </div>
-            {% else %}
-            <!-- Login/Register Buttons -->
-            <div class="hidden md:flex items-center space-x-2">
-              <a
-                href="{% url 'accounts:login' %}"
-                class="text-sm font-medium hover:text-[#FBBF24] transition"
-                >Log In</a
-              >
-              <a
-                href="{% url 'accounts:register' %}"
-                class="text-sm font-medium bg-white text-[#1E2A47] px-4 py-2 rounded-md hover:bg-gray-200 transition"
-                >Register</a
-              >
+          </a>
+
+          {% if user.is_authenticated %}
+          <!-- User Dropdown Menu -->
+          <div class="relative" x-data="{ open: false }" @click.away="open = false">
+            <button @click="open = !open" class="flex items-center space-x-1 hover:text-[#FBBF24] transition">
+              <span>Hi, {{ user.username }}</span>
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+              </svg>
+            </button>
+            <div x-show="open" x-transition
+              class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 text-gray-800 ring-1 ring-black ring-opacity-5">
+              <a href="{% url 'accounts:profile' %}" class="block px-4 py-2 text-sm hover:bg-gray-100">My Account</a>
+              {% if user.vendor %}<a href="{% url 'shop:vendor_dashboard' %}"
+                class="block px-4 py-2 text-sm hover:bg-gray-100">Vendor Dashboard</a>{% endif %}
+              <a href="{% url 'accounts:logout' %}" class="block px-4 py-2 text-sm hover:bg-gray-100">Logout</a>
             </div>
-            {% endif %}
           </div>
+          {% else %}
+          <!-- Login/Register Buttons -->
+          <div class="items-center space-x-2">
+            <a href="{% url 'accounts:login' %}" class="text-sm font-medium hover:text-[#FBBF24] transition">Log In</a>
+            <a href="{% url 'accounts:register' %}"
+              class="text-sm font-medium bg-white text-[#1E2A47] px-4 py-2 rounded-md hover:bg-gray-200 transition">Register</a>
+          </div>
+          {% endif %}
         </div>
-      </nav>
-    </header>
 
-    <main>
-      {% block content %}
-      <!-- Child template content goes here -->
-      {% endblock %}
-    </main>
-
-    <footer class="bg-[#1E2A47] text-white mt-16">
-      <div
-        class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8 grid grid-cols-2 md:grid-cols-4 gap-8"
-      >
-        <div>
-          <h3 class="font-bold text-lg">About Us</h3>
-          <ul class="mt-4 space-y-2 text-sm text-gray-300">
-            <li>
-              <a href="{% url 'about' %}" class="hover:text-white">Our Story</a>
-            </li>
-            <li><a href="#" class="hover:text-white">Careers</a></li>
-          </ul>
-        </div>
-        <div>
-          <h3 class="font-bold text-lg">Customer Service</h3>
-          <ul class="mt-4 space-y-2 text-sm text-gray-300">
-            <li><a href="{% url 'faq' %}" class="hover:text-white">Help & FAQ</a></li>
-            <li><a href="#" class="hover:text-white">Returns & Refunds</a></li>
-          </ul>
-        </div>
-        <div>
-          <h3 class="font-bold text-lg">For Vendors</h3>
-          <ul class="mt-4 space-y-2 text-sm text-gray-300">
-            <li>
-              <a href="{% url 'accounts:register' %}" class="hover:text-white"
-                >Sell on LinkUp</a
-              >
-            </li>
-            <li>
-              <a href="{% url 'vendor_policies' %}" class="hover:text-white"
-                >Vendor Policies</a
-              >
-            </li>
-          </ul>
-        </div>
-        <div>
-          <h3 class="font-bold text-lg">Connect With Us</h3>
-          <ul class="mt-4 space-y-2 text-sm text-gray-300">
-            <li><a href="#" class="hover:text-white">Facebook</a></li>
-            <li><a href="#" class="hover:text-white">Instagram</a></li>
-          </ul>
+        <!-- Mobile Menu Toggler (Hamburger Icon) -->
+        <div class="flex items-center md:hidden">
+          <!-- Cart Icon (for mobile) -->
+          <a href="{% url 'cart:cart_detail' %}" class="group -m-2 flex items-center p-2 mr-2">
+            <div class="relative">
+              <svg class="h-6 w-6 flex-shrink-0 text-white group-hover:text-[#FBBF24] transition" fill="none"
+                viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.658-.463 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+              </svg>
+              {% if cart|length > 0 %}<span
+                class="absolute -top-2 -right-2 h-5 w-5 rounded-full bg-[#FBBF24] flex items-center justify-center text-xs font-bold text-black">{{
+                cart|length }}</span>{% endif %}
+            </div>
+          </a>
+          <button @click="mobileMenuOpen = !mobileMenuOpen" type="button"
+            class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+            <svg class="h-6 w-6" :class="{'hidden': mobileMenuOpen, 'block': !mobileMenuOpen }" fill="none"
+              viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+            </svg>
+            <svg class="h-6 w-6" :class="{'block': mobileMenuOpen, 'hidden': !mobileMenuOpen }" fill="none"
+              viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
         </div>
       </div>
-      <div
-        class="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8 border-t border-gray-700 text-center text-sm text-gray-400"
-      >
-        &copy; {% now "Y" %} LinkUp Gadgets. All rights reserved. |
-        <a href="{% url 'terms' %}" class="hover:text-white">Terms & Privacy</a>
-      </div>
-    </footer>
+    </nav>
 
-    <!-- Optional block for page-specific JavaScript files -->
-    {% block javascript %} {% endblock %}
-  </body>
+    <!-- Mobile menu, show/hide based on menu state. -->
+    <div class="md:hidden" x-show="mobileMenuOpen" x-transition>
+      <div class="space-y-1 px-2 pb-3 pt-2">
+        <a href="{% url 'index' %}"
+          class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Home</a>
+        <a href="{% url 'shop:shop_view' %}"
+          class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Shop</a>
+        <a href="{% url 'accounts:register' %}"
+          class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Sell
+          With Us</a>
+        <a href="{% url 'faq' %}"
+          class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Help</a>
+      </div>
+      <!-- Mobile Auth buttons -->
+      <div class="border-t border-gray-700 pb-3 pt-4">
+        {% if user.is_authenticated %}
+        <div class="flex items-center px-5">
+          <div class="ml-3">
+            <div class="text-base font-medium leading-none text-white">{{ user.username }}</div>
+            <div class="text-sm font-medium leading-none text-gray-400">{{ user.email }}</div>
+          </div>
+        </div>
+        <div class="mt-3 space-y-1 px-2">
+          <a href="{% url 'accounts:profile' %}"
+            class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">My
+            Account</a>
+          {% if user.vendor %}<a href="{% url 'shop:vendor_dashboard' %}"
+            class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Vendor
+            Dashboard</a>{% endif %}
+          <a href="{% url 'accounts:logout' %}"
+            class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Logout</a>
+        </div>
+        {% else %}
+        <div class="space-y-1 px-2">
+          <a href="{% url 'accounts:login' %}"
+            class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Log
+            In</a>
+          <a href="{% url 'accounts:register' %}"
+            class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Register</a>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </header>
+
+  <main>
+    {% block content %}
+    <!-- Child template content goes here -->
+    {% endblock %}
+  </main>
+
+  <footer class="bg-[#1E2A47] text-white mt-16">
+    <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8 grid grid-cols-2 md:grid-cols-4 gap-8">
+      <div>
+        <h3 class="font-bold text-lg">About Us</h3>
+        <ul class="mt-4 space-y-2 text-sm text-gray-300">
+          <li>
+            <a href="{% url 'about' %}" class="hover:text-white">Our Story</a>
+          </li>
+          <li><a href="#" class="hover:text-white">Careers</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="font-bold text-lg">Customer Service</h3>
+        <ul class="mt-4 space-y-2 text-sm text-gray-300">
+          <li><a href="{% url 'faq' %}" class="hover:text-white">Help & FAQ</a></li>
+          <li><a href="#" class="hover:text-white">Returns & Refunds</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="font-bold text-lg">For Vendors</h3>
+        <ul class="mt-4 space-y-2 text-sm text-gray-300">
+          <li>
+            <a href="{% url 'accounts:register' %}" class="hover:text-white">Sell on LinkUp</a>
+          </li>
+          <li>
+            <a href="{% url 'vendor_policies' %}" class="hover:text-white">Vendor Policies</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="font-bold text-lg">Connect With Us</h3>
+        <ul class="mt-4 space-y-2 text-sm text-gray-300">
+          <li><a href="#" class="hover:text-white">Facebook</a></li>
+          <li><a href="#" class="hover:text-white">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8 border-t border-gray-700 text-center text-sm text-gray-400">
+      &copy; {% now "Y" %} LinkUp Gadgets. All rights reserved. |
+      <a href="{% url 'terms' %}" class="hover:text-white">Terms & Privacy</a>
+    </div>
+  </footer>
+
+  <!-- Optional block for page-specific JavaScript files -->
+  {% block javascript %} {% endblock %}
+</body>
+
 </html>

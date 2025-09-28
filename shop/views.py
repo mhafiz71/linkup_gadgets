@@ -50,6 +50,13 @@ def product_detail(request, slug):
     new_review = None
     user_can_review = False
     
+    related_products = Product.objects.filter(
+        category=product.category
+    ).exclude(
+        Q(id=product.id)
+    ).order_by('?')[:4]
+    
+    
     if request.user.is_authenticated:
         # Check if the user has purchased this product
         if OrderItem.objects.filter(order__user=request.user, product=product).exists():
@@ -78,6 +85,7 @@ def product_detail(request, slug):
         'reviews': reviews,
         'review_form': review_form,
         'user_can_review': user_can_review,
+        'related_products': related_products,        
     }
     return render(request, 'shop/product_detail.html', context)
 

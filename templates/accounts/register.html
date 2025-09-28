@@ -8,10 +8,10 @@
     <div class="bg-white p-8 rounded-lg shadow-lg">
         <div class="text-center">
             <h1 class="text-3xl font-bold text-gray-900">Create Your Account</h1>
-            <p class="text-gray-600 mt-2">Join the largest tech marketplace in Ghana.</p>
+            <p class="text-gray-600 mt-2">Join as a customer or start selling as a vendor.</p>
         </div>
 
-        <!-- Display Global Messages (e.g., from the view) -->
+        <!-- Display Global Messages -->
         {% if messages %}
             {% for message in messages %}
                 <div class="mt-6 p-4 rounded-md {% if message.tags == 'success' %} bg-green-100 text-green-800 {% else %} bg-red-100 text-red-800 {% endif %}">
@@ -20,112 +20,122 @@
             {% endfor %}
         {% endif %}
 
-        <form method="POST" enctype="multipart/form-data" class="mt-8 space-y-6" id="registrationForm" x-data="{ isVendor: false }">
-            {% csrf_token %}
-
-            <!-- User Details Section -->
-            <fieldset class="border-t border-b border-gray-200 py-6">
-                <legend class="text-lg font-semibold text-gray-800 mb-4 px-2">Your Personal Details</legend>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <!-- Username -->
-                    <div>
-                        <label for="{{ user_form.username.id_for_label }}" class="block text-sm font-medium text-gray-700">{{ user_form.username.label }}</label>
-                        {% render_field user_form.username class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" %}
-                        {% if user_form.username.errors %}<p class="text-red-500 text-xs mt-1">{{ user_form.username.errors.0 }}</p>{% endif %}
-                    </div>
-                    <!-- Email -->
-                    <div>
-                        <label for="{{ user_form.email.id_for_label }}" class="block text-sm font-medium text-gray-700">{{ user_form.email.label }}</label>
-                        {% render_field user_form.email class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" %}
-                        {% if user_form.email.errors %}<p class="text-red-500 text-xs mt-1">{{ user_form.email.errors.0 }}</p>{% endif %}
-                    </div>
-                    <!-- First Name -->
-                    <div>
-                        <label for="{{ user_form.first_name.id_for_label }}" class="block text-sm font-medium text-gray-700">{{ user_form.first_name.label }}</label>
-                        {% render_field user_form.first_name class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" %}
-                        {% if user_form.first_name.errors %}<p class="text-red-500 text-xs mt-1">{{ user_form.first_name.errors.0 }}</p>{% endif %}
-                    </div>
-                    <!-- Last Name -->
-                    <div>
-                        <label for="{{ user_form.last_name.id_for_label }}" class="block text-sm font-medium text-gray-700">{{ user_form.last_name.label }}</label>
-                        {% render_field user_form.last_name class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" %}
-                        {% if user_form.last_name.errors %}<p class="text-red-500 text-xs mt-1">{{ user_form.last_name.errors.0 }}</p>{% endif %}
-                    </div>
-                    <!-- Password -->
-                    <div>
-                        <label for="{{ user_form.password.id_for_label }}" class="block text-sm font-medium text-gray-700">{{ user_form.password.label }}</label>
-                        {% render_field user_form.password class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" %}
-                        {% if user_form.password.errors %}<p class="text-red-500 text-xs mt-1">{{ user_form.password.errors.0 }}</p>{% endif %}
-                    </div>
-                    <!-- Confirm Password -->
-                    <div>
-                        <label for="{{ user_form.confirm_password.id_for_label }}" class="block text-sm font-medium text-gray-700">{{ user_form.confirm_password.label }}</label>
-                        {% render_field user_form.confirm_password class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" %}
-                        {% if user_form.confirm_password.errors %}<p class="text-red-500 text-xs mt-1">{{ user_form.confirm_password.errors.0 }}</p>{% endif %}
+        <!-- Tabbed Interface Container -->
+        <div x-data="{ tab: 'customer' }" class="mt-8">
+            <!-- Tab Buttons -->
+            <div class="border-b border-gray-200">
+                <nav class="-mb-px flex space-x-8" aria-label="Tabs">
+                    <button @click="tab = 'customer'" :class="{ 'border-indigo-500 text-indigo-600': tab === 'customer', 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700': tab !== 'customer' }" class="whitespace-nowrap border-b-2 py-4 px-1 text-sm font-medium">
+                        I'm a Customer
+                    </button>
+                    <button @click="tab = 'vendor'" :class="{ 'border-indigo-500 text-indigo-600': tab === 'vendor', 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700': tab !== 'vendor' }" class="whitespace-nowrap border-b-2 py-4 px-1 text-sm font-medium">
+                        I'm a Vendor
+                    </button>
+                </nav>
+            </div>
+            
+            <!-- This form tag will wrap ALL fields and be submitted by either button -->
+            <form method="POST" enctype="multipart/form-data" id="main_registration_form">
+                {% csrf_token %}
+                
+                <!-- User Details (Common to both forms) -->
+                <div class="mt-6">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">1. Your Personal Details</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="{{ user_form.username.id_for_label }}" class="block text-sm font-medium text-gray-700">{{ user_form.username.label }}</label>
+                            {% render_field user_form.username class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" %}
+                            {% if user_form.username.errors %}<p class="text-red-500 text-xs mt-1">{{ user_form.username.errors.0 }}</p>{% endif %}
+                        </div>
+                        <div>
+                            <label for="{{ user_form.email.id_for_label }}" class="block text-sm font-medium text-gray-700">{{ user_form.email.label }}</label>
+                            {% render_field user_form.email class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" %}
+                            {% if user_form.email.errors %}<p class="text-red-500 text-xs mt-1">{{ user_form.email.errors.0 }}</p>{% endif %}
+                        </div>
+                        <div>
+                            <label for="{{ user_form.first_name.id_for_label }}" class="block text-sm font-medium text-gray-700">{{ user_form.first_name.label }}</label>
+                            {% render_field user_form.first_name class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" %}
+                            {% if user_form.first_name.errors %}<p class="text-red-500 text-xs mt-1">{{ user_form.first_name.errors.0 }}</p>{% endif %}
+                        </div>
+                        <div>
+                            <label for="{{ user_form.last_name.id_for_label }}" class="block text-sm font-medium text-gray-700">{{ user_form.last_name.label }}</label>
+                            {% render_field user_form.last_name class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" %}
+                            {% if user_form.last_name.errors %}<p class="text-red-500 text-xs mt-1">{{ user_form.last_name.errors.0 }}</p>{% endif %}
+                        </div>
+                        <div>
+                            <label for="{{ user_form.password.id_for_label }}" class="block text-sm font-medium text-gray-700">{{ user_form.password.label }}</label>
+                            {% render_field user_form.password class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" %}
+                            {% if user_form.password.errors %}<p class="text-red-500 text-xs mt-1">{{ user_form.password.errors.0 }}</p>{% endif %}
+                        </div>
+                        <div>
+                            <label for="{{ user_form.confirm_password.id_for_label }}" class="block text-sm font-medium text-gray-700">{{ user_form.confirm_password.label }}</label>
+                            {% render_field user_form.confirm_password class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" %}
+                            {% if user_form.confirm_password.errors %}<p class="text-red-500 text-xs mt-1">{{ user_form.confirm_password.errors.0 }}</p>{% endif %}
+                        </div>
                     </div>
                 </div>
-            </fieldset>
 
-            <!-- Vendor Toggle -->
-            <div class="flex items-center">
-                <input id="is_vendor_checkbox" name="is_vendor" type="checkbox" x-model="isVendor" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
-                <label for="is_vendor_checkbox" class="ml-2 block text-sm text-gray-900">
-                    Register as a Vendor?
-                </label>
-            </div>
+                <!-- Vendor Form Tab Content -->
+                <div x-show="tab === 'vendor'" class="mt-6">
+                    <fieldset class="space-y-6">
+                        <legend class="text-lg font-semibold text-gray-800 mb-4">2. Your Shop Details</legend>
+                        
+                        <!-- THIS IS THE NEWLY ADDED, COMPLETE VENDOR FORM SECTION -->
+                        <div>
+                           <label for="{{ vendor_form.shop_name.id_for_label }}" class="block text-sm font-medium text-gray-700">{{ vendor_form.shop_name.label }}</label>
+                           {% render_field vendor_form.shop_name class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" %}
+                           {% if vendor_form.shop_name.errors %}<p class="text-red-500 text-xs mt-1">{{ vendor_form.shop_name.errors.0 }}</p>{% endif %}
+                        </div>
+                        <div>
+                           <label for="{{ vendor_form.phone_number.id_for_label }}" class="block text-sm font-medium text-gray-700">{{ vendor_form.phone_number.label }}</label>
+                           {% render_field vendor_form.phone_number class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" %}
+                           {% if vendor_form.phone_number.errors %}<p class="text-red-500 text-xs mt-1">{{ vendor_form.phone_number.errors.0 }}</p>{% endif %}
+                        </div>
+                        <div>
+                           <label for="{{ vendor_form.location.id_for_label }}" class="block text-sm font-medium text-gray-700">{{ vendor_form.location.label }}</label>
+                           {% render_field vendor_form.location class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" %}
+                           <p class="mt-1 text-xs text-gray-500">{{ vendor_form.location.help_text }}</p>
+                           {% if vendor_form.location.errors %}<p class="text-red-500 text-xs mt-1">{{ vendor_form.location.errors.0 }}</p>{% endif %}
+                        </div>
+                        <div>
+                           <label for="{{ vendor_form.address.id_for_label }}" class="block text-sm font-medium text-gray-700">{{ vendor_form.address.label }}</label>
+                           {% render_field vendor_form.address class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" %}
+                           <p class="mt-1 text-xs text-gray-500">{{ vendor_form.address.help_text }}</p>
+                           {% if vendor_form.address.errors %}<p class="text-red-500 text-xs mt-1">{{ vendor_form.address.errors.0 }}</p>{% endif %}
+                        </div>
+                        <div>
+                           <label for="{{ vendor_form.logo.id_for_label }}" class="block text-sm font-medium text-gray-700">{{ vendor_form.logo.label }} (Optional)</label>
+                           {% render_field vendor_form.logo class="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-600 hover:file:bg-indigo-100" %}
+                           {% if vendor_form.logo.errors %}<p class="text-red-500 text-xs mt-1">{{ vendor_form.logo.errors.0 }}</p>{% endif %}
+                        </div>
+                        <div>
+                           <label for="{{ vendor_form.banner_image.id_for_label }}" class="block text-sm font-medium text-gray-700">{{ vendor_form.banner_image.label }} (Optional)</label>
+                           {% render_field vendor_form.banner_image class="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-600 hover:file:bg-indigo-100" %}
+                           <p class="mt-1 text-xs text-gray-500">{{ vendor_form.banner_image.help_text }}</p>
+                           {% if vendor_form.banner_image.errors %}<p class="text-red-500 text-xs mt-1">{{ vendor_form.banner_image.errors.0 }}</p>{% endif %}
+                        </div>
+                        <!-- END OF VENDOR FORM SECTION -->
+                        
+                    </fieldset>
+                </div>
 
-            <!-- Vendor Details Section -->
-            <fieldset x-show="isVendor" x-transition class="border-b border-gray-200 pb-6 space-y-6">
-                 <legend class="text-lg font-semibold text-gray-800 mb-4 px-2">Your Shop Details</legend>
-                 <!-- Shop Name -->
-                 <div>
-                    <label for="{{ vendor_form.shop_name.id_for_label }}" class="block text-sm font-medium text-gray-700">{{ vendor_form.shop_name.label }}</label>
-                    {% render_field vendor_form.shop_name class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" %}
-                    {% if vendor_form.shop_name.errors %}<p class="text-red-500 text-xs mt-1">{{ vendor_form.shop_name.errors.0 }}</p>{% endif %}
-                 </div>
-                 <!-- Phone Number -->
-                 <div>
-                    <label for="{{ vendor_form.phone_number.id_for_label }}" class="block text-sm font-medium text-gray-700">{{ vendor_form.phone_number.label }}</label>
-                    {% render_field vendor_form.phone_number class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" %}
-                    {% if vendor_form.phone_number.errors %}<p class="text-red-500 text-xs mt-1">{{ vendor_form.phone_number.errors.0 }}</p>{% endif %}
-                 </div>
-                 <!-- Location -->
-                 <div>
-                    <label for="{{ vendor_form.location.id_for_label }}" class="block text-sm font-medium text-gray-700">{{ vendor_form.location.label }}</label>
-                    {% render_field vendor_form.location class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" %}
-                    <p class="mt-1 text-xs text-gray-500">{{ vendor_form.location.help_text }}</p>
-                    {% if vendor_form.location.errors %}<p class="text-red-500 text-xs mt-1">{{ vendor_form.location.errors.0 }}</p>{% endif %}
-                 </div>
-                 <!-- Address -->
-                 <div>
-                    <label for="{{ vendor_form.address.id_for_label }}" class="block text-sm font-medium text-gray-700">{{ vendor_form.address.label }}</label>
-                    {% render_field vendor_form.address class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" %}
-                    <p class="mt-1 text-xs text-gray-500">{{ vendor_form.address.help_text }}</p>
-                    {% if vendor_form.address.errors %}<p class="text-red-500 text-xs mt-1">{{ vendor_form.address.errors.0 }}</p>{% endif %}
-                 </div>
-                 <!-- Logo -->
-                 <div>
-                    <label for="{{ vendor_form.logo.id_for_label }}" class="block text-sm font-medium text-gray-700">{{ vendor_form.logo.label }} (Optional)</label>
-                    {% render_field vendor_form.logo class="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-600 hover:file:bg-indigo-100" %}
-                    {% if vendor_form.logo.errors %}<p class="text-red-500 text-xs mt-1">{{ vendor_form.logo.errors.0 }}</p>{% endif %}
-                 </div>
-                 <!-- Banner Image -->
-                 <div>
-                    <label for="{{ vendor_form.banner_image.id_for_label }}" class="block text-sm font-medium text-gray-700">{{ vendor_form.banner_image.label }} (Optional)</label>
-                    {% render_field vendor_form.banner_image class="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-600 hover:file:bg-indigo-100" %}
-                    <p class="mt-1 text-xs text-gray-500">{{ vendor_form.banner_image.help_text }}</p>
-                    {% if vendor_form.banner_image.errors %}<p class="text-red-500 text-xs mt-1">{{ vendor_form.banner_image.errors.0 }}</p>{% endif %}
-                 </div>
-            </fieldset>
-
-            <!-- Submit Button -->
-            <div>
-                <button type="submit" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-black bg-[#FBBF24] hover:bg-yellow-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500">
-                    Create Account
-                </button>
-            </div>
-            <p class="text-center text-sm">Already have an account? <a href="{% url 'accounts:login' %}" class="font-medium text-indigo-600 hover:text-indigo-500">Log In</a></p>
-        </form>
+                <!-- Submit Buttons Section -->
+                <div class="pt-6 border-t border-gray-200">
+                    <div x-show="tab === 'customer'">
+                        <button type="submit" name="submit_customer" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-black bg-[#FBBF24] hover:bg-yellow-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500">
+                            Create Customer Account
+                        </button>
+                    </div>
+                    <div x-show="tab === 'vendor'">
+                        <button type="submit" name="submit_vendor" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-black bg-[#FBBF24] hover:bg-yellow-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500">
+                            Create Vendor Account
+                        </button>
+                    </div>
+                </div>
+            </form>
+            
+            <p class="text-center text-sm mt-6">Already have an account? <a href="{% url 'accounts:login' %}" class="font-medium text-indigo-600 hover:text-indigo-500">Log In</a></p>
+        </div>
     </div>
 </div>
 {% endblock %}

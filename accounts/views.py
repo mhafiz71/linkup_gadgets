@@ -19,68 +19,46 @@ from orders.models import Order
 
 @transaction.atomic
 def register(request):
-    """
-    Handles user registration for both customers and vendors.
-    This version contains the definitive fix for the customer registration bug.
-    """
     if request.method == 'POST':
         user_form = UserRegisterForm(request.POST)
-        is_vendor = 'is_vendor' in request.POST
 
-        # --- THE CORE FIX ---
-        # We only bind data to the vendor form if the user is actually registering as a vendor.
-        # Otherwise, it's an empty, unbound form that will not trigger validation errors.
-        if is_vendor:
+        # Check which button was pressed
+        if 'submit_vendor' in request.POST:
             vendor_form = VendorRegisterForm(request.POST, request.FILES)
-        else:
-            vendor_form = VendorRegisterForm()
-
-        # Now, we validate based on the user's intent.
-        if user_form.is_valid():
-            # The user's personal details are valid. Now check vendor details if applicable.
             
-            if is_vendor:
-                if vendor_form.is_valid():
-                    # Both forms are valid, proceed with saving.
-                    pass # Continue to the main logic block
-                else:
-                    # User form was valid, but vendor form had errors.
-                    messages.error(request, 'Please correct the shop detail errors below.')
-                    # Re-render the page with the errors shown.
-                    context = {'user_form': user_form, 'vendor_form': vendor_form}
-                    return render(request, 'accounts/register.html', context)
-            
-            # --- This is the success path for both customers and valid vendors ---
-            user = user_form.save(commit=False)
-            user.set_password(user_form.cleaned_data['password'])
-            user.save()
+            if user_form.is_valid() and vendor_form.is_valid():
+                user = user_form.save(commit=False)
+                user.set_password(user_form.cleaned_data['password'])
+                user.save()
 
-            # Send Welcome Email
-            try:
-                subject = 'Welcome to LinkUp Gadgets!'
-                html_message = render_to_string('emails/welcome_email.html', {'user': user})
-                plain_message = strip_tags(html_message)
-                from_email = settings.DEFAULT_FROM_EMAIL
-                to = user.email
-                send_mail(subject, plain_message, from_email, [to], html_message=html_message)
-            except Exception as e:
-                print(f"Error sending welcome email: {e}")
-
-            if is_vendor:
                 vendor = vendor_form.save(commit=False)
                 vendor.user = user
                 vendor.save()
-                messages.success(request, f'Vendor account created for {user.username}! You can now log in.')
-            else:
-                messages.success(request, f'Customer account created for {user.username}! You can now log in.')
-            
-            return redirect('accounts:login')
 
-        else: # user_form is NOT valid
-            messages.error(request, 'Please correct the errors in your personal details below.')
-            # We still need to pass the vendor_form back, bound if necessary
-            context = {'user_form': user_form, 'vendor_form': vendor_form}
-            return render(request, 'accounts/register.html', context)
+                # Send email, show success, redirect
+                messages.success(request, f'Vendor account created for {user.username}! You can now log in.')
+                # (You should add the email sending code here too)
+                return redirect('accounts:login')
+            else:
+                messages.error(request, 'Please correct the errors below.')
+
+        elif 'submit_customer' in request.POST:
+            vendor_form = VendorRegisterForm() # Create an empty form
+            if user_form.is_valid():
+                user = user_form.save(commit=False)
+                user.set_password(user_form.cleaned_data['password'])
+                user.save()
+
+                # Send email, show success, redirect
+                messages.success(request, f'Customer account created for {user.username}! You can now log in.')
+                # (You should add the email sending code here too)
+                return redirect('accounts:login')
+            else:
+                messages.error(request, 'Please correct the errors in your personal details.')
+        
+        else: # Should not happen, but good practice
+            vendor_form = VendorRegisterForm()
+            messages.error(request, 'An unexpected error occurred. Please try again.')
 
     else: # GET request
         user_form = UserRegisterForm()
@@ -91,7 +69,6 @@ def register(request):
         'vendor_form': vendor_form
     }
     return render(request, 'accounts/register.html', context)
-
 
 def login_view(request):
     """
