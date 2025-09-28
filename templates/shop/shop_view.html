@@ -105,7 +105,7 @@
                                         <a href="{% url 'shop:shop_view' %}"
                                             class="flex items-center justify-between px-3 py-2 rounded-md text-sm {% if not selected_category_slug %}bg-[#1E2A47] text-white{% else %}text-gray-700 hover:bg-gray-100{% endif %}">
                                             <span>All Products</span>
-                                            <span class="text-xs bg-gray-200 text-gray-600 px-2 py-1 rounded-full">{{ total_products}}</span>
+                                            <span class="text-xs bg-gray-200 text-gray-600 px-2 py-1 rounded-full">{{ total_products }}</span>
                                         </a>
                             {% for category in categories %}
                             <a href="?category={{ category.slug }}"
