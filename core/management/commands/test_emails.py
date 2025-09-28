@@ -1,7 +1,4 @@
-"""
-Management command to test email functionality
-Usage: python manage.py test_emails
-"""
+
 from django.core.management.base import BaseCommand
 from django.contrib.auth.models import User
 from django.conf import settings
@@ -28,7 +25,6 @@ class Command(BaseCommand):
         self.stdout.write(f"Default From Email: {settings.DEFAULT_FROM_EMAIL}")
         self.stdout.write(f"Test Email: {test_email}")
         
-        # Test 1: Simple email
         self.stdout.write("\n1. Testing simple email...")
         success = send_template_email(
             subject="LinkUp Gadgets - Email Test",
@@ -45,7 +41,6 @@ class Command(BaseCommand):
         else:
             self.stdout.write(self.style.ERROR("✗ Simple email test failed"))
         
-        # Test 2: Welcome email with real user (if exists)
         self.stdout.write("\n2. Testing welcome email...")
         try:
             user = User.objects.first()
@@ -60,7 +55,6 @@ class Command(BaseCommand):
         except Exception as e:
             self.stdout.write(self.style.ERROR(f"✗ Welcome email test error: {e}"))
         
-        # Test 3: Order confirmation (if orders exist)
         self.stdout.write("\n3. Testing order confirmation email...")
         try:
             order = Order.objects.first()

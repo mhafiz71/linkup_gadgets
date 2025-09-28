@@ -23,10 +23,7 @@ def order_create(request):
                                          price=item['price'],
                                          quantity=item['quantity'])
             
-            # Store order ID in session to retrieve it after payment
             request.session['order_id'] = str(order.id)
-            
-            # Redirect to the payment page
             return redirect(reverse('payment:process'))
     else:
         form = OrderCreateForm()

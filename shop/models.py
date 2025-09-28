@@ -24,10 +24,10 @@ class Vendor(models.Model):
     shop_name = models.CharField(max_length=255, unique=True)
     description = models.TextField(blank=True, null=True)
     logo = models.ImageField(upload_to='vendor_logos/', blank=True, null=True)
-    banner_image = models.ImageField(upload_to='vendor_banners/', blank=True, null=True, help_text="A wide banner image for your storefront (e.g., 1200x400 pixels).")
+    banner_image = models.ImageField(upload_to='vendor_banners/', blank=True, null=True)
     phone_number = models.CharField(max_length=20, blank=True, null=True)
-    location = models.CharField(max_length=100, blank=True, null=True, help_text="e.g., Accra, Greater Accra Region")
-    address = models.CharField(max_length=255, blank=True, null=True, help_text="e.g., 123 Banana St, Osu")
+    location = models.CharField(max_length=100, blank=True, null=True)
+    address = models.CharField(max_length=255, blank=True, null=True)
     is_verified = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -52,7 +52,6 @@ class Product(models.Model):
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.name)
-        # Ensure slug is unique by appending a count if it exists
         if Product.objects.filter(slug=self.slug).exists():
              self.slug = f"{self.slug}-{Product.objects.filter(slug__startswith=self.slug).count()}"
         super().save(*args, **kwargs)
@@ -74,7 +73,6 @@ class Review(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        # Ensure a user can only review a product once
         unique_together = ('product', 'user')
         ordering = ('-created_at',)
 

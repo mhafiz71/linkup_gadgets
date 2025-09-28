@@ -5,14 +5,9 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
 from django.db import transaction
 from django.http import Http404
+from django.utils import timezone
+from datetime import timedelta
 
-# --- Email Imports ---
-from django.core.mail import send_mail
-from django.template.loader import render_to_string
-from django.utils.html import strip_tags
-from django.conf import settings
-
-# --- Local Imports ---
 from .forms import UserRegisterForm, VendorRegisterForm, UserEditForm
 from orders.models import Order
 
@@ -35,7 +30,6 @@ def register(request):
                 vendor.user = user
                 vendor.save()
 
-                # Send welcome email
                 from core.email_utils import send_welcome_email
                 send_welcome_email(user, is_vendor=True)
 
@@ -45,14 +39,13 @@ def register(request):
                 messages.error(request, 'Please correct the errors below.')
 
         elif registration_type == 'customer':
-            vendor_form = VendorRegisterForm() # Create an empty form for template context
+            vendor_form = VendorRegisterForm()
             
             if user_form.is_valid():
                 user = user_form.save(commit=False)
                 user.set_password(user_form.cleaned_data['password'])
                 user.save()
 
-                # Send welcome email
                 from core.email_utils import send_welcome_email
                 send_welcome_email(user, is_vendor=False)
 
@@ -65,7 +58,7 @@ def register(request):
             vendor_form = VendorRegisterForm()
             messages.error(request, 'Invalid registration type.')
 
-    else: # GET request
+    else:
         user_form = UserRegisterForm()
         vendor_form = VendorRegisterForm()
 
@@ -76,9 +69,6 @@ def register(request):
     return render(request, 'accounts/register.html', context)
 
 def login_view(request):
-    """
-    Handles user login. Redirects to the 'next' page if provided.
-    """
     if request.method == 'POST':
         form = AuthenticationForm(request, data=request.POST)
         if form.is_valid():
@@ -101,9 +91,6 @@ def login_view(request):
 
 
 def logout_view(request):
-    """
-    Handles user logout.
-    """
     logout(request)
     messages.info(request, "You have successfully logged out.")
     return redirect('index')
@@ -111,9 +98,6 @@ def logout_view(request):
 
 @login_required
 def customer_profile(request):
-    """
-    Displays the customer's profile page with their order history.
-    """
     orders = Order.objects.filter(user=request.user)
     context = {
         'orders': orders,
@@ -123,9 +107,6 @@ def customer_profile(request):
 
 @login_required
 def edit_profile(request):
-    """
-    Handles the form for users to edit their personal information.
-    """
     if request.method == 'POST':
         form = UserEditForm(request.POST, instance=request.user)
         if form.is_valid():
@@ -140,10 +121,6 @@ def edit_profile(request):
 
 @login_required
 def order_detail(request, order_id):
-    """
-    Displays the details of a single order, ensuring the order
-    belongs to the logged-in user.
-    """
     try:
         order = Order.objects.get(id=order_id, user=request.user)
     except Order.DoesNotExist:
@@ -154,12 +131,6 @@ def order_detail(request, order_id):
 
 @login_required
 def delete_order(request, order_id):
-    """
-    Handles the cancellation of a user's order with a confirmation step.
-    Only unpaid orders can be cancelled within 24 hours of creation.
-    """
-    from django.utils import timezone
-    from datetime import timedelta
     
     order = get_object_or_404(Order, id=order_id, user=request.user)
     
@@ -167,7 +138,6 @@ def delete_order(request, order_id):
         messages.error(request, 'Cannot cancel an order that has already been paid.')
         return redirect('accounts:order_detail', order_id=order.id)
     
-    # Check if order is older than 24 hours
     if timezone.now() - order.created_at > timedelta(hours=24):
         messages.error(request, 'Orders can only be cancelled within 24 hours of placement.')
         return redirect('accounts:order_detail', order_id=order.id)
@@ -175,7 +145,6 @@ def delete_order(request, order_id):
     if request.method == 'POST':
         order_id_copy = str(order.id)
         
-        # Restore stock quantities before deleting
         for item in order.items.all():
             item.product.stock_quantity += item.quantity
             item.product.save()

@@ -11,12 +11,10 @@ def add_to_cart(request, product_id):
     product = get_object_or_404(Product, id=product_id)
     quantity = int(request.POST.get('quantity', 1))
     
-    # Check if product is in stock
     if product.stock_quantity <= 0:
         messages.error(request, f'Sorry, "{product.name}" is currently out of stock.')
         return redirect('shop:product_detail', slug=product.slug)
     
-    # Check if requested quantity exceeds available stock
     current_cart_quantity = cart.get_item_quantity(product.id)
     total_requested = current_cart_quantity + quantity
     
@@ -46,22 +44,17 @@ def cart_detail(request):
 
 @require_POST
 def update_cart(request, product_id):
-    """
-    Updates the quantity of a product in the cart.
-    """
     cart = Cart(request)
     product = get_object_or_404(Product, id=product_id)
     
     try:
         quantity = int(request.POST.get('quantity'))
         if quantity <= 0:
-            # If quantity is 0 or less, remove the item
             cart.remove(product)
             messages.info(request, f'"{product.name}" was removed from your cart.')
         elif quantity > product.stock_quantity:
             messages.error(request, f'Sorry, only {product.stock_quantity} units of "{product.name}" are available.')
         else:
-            # Use the 'add' method with override_quantity=True to set the new quantity
             cart.add(product=product, quantity=quantity, override_quantity=True)
             messages.success(request, f'Cart updated successfully.')
     except (ValueError, TypeError):
