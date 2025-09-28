@@ -5,16 +5,31 @@ from .cart import Cart
 
 @require_POST
 def add_to_cart(request, product_id):
+    from django.contrib import messages
+    
     cart = Cart(request)
     product = get_object_or_404(Product, id=product_id)
     quantity = int(request.POST.get('quantity', 1))
     
-    # Simple stock check
-    if quantity > product.stock_quantity:
-        # Handle this properly with a message in a real app
+    # Check if product is in stock
+    if product.stock_quantity <= 0:
+        messages.error(request, f'Sorry, "{product.name}" is currently out of stock.')
+        return redirect('shop:product_detail', slug=product.slug)
+    
+    # Check if requested quantity exceeds available stock
+    current_cart_quantity = cart.get_item_quantity(product.id)
+    total_requested = current_cart_quantity + quantity
+    
+    if total_requested > product.stock_quantity:
+        available = product.stock_quantity - current_cart_quantity
+        if available > 0:
+            messages.warning(request, f'Only {available} more units of "{product.name}" can be added to your cart.')
+        else:
+            messages.error(request, f'You already have the maximum available quantity of "{product.name}" in your cart.')
         return redirect('shop:product_detail', slug=product.slug)
 
     cart.add(product=product, quantity=quantity, override_quantity=False)
+    messages.success(request, f'"{product.name}" has been added to your cart.')
     return redirect('cart:cart_detail')
 
 @require_POST

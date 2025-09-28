@@ -90,6 +90,13 @@ class Cart:
         """
         return sum(Decimal(item['price']) * item['quantity'] for item in self.cart.values())
 
+    def get_item_quantity(self, product_id):
+        """
+        Returns the current quantity of a specific product in the cart.
+        """
+        product_id = str(product_id)
+        return self.cart.get(product_id, {}).get('quantity', 0)
+
     def clear(self):
         """
         Removes the cart completely from the session.

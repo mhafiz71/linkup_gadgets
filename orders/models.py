@@ -4,6 +4,16 @@ from django.contrib.auth.models import User
 from shop.models import Product
 
 class Order(models.Model):
+    STATUS_CHOICES = [
+        ('pending', 'Pending Payment'),
+        ('paid', 'Paid'),
+        ('processing', 'Processing'),
+        ('shipped', 'Shipped'),
+        ('delivered', 'Delivered'),
+        ('cancelled', 'Cancelled'),
+        ('refunded', 'Refunded'),
+    ]
+    
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     user = models.ForeignKey(User, on_delete=models.SET_NULL, blank=True, null=True, related_name='orders')
     full_name = models.CharField(max_length=255)
@@ -17,6 +27,7 @@ class Order(models.Model):
     
     total_paid = models.DecimalField(max_digits=10, decimal_places=2)
     paid = models.BooleanField(default=False)
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='pending')
     
     paystack_reference = models.CharField(max_length=100, blank=True)
 

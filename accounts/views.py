@@ -148,18 +148,32 @@ def order_detail(request, order_id):
 def delete_order(request, order_id):
     """
     Handles the cancellation of a user's order with a confirmation step.
-    Only unpaid orders can be cancelled.
+    Only unpaid orders can be cancelled within 24 hours of creation.
     """
+    from django.utils import timezone
+    from datetime import timedelta
+    
     order = get_object_or_404(Order, id=order_id, user=request.user)
     
     if order.paid:
         messages.error(request, 'Cannot cancel an order that has already been paid.')
         return redirect('accounts:order_detail', order_id=order.id)
+    
+    # Check if order is older than 24 hours
+    if timezone.now() - order.created_at > timedelta(hours=24):
+        messages.error(request, 'Orders can only be cancelled within 24 hours of placement.')
+        return redirect('accounts:order_detail', order_id=order.id)
 
     if request.method == 'POST':
         order_id_copy = str(order.id)
+        
+        # Restore stock quantities before deleting
+        for item in order.items.all():
+            item.product.stock_quantity += item.quantity
+            item.product.save()
+        
         order.delete()
-        messages.success(request, f"Order #{order_id_copy[:8]} has been successfully cancelled.")
+        messages.success(request, f"Order #{order_id_copy[:8]} has been successfully cancelled and stock has been restored.")
         return redirect('accounts:profile')
     
     return render(request, 'accounts/delete_order_confirm.html', {'order': order})

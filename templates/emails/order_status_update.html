@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Order Status Update</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+        .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+        .header { background-color: #FBBF24; padding: 20px; text-align: center; }
+        .content { padding: 20px; background-color: #f9f9f9; }
+        .status { font-size: 18px; font-weight: bold; color: #059669; }
+        .order-details { background-color: white; padding: 15px; margin: 15px 0; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 style="margin: 0; color: black;">LinkUp Gadgets</h1>
+        </div>
+        
+        <div class="content">
+            <h2>Order Status Update</h2>
+            <p>Hello {{ user.first_name|default:user.username }},</p>
+            
+            <p>Your order status has been updated:</p>
+            
+            <div class="order-details">
+                <p><strong>Order ID:</strong> #{{ order.id|truncatechars:8 }}</p>
+                <p><strong>Status:</strong> <span class="status">{{ order.get_status_display }}</span></p>
+                <p><strong>Order Date:</strong> {{ order.created_at|date:"F d, Y" }}</p>
+                <p><strong>Total:</strong> GHS {{ order.total_paid }}</p>
+            </div>
+            
+            {% if order.status == 'shipped' %}
+                <p>Your order is on its way! You should receive it within 2-5 business days.</p>
+            {% elif order.status == 'delivered' %}
+                <p>Your order has been delivered! We hope you enjoy your purchase.</p>
+            {% elif order.status == 'cancelled' %}
+                <p>Your order has been cancelled. If you have any questions, please contact our support team.</p>
+            {% endif %}
+            
+            <p>Thank you for shopping with LinkUp Gadgets!</p>
+            
+            <p>Best regards,<br>The LinkUp Gadgets Team</p>
+        </div>
+    </div>
+</body>
+</html>
