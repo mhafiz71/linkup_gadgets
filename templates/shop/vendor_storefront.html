@@ -1,69 +1,227 @@
-{% extends 'base.html' %} {% block title %}{{ vendor.shop_name }}'s
-Storefront{%endblock %} {% block content %}
-<div class="max-w-7xl mx-auto py-16 px-4">
+{% extends 'base.html' %}
+{% load account_extras %}
 
-  {% if vendor.banner_image %}
-  <div class="h-64">
-    <img class="h-full w-full object-cover" src="{{ vendor.banner_image.url }}" alt="{{ vendor.shop_name }} banner" />
-  </div>
-  {% endif %}
+{% block title %}{{ vendor.shop_name }} - Storefront{% endblock %}
 
-  <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-    <div class="border-b border-gray-200 pb-10">
-      <div class="lg:flex lg:items-center lg:justify-between">
-        <div class="min-w-0 flex-1">
-          <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
-            
-            <span>
-              {% if vendor.logo %}
-              <img class="w-24 h-24 rounded-full" src="{{ vendor.logo.url }}" alt="{{ vendor.shop_name }} logo">
-              {% endif %}
-              
-            </span>
-            <br>
-            {{ vendor.shop_name }}
-            
-          </h1>
-          <p class="mt-1 text-lg text-gray-500">
-            {{ vendor.description|default:"" }}
-          </p>
+{% block content %}
+<div class="bg-gray-50 min-h-screen">
+    <!-- Banner Section -->
+    {% if vendor.banner_image %}
+    <div class="relative h-96 bg-gray-900">
+        <img class="h-full w-full object-cover" src="{{ vendor.banner_image.url }}" alt="{{ vendor.shop_name }} banner">
+        <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+        <!-- Banner Content Overlay -->
+        <div class="absolute inset-0 flex items-center justify-center">
+            <div class="text-center text-white">
+                <h1 class="text-4xl md:text-6xl font-bold mb-4">{{ vendor.shop_name }}</h1>
+                {% if vendor.description %}
+                <p class="text-xl md:text-2xl font-light max-w-2xl mx-auto px-4">{{ vendor.description }}</p>
+                {% endif %}
+            </div>
         </div>
-
-        <!-- VENDOR INFO ICONS -->
-        <div
-          class="mt-6 flex flex-col justify-stretch space-y-3 sm:flex-row sm:space-x-4 sm:space-y-0 lg:mt-0 lg:flex-shrink-0">
-          {% if vendor.location %}
-          <span class="inline-flex items-center text-sm font-medium text-gray-600">
-            <svg class="mr-1.5 h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
-              <path fill-rule="evenodd"
-                d="M9.69 18.933l.003.001C9.89 19.02 10 19 10 19s.11.02.308-.066l.002-.001.006-.003.018-.008a5.741 5.741 0 00.281-.14c.186-.1.4-.27.61-.453l2.839-2.025A15.823 15.823 0 0016 11.63c0-1.284-.57-2.486-1.5-3.336a4.825 4.825 0 00-6.992 0C6.57 9.144 6 10.346 6 11.63c0 .52.098 1.02.285 1.485A15.823 15.823 0 008.25 16l2.839 2.025c.21.183.424.353.61.453.097.052.192.1.28.14l.018.008.006.003zM10 11.25a2.25 2.25 0 100-4.5 2.25 2.25 0 000 4.5z"
-                clip-rule="evenodd" />
-            </svg>
-            {{ vendor.location }}
-          </span>
-          {% endif %} {% if vendor.phone_number %}
-          <span class="inline-flex items-center text-sm font-medium text-gray-600">
-            <svg class="mr-1.5 h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
-              <path
-                d="M2 3.5A1.5 1.5 0 013.5 2h1.148a1.5 1.5 0 011.465 1.175l.716 3.223a1.5 1.5 0 01-1.052 1.767l-.933.267c-.41.117-.643.555-.48.95a11.542 11.542 0 006.254 6.254c.395.163.833-.07.95-.48l.267-.933a1.5 1.5 0 011.767-1.052l3.223.716A1.5 1.5 0 0118 15.352V16.5a1.5 1.5 0 01-1.5 1.5h-1.528a1.5 1.5 0 01-1.348-.884c-.598-1.26-1.42-2.426-2.37-3.483a11.542 11.542 0 01-3.483-2.37A1.5 1.5 0 012 5.028V3.5z" />
-            </svg>
-            {{ vendor.phone_number }}
-          </span>
-          {% endif %}
+    </div>
+    {% else %}
+    <div class="relative h-96 bg-gradient-to-r from-[#1E2A47] to-[#FBBF24]">
+        <div class="absolute inset-0 bg-black bg-opacity-20"></div>
+        <!-- Banner Content Overlay -->
+        <div class="absolute inset-0 flex items-center justify-center">
+            <div class="text-center text-white">
+                <h1 class="text-4xl md:text-6xl font-bold mb-4">{{ vendor.shop_name }}</h1>
+                {% if vendor.description %}
+                <p class="text-xl md:text-2xl font-light max-w-2xl mx-auto px-4">{{ vendor.description }}</p>
+                {% else %}
+                <p class="text-xl md:text-2xl font-light max-w-2xl mx-auto px-4">Welcome to our store!</p>
+                {% endif %}
+            </div>
         </div>
-      </div>
     </div>
+    {% endif %}
 
-    <div class="mt-12">
-      <h2 class="text-2xl font-semibold">Products from this vendor</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-6">
-        {% for product in products %}
-        {% include 'components/product_card.html' with product=product %}
-        {% empty %}
-        <p class="col-span-full text-center text-gray-500">This vendor has no products listed yet.</p>
-        {% endfor %}
-      </div>
+    <!-- Vendor Info Section -->
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="relative -mt-24 bg-white rounded-lg shadow-xl p-8">
+            <div class="lg:flex lg:items-start lg:space-x-8">
+                <!-- Vendor Logo and Basic Info -->
+                <div class="flex items-center space-x-6">
+                    {% if vendor.logo %}
+                    <img class="h-20 w-20 rounded-full object-cover border-4 border-white shadow-lg" src="{{ vendor.logo.url }}"
+                        alt="{{ vendor.shop_name }} logo">
+                    {% else %}
+                    <div class="h-20 w-20 rounded-full bg-gray-200 border-4 border-white shadow-lg flex items-center justify-center">
+                        <svg class="h-10 w-10 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                        </svg>
+                    </div>
+                    {% endif %}
+                    <div>
+                        <div class="flex items-center space-x-3">
+                            <h2 class="text-2xl font-bold text-gray-900">Store Information</h2>
+                            {% if vendor.is_verified %}
+                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                                <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd"
+                                        d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                                Verified Vendor
+                            </span>
+                            {% endif %}
+                            </div>
+                            <p class="mt-1 text-sm text-gray-500">Member since {{ vendor.created_at|date:"F Y" }}</p>
+                            <div class="mt-3 flex items-center space-x-4">
+                                <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
+                                    {{ products.count }} Product{{ products.count|pluralize }}
+                                </span>
+                                <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-800">
+                                    {{ vendor.created_at|timesince }} in business
+                                </span>
+                            </div>
+                            </div>
+                            </div>
+
+                <!-- Contact Information -->
+                <div class="mt-6 lg:mt-0 lg:flex-1">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        {% if vendor.location %}
+                        <div class="flex items-center space-x-2">
+                            <svg class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                            <span class="text-sm text-gray-600">{{ vendor.location }}</span>
+                        </div>
+                        {% endif %}
+                
+                        {% if vendor.phone_number %}
+                        <div class="flex items-center space-x-2">
+                            <svg class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                            </svg>
+                            <span class="text-sm text-gray-600">{{ vendor.phone_number }}</span>
+                        </div>
+                        {% endif %}
+                
+                        {% if vendor.address %}
+                        <div class="flex items-center space-x-2 sm:col-span-2">
+                            <svg class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                            </svg>
+                            <span class="text-sm text-gray-600">{{ vendor.address }}</span>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+                </div>
+                </div>
+                </div>
+
+    <!-- Breadcrumb Navigation -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+        <nav class="flex" aria-label="Breadcrumb">
+            <ol class="flex items-center space-x-4">
+                <li>
+                    <div>
+                        <a href="{% url 'index' %}" class="text-gray-400 hover:text-gray-500">
+                            <svg class="flex-shrink-0 h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                <path
+                                    d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+                            </svg>
+                            <span class="sr-only">Home</span>
+                        </a>
+                    </div>
+                </li>
+                <li>
+                    <div class="flex items-center">
+                        <svg class="flex-shrink-0 h-5 w-5 text-gray-300" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                                clip-rule="evenodd" />
+                        </svg>
+                        <a href="{% url 'shop:shop_view' %}" class="ml-4 text-sm font-medium text-gray-500 hover:text-gray-700">Shop</a>
+                        </div>
+                        </li>
+                        <li>
+                            <div class="flex items-center">
+                                <svg class="flex-shrink-0 h-5 w-5 text-gray-300" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd"
+                                        d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                        <span class="ml-4 text-sm font-medium text-gray-500">{{ vendor.shop_name }}</span>
+                        </div>
+                        </li>
+                        </ol>
+                        </nav>
+                        </div>
+                        
+                        <!-- Products Section -->
+                        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">""
+                            <div class="flex items-center justify-between mb-8">
+                                <div>
+                                    <h2 class="text-2xl font-bold text-gray-900">Our Products</h2>
+                                    <p class="mt-1 text-sm text-gray-600">{{ products.count }} product{{ products.count|pluralize }}
+                                        available</p>
+                                </div>
+            <!-- Filter/Sort Options -->
+            <div class="flex items-center space-x-4">
+                <form method="GET" class="flex items-center space-x-2">
+                    <label for="sort" class="text-sm font-medium text-gray-700">Sort by:</label>
+                    <select name="sort" id="sort" onchange="this.form.submit()"
+                        class="rounded-md border-gray-300 py-2 pl-3 pr-10 text-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500">
+                        <option value="featured">Featured</option>
+                        <option value="price_low">Price: Low to High</option>
+                        <option value="price_high">Price: High to Low</option>
+                        <option value="newest">Newest First</option>
+                    </select>
+                </form>
+            </div>
+            </div>
+
+        {% if products %}
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {% for product in products %}
+            {% include 'components/product_card.html' with product=product %}
+            {% endfor %}
+            </div>
+        {% else %}
+        <div class="text-center py-12">
+            <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+            </svg>
+            <h3 class="mt-2 text-sm font-medium text-gray-900">No products available</h3>
+            <p class="mt-1 text-sm text-gray-500">This vendor hasn't added any products yet. Check back later!</p>
+        </div>
+        {% endif %}
+        </div>
+        
+        <!-- Store Statistics -->
+        {% if products %}
+        <div class="bg-white border-t border-gray-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+                <div class="grid grid-cols-1 gap-5 sm:grid-cols-3">
+                    <div class="text-center">
+                        <div class="text-2xl font-bold text-gray-900">{{ products.count }}</div>
+                        <div class="text-sm text-gray-500">Product{{ products.count|pluralize }} Available</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-2xl font-bold text-gray-900">{{ vendor.created_at|timesince }}</div>
+                        <div class="text-sm text-gray-500">In Business</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-2xl font-bold text-gray-900">
+                            {% if vendor.is_verified %}✓{% else %}—{% endif %}
+                        </div>
+                        <div class="text-sm text-gray-500">Verified Status</div>
+                    </div>
+                </div>
+            </div>
     </div>
-  </div>
-  {% endblock %}
+    {% endif %}
 </div>
+{% endblock %}

@@ -1,13 +1,13 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from .models import Product, Category, Review
-from orders.models import OrderItem
-from .forms import ProductForm
-from django.db.models import Q
+from django.db.models import Q, Sum
+from django.db import models
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from .forms import ProductForm, ReviewForm, VendorEditForm
 from django.contrib import messages
-from .models import Product, Category, Vendor
+
+from .models import Product, Category, Review, Vendor
+from .forms import ProductForm, ReviewForm, VendorEditForm
+from orders.models import OrderItem
 
 def vendor_required(function):
     def wrap(request, *args, **kwargs):
@@ -19,10 +19,23 @@ def vendor_required(function):
 
 def vendor_storefront(request, vendor_id):
     vendor = get_object_or_404(Vendor, id=vendor_id)
-    products = Product.objects.filter(vendor=vendor)
+    products = Product.objects.filter(vendor=vendor).order_by('-created_at')
+    
+    # Filter and sort options
+    sort_by = request.GET.get('sort', 'featured')
+    if sort_by == 'price_low':
+        products = products.order_by('price')
+    elif sort_by == 'price_high':
+        products = products.order_by('-price')
+    elif sort_by == 'newest':
+        products = products.order_by('-created_at')
+    else:  # featured or default
+        products = products.order_by('-is_featured', '-created_at')
+    
     context = {
         'vendor': vendor,
         'products': products,
+        'sort_by': sort_by,
     }
     return render(request, 'shop/vendor_storefront.html', context)
 
@@ -30,13 +43,33 @@ def vendor_storefront(request, vendor_id):
 @vendor_required
 def vendor_dashboard(request):
     vendor = request.user.vendor
-    order_items = OrderItem.objects.filter(product__vendor=vendor)
+    order_items = OrderItem.objects.filter(product__vendor=vendor).order_by('-order__created_at')
     products = vendor.products.all()
+    
+    # Calculate dashboard statistics
+    total_products = products.count()
+    total_sales = order_items.filter(order__paid=True).count()
+    total_revenue = sum(item.get_total_price() for item in order_items.filter(order__paid=True))
+    low_stock_products = products.filter(stock_quantity__lte=5).count()
+    
+    # Recent orders (last 10)
+    recent_orders = order_items.filter(order__paid=True)[:10]
+    
+    # Top selling products
+    top_products = products.annotate(
+        total_sold=Sum('order_items__quantity', filter=models.Q(order_items__order__paid=True))
+    ).filter(total_sold__isnull=False).order_by('-total_sold')[:5]
 
     context = {
         'vendor': vendor,
         'order_items': order_items,
-        'products': products
+        'products': products,
+        'total_products': total_products,
+        'total_sales': total_sales,
+        'total_revenue': total_revenue,
+        'low_stock_products': low_stock_products,
+        'recent_orders': recent_orders,
+        'top_products': top_products,
     }
     return render(request, 'shop/vendor_dashboard.html', context)
 

@@ -874,3 +874,359 @@ Traceback (most recent call last):
 django.db.utils.OperationalError: no such column: orders_order.status
 ERROR 2025-09-28 08:16:18,739 log 11560 35428 Internal Server Error: /shop/dashboard/
 ERROR 2025-09-28 08:16:18,740 basehttp 11560 35428 "GET /shop/dashboard/ HTTP/1.1" 500 10860
+ERROR 2025-09-28 09:36:55,015 middleware 30316 27808 Unhandled exception: name 'models' is not defined
+Traceback (most recent call last):
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\shop\views.py", line 15, in wrap
+    return function(request, *args, **kwargs)
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\shop\views.py", line 48, in vendor_dashboard
+    total_sold=Sum('order_items__quantity', filter=models.Q(order_items__order__paid=True))
+                                                   ^^^^^^
+NameError: name 'models' is not defined
+ERROR 2025-09-28 09:36:55,037 log 30316 27808 Internal Server Error: /shop/dashboard/
+ERROR 2025-09-28 09:36:55,038 basehttp 30316 27808 "GET /shop/dashboard/ HTTP/1.1" 500 13808
+ERROR 2025-09-28 09:36:59,469 middleware 30316 27808 Unhandled exception: name 'models' is not defined
+Traceback (most recent call last):
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\shop\views.py", line 15, in wrap
+    return function(request, *args, **kwargs)
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\shop\views.py", line 48, in vendor_dashboard
+    total_sold=Sum('order_items__quantity', filter=models.Q(order_items__order__paid=True))
+                                                   ^^^^^^
+NameError: name 'models' is not defined
+ERROR 2025-09-28 09:36:59,473 log 30316 27808 Internal Server Error: /shop/dashboard/
+ERROR 2025-09-28 09:36:59,473 basehttp 30316 27808 "GET /shop/dashboard/ HTTP/1.1" 500 13808
+ERROR 2025-09-28 11:08:20,805 middleware 13052 12172 Unhandled exception: Could not parse the remainder: '=='featured'' from 'sort_by=='featured''
+Traceback (most recent call last):
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\smartif.py", line 180, in translate_token
+    op = OPERATORS[token]
+         ~~~~~~~~~^^^^^^^
+KeyError: "sort_by=='featured'"
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\shop\views.py", line 40, in vendor_storefront
+    return render(request, 'shop/vendor_storefront.html', context)
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\loader_tags.py", line 299, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\defaulttags.py", line 961, in do_if
+    condition = TemplateIfParser(parser, bits).parse()
+                ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\defaulttags.py", line 894, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\smartif.py", line 171, in __init__
+    mapped_tokens.append(self.translate_token(token))
+                         ~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\smartif.py", line 182, in translate_token
+    return self.create_var(token)
+           ~~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\defaulttags.py", line 897, in create_var
+    return TemplateLiteral(self.template_parser.compile_filter(value), value)
+                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\base.py", line 609, in compile_filter
+    return FilterExpression(token, self)
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\base.py", line 710, in __init__
+    raise TemplateSyntaxError(
+    ...<2 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Could not parse the remainder: '=='featured'' from 'sort_by=='featured''
+ERROR 2025-09-28 11:08:20,891 log 13052 12172 Internal Server Error: /shop/vendor/2/
+ERROR 2025-09-28 11:08:20,892 basehttp 13052 12172 "GET /shop/vendor/2/ HTTP/1.1" 500 13418
+ERROR 2025-09-28 11:11:09,322 middleware 13052 35400 Unhandled exception: Could not parse the remainder: '=='featured'' from 'sort_by=='featured''
+Traceback (most recent call last):
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\smartif.py", line 180, in translate_token
+    op = OPERATORS[token]
+         ~~~~~~~~~^^^^^^^
+KeyError: "sort_by=='featured'"
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\shop\views.py", line 40, in vendor_storefront
+    return render(request, 'shop/vendor_storefront.html', context)
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\loader_tags.py", line 299, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\defaulttags.py", line 961, in do_if
+    condition = TemplateIfParser(parser, bits).parse()
+                ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\defaulttags.py", line 894, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\smartif.py", line 171, in __init__
+    mapped_tokens.append(self.translate_token(token))
+                         ~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\smartif.py", line 182, in translate_token
+    return self.create_var(token)
+           ~~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\defaulttags.py", line 897, in create_var
+    return TemplateLiteral(self.template_parser.compile_filter(value), value)
+                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\base.py", line 609, in compile_filter
+    return FilterExpression(token, self)
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\base.py", line 710, in __init__
+    raise TemplateSyntaxError(
+    ...<2 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Could not parse the remainder: '=='featured'' from 'sort_by=='featured''
+ERROR 2025-09-28 11:11:09,339 log 13052 35400 Internal Server Error: /shop/vendor/2/
+ERROR 2025-09-28 11:11:09,339 basehttp 13052 35400 "GET /shop/vendor/2/ HTTP/1.1" 500 13418
+ERROR 2025-09-28 11:13:42,722 middleware 13052 31416 Unhandled exception: Could not parse the remainder: '=='featured'' from 'sort_by=='featured''
+Traceback (most recent call last):
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\smartif.py", line 180, in translate_token
+    op = OPERATORS[token]
+         ~~~~~~~~~^^^^^^^
+KeyError: "sort_by=='featured'"
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\shop\views.py", line 40, in vendor_storefront
+    return render(request, 'shop/vendor_storefront.html', context)
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\loader_tags.py", line 299, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\defaulttags.py", line 961, in do_if
+    condition = TemplateIfParser(parser, bits).parse()
+                ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\defaulttags.py", line 894, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\smartif.py", line 171, in __init__
+    mapped_tokens.append(self.translate_token(token))
+                         ~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\smartif.py", line 182, in translate_token
+    return self.create_var(token)
+           ~~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\defaulttags.py", line 897, in create_var
+    return TemplateLiteral(self.template_parser.compile_filter(value), value)
+                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\base.py", line 609, in compile_filter
+    return FilterExpression(token, self)
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\base.py", line 710, in __init__
+    raise TemplateSyntaxError(
+    ...<2 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Could not parse the remainder: '=='featured'' from 'sort_by=='featured''
+ERROR 2025-09-28 11:13:42,732 log 13052 31416 Internal Server Error: /shop/vendor/2/
+ERROR 2025-09-28 11:13:42,733 basehttp 13052 31416 "GET /shop/vendor/2/ HTTP/1.1" 500 13418
+ERROR 2025-09-28 11:14:07,121 middleware 13052 31416 Unhandled exception: Could not parse the remainder: '=='featured'' from 'sort_by=='featured''
+Traceback (most recent call last):
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\smartif.py", line 180, in translate_token
+    op = OPERATORS[token]
+         ~~~~~~~~~^^^^^^^
+KeyError: "sort_by=='featured'"
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\shop\views.py", line 40, in vendor_storefront
+    return render(request, 'shop/vendor_storefront.html', context)
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\loader_tags.py", line 299, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\defaulttags.py", line 961, in do_if
+    condition = TemplateIfParser(parser, bits).parse()
+                ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\defaulttags.py", line 894, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\smartif.py", line 171, in __init__
+    mapped_tokens.append(self.translate_token(token))
+                         ~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\smartif.py", line 182, in translate_token
+    return self.create_var(token)
+           ~~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\defaulttags.py", line 897, in create_var
+    return TemplateLiteral(self.template_parser.compile_filter(value), value)
+                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\base.py", line 609, in compile_filter
+    return FilterExpression(token, self)
+  File "C:\Users\ZENER\Documents\dEVs\linkup_gadgets\.venv\Lib\site-packages\django\template\base.py", line 710, in __init__
+    raise TemplateSyntaxError(
+    ...<2 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Could not parse the remainder: '=='featured'' from 'sort_by=='featured''
+ERROR 2025-09-28 11:14:07,138 log 13052 31416 Internal Server Error: /shop/vendor/2/
+ERROR 2025-09-28 11:14:07,139 basehttp 13052 31416 "GET /shop/vendor/2/ HTTP/1.1" 500 13418
