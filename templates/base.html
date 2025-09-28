@@ -169,6 +169,11 @@
   </header>
 
   <main>
+    <!-- Messages - only show on specific pages -->
+    {% block messages %}
+    {% include 'components/messages.html' %}
+    {% endblock %}
+    
     {% block content %}
     <!-- Child template content goes here -->
     {% endblock %}

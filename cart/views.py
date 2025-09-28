@@ -63,7 +63,7 @@ def update_cart(request, product_id):
         else:
             # Use the 'add' method with override_quantity=True to set the new quantity
             cart.add(product=product, quantity=quantity, override_quantity=True)
-            messages.success(request, f'Your cart has been updated.')
+            messages.success(request, f'Cart updated successfully.')
     except (ValueError, TypeError):
         messages.error(request, 'Invalid quantity specified.')
         

@@ -1,4 +1,9 @@
 {% extends 'base.html' %}
+
+{% block messages %}
+<!-- Don't show messages on payment success page -->
+{% endblock %}
+
 {% block content %}
 <div class="max-w-xl mx-auto text-center my-16">
 <h1 class="text-3xl font-bold text-green-600">Payment Successful!</h1>

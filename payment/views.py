@@ -51,3 +51,23 @@ def payment_callback(request):
 
 def payment_failed(request):
     return render(request, 'payment/failed.html')
+
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+
+@login_required
+def retry_payment(request, order_id):
+    """
+    Allow users to retry payment for pending orders
+    """
+    order = get_object_or_404(Order, id=order_id, user=request.user)
+    
+    if order.paid:
+        messages.info(request, 'This order has already been paid.')
+        return redirect('accounts:order_detail', order_id=order.id)
+    
+    # Set order in session for payment process
+    request.session['order_id'] = str(order.id)
+    
+    messages.info(request, 'Redirecting to payment...')
+    return redirect('payment:process')
