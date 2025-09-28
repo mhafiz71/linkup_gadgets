@@ -1230,3 +1230,315 @@ Traceback (most recent call last):
 django.template.exceptions.TemplateSyntaxError: Could not parse the remainder: '=='featured'' from 'sort_by=='featured''
 ERROR 2025-09-28 11:14:07,138 log 13052 31416 Internal Server Error: /shop/vendor/2/
 ERROR 2025-09-28 11:14:07,139 basehttp 13052 31416 "GET /shop/vendor/2/ HTTP/1.1" 500 13418
+ERROR 2025-09-28 15:44:18,178 log 4228 20620 Internal Server Error: /static/admin/css/base.css
+Traceback (most recent call last):
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\whitenoise\middleware.py", line 122, in __call__
+    return self.serve(static_file, request)
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\whitenoise\middleware.py", line 127, in serve
+    response = static_file.get_response(request.method, request.META)
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\whitenoise\responders.py", line 86, in get_response
+    file_handle = open(path, "rb")  # noqa: SIM115
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\ZENER\\Documents\\dEVs\\linkup_gadgets\\staticfiles\\admin\\css\\base.css'
+ERROR 2025-09-28 15:44:18,179 log 4228 17136 Internal Server Error: /static/admin/css/dark_mode.css
+Traceback (most recent call last):
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\whitenoise\middleware.py", line 122, in __call__
+    return self.serve(static_file, request)
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\whitenoise\middleware.py", line 127, in serve
+    response = static_file.get_response(request.method, request.META)
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\whitenoise\responders.py", line 86, in get_response
+    file_handle = open(path, "rb")  # noqa: SIM115
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\ZENER\\Documents\\dEVs\\linkup_gadgets\\staticfiles\\admin\\css\\dark_mode.css'
+ERROR 2025-09-28 15:44:18,181 log 4228 20104 Internal Server Error: /static/admin/css/nav_sidebar.css
+Traceback (most recent call last):
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\whitenoise\middleware.py", line 122, in __call__
+    return self.serve(static_file, request)
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\whitenoise\middleware.py", line 127, in serve
+    response = static_file.get_response(request.method, request.META)
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\whitenoise\responders.py", line 86, in get_response
+    file_handle = open(path, "rb")  # noqa: SIM115
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\ZENER\\Documents\\dEVs\\linkup_gadgets\\staticfiles\\admin\\css\\nav_sidebar.css'
+ERROR 2025-09-28 15:44:18,182 log 4228 18020 Internal Server Error: /static/admin/css/login.css
+Traceback (most recent call last):
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\whitenoise\middleware.py", line 122, in __call__
+    return self.serve(static_file, request)
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\whitenoise\middleware.py", line 127, in serve
+    response = static_file.get_response(request.method, request.META)
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\whitenoise\responders.py", line 86, in get_response
+    file_handle = open(path, "rb")  # noqa: SIM115
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\ZENER\\Documents\\dEVs\\linkup_gadgets\\staticfiles\\admin\\css\\login.css'
+ERROR 2025-09-28 15:44:18,184 log 4228 19732 Internal Server Error: /static/admin/css/responsive.css
+Traceback (most recent call last):
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\whitenoise\middleware.py", line 122, in __call__
+    return self.serve(static_file, request)
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\whitenoise\middleware.py", line 127, in serve
+    response = static_file.get_response(request.method, request.META)
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\whitenoise\responders.py", line 86, in get_response
+    file_handle = open(path, "rb")  # noqa: SIM115
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\ZENER\\Documents\\dEVs\\linkup_gadgets\\staticfiles\\admin\\css\\responsive.css'
+ERROR 2025-09-28 15:44:18,193 basehttp 4228 17136 "GET /static/admin/css/dark_mode.css HTTP/1.1" 500 145
+ERROR 2025-09-28 15:44:18,193 basehttp 4228 20620 "GET /static/admin/css/base.css HTTP/1.1" 500 145
+ERROR 2025-09-28 15:44:18,204 basehttp 4228 19732 "GET /static/admin/css/responsive.css HTTP/1.1" 500 145
+ERROR 2025-09-28 15:44:18,202 basehttp 4228 18020 "GET /static/admin/css/login.css HTTP/1.1" 500 145
+ERROR 2025-09-28 15:44:18,194 basehttp 4228 20104 "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 500 145
+ERROR 2025-09-28 15:44:20,982 log 4228 1676 Internal Server Error: /static/admin/css/base.css
+Traceback (most recent call last):
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\whitenoise\middleware.py", line 122, in __call__
+    return self.serve(static_file, request)
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\whitenoise\middleware.py", line 127, in serve
+    response = static_file.get_response(request.method, request.META)
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\whitenoise\responders.py", line 86, in get_response
+    file_handle = open(path, "rb")  # noqa: SIM115
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\ZENER\\Documents\\dEVs\\linkup_gadgets\\staticfiles\\admin\\css\\base.css'
+ERROR 2025-09-28 15:44:20,985 log 4228 17656 Internal Server Error: /static/admin/css/dark_mode.css
+Traceback (most recent call last):
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\whitenoise\middleware.py", line 122, in __call__
+    return self.serve(static_file, request)
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\whitenoise\middleware.py", line 127, in serve
+    response = static_file.get_response(request.method, request.META)
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\whitenoise\responders.py", line 86, in get_response
+    file_handle = open(path, "rb")  # noqa: SIM115
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\ZENER\\Documents\\dEVs\\linkup_gadgets\\staticfiles\\admin\\css\\dark_mode.css'
+ERROR 2025-09-28 15:44:20,988 log 4228 18788 Internal Server Error: /static/admin/css/nav_sidebar.css
+Traceback (most recent call last):
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\whitenoise\middleware.py", line 122, in __call__
+    return self.serve(static_file, request)
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\whitenoise\middleware.py", line 127, in serve
+    response = static_file.get_response(request.method, request.META)
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\whitenoise\responders.py", line 86, in get_response
+    file_handle = open(path, "rb")  # noqa: SIM115
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\ZENER\\Documents\\dEVs\\linkup_gadgets\\staticfiles\\admin\\css\\nav_sidebar.css'
+ERROR 2025-09-28 15:44:20,990 log 4228 11804 Internal Server Error: /static/admin/css/login.css
+Traceback (most recent call last):
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\whitenoise\middleware.py", line 122, in __call__
+    return self.serve(static_file, request)
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\whitenoise\middleware.py", line 127, in serve
+    response = static_file.get_response(request.method, request.META)
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\whitenoise\responders.py", line 86, in get_response
+    file_handle = open(path, "rb")  # noqa: SIM115
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\ZENER\\Documents\\dEVs\\linkup_gadgets\\staticfiles\\admin\\css\\login.css'
+ERROR 2025-09-28 15:44:20,991 basehttp 4228 1676 "GET /static/admin/css/base.css HTTP/1.1" 500 145
+ERROR 2025-09-28 15:44:20,994 log 4228 18308 Internal Server Error: /static/admin/css/responsive.css
+Traceback (most recent call last):
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\whitenoise\middleware.py", line 122, in __call__
+    return self.serve(static_file, request)
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\whitenoise\middleware.py", line 127, in serve
+    response = static_file.get_response(request.method, request.META)
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\whitenoise\responders.py", line 86, in get_response
+    file_handle = open(path, "rb")  # noqa: SIM115
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\ZENER\\Documents\\dEVs\\linkup_gadgets\\staticfiles\\admin\\css\\responsive.css'
+ERROR 2025-09-28 15:44:20,997 basehttp 4228 17656 "GET /static/admin/css/dark_mode.css HTTP/1.1" 500 145
+ERROR 2025-09-28 15:44:21,001 basehttp 4228 18788 "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 500 145
+ERROR 2025-09-28 15:44:21,003 basehttp 4228 11804 "GET /static/admin/css/login.css HTTP/1.1" 500 145
+ERROR 2025-09-28 15:44:21,010 basehttp 4228 18308 "GET /static/admin/css/responsive.css HTTP/1.1" 500 145
+ERROR 2025-09-28 15:44:21,188 log 4228 16652 Internal Server Error: /static/admin/css/base.css
+Traceback (most recent call last):
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\whitenoise\middleware.py", line 122, in __call__
+    return self.serve(static_file, request)
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\whitenoise\middleware.py", line 127, in serve
+    response = static_file.get_response(request.method, request.META)
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\whitenoise\responders.py", line 86, in get_response
+    file_handle = open(path, "rb")  # noqa: SIM115
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\ZENER\\Documents\\dEVs\\linkup_gadgets\\staticfiles\\admin\\css\\base.css'
+ERROR 2025-09-28 15:44:21,192 log 4228 11464 Internal Server Error: /static/admin/css/dark_mode.css
+Traceback (most recent call last):
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\whitenoise\middleware.py", line 122, in __call__
+    return self.serve(static_file, request)
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\whitenoise\middleware.py", line 127, in serve
+    response = static_file.get_response(request.method, request.META)
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\whitenoise\responders.py", line 86, in get_response
+    file_handle = open(path, "rb")  # noqa: SIM115
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\ZENER\\Documents\\dEVs\\linkup_gadgets\\staticfiles\\admin\\css\\dark_mode.css'
+ERROR 2025-09-28 15:44:21,192 basehttp 4228 16652 "GET /static/admin/css/base.css HTTP/1.1" 500 145
+ERROR 2025-09-28 15:44:21,195 log 4228 17716 Internal Server Error: /static/admin/css/nav_sidebar.css
+Traceback (most recent call last):
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\whitenoise\middleware.py", line 122, in __call__
+    return self.serve(static_file, request)
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\whitenoise\middleware.py", line 127, in serve
+    response = static_file.get_response(request.method, request.META)
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\whitenoise\responders.py", line 86, in get_response
+    file_handle = open(path, "rb")  # noqa: SIM115
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\ZENER\\Documents\\dEVs\\linkup_gadgets\\staticfiles\\admin\\css\\nav_sidebar.css'
+ERROR 2025-09-28 15:44:21,205 basehttp 4228 17716 "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 500 145
+ERROR 2025-09-28 15:44:21,201 basehttp 4228 11464 "GET /static/admin/css/dark_mode.css HTTP/1.1" 500 145
+ERROR 2025-09-28 15:44:21,202 log 4228 19872 Internal Server Error: /static/admin/css/responsive.css
+Traceback (most recent call last):
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\whitenoise\middleware.py", line 122, in __call__
+    return self.serve(static_file, request)
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\whitenoise\middleware.py", line 127, in serve
+    response = static_file.get_response(request.method, request.META)
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\whitenoise\responders.py", line 86, in get_response
+    file_handle = open(path, "rb")  # noqa: SIM115
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\ZENER\\Documents\\dEVs\\linkup_gadgets\\staticfiles\\admin\\css\\responsive.css'
+ERROR 2025-09-28 15:44:21,198 log 4228 21428 Internal Server Error: /static/admin/css/login.css
+Traceback (most recent call last):
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\whitenoise\middleware.py", line 122, in __call__
+    return self.serve(static_file, request)
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\whitenoise\middleware.py", line 127, in serve
+    response = static_file.get_response(request.method, request.META)
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\whitenoise\responders.py", line 86, in get_response
+    file_handle = open(path, "rb")  # noqa: SIM115
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\ZENER\\Documents\\dEVs\\linkup_gadgets\\staticfiles\\admin\\css\\login.css'
+ERROR 2025-09-28 15:44:21,213 basehttp 4228 19872 "GET /static/admin/css/responsive.css HTTP/1.1" 500 145
+ERROR 2025-09-28 15:44:21,213 basehttp 4228 21428 "GET /static/admin/css/login.css HTTP/1.1" 500 145
+ERROR 2025-09-28 15:44:21,298 log 4228 21408 Internal Server Error: /static/admin/css/base.css
+Traceback (most recent call last):
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\whitenoise\middleware.py", line 122, in __call__
+    return self.serve(static_file, request)
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\whitenoise\middleware.py", line 127, in serve
+    response = static_file.get_response(request.method, request.META)
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\whitenoise\responders.py", line 86, in get_response
+    file_handle = open(path, "rb")  # noqa: SIM115
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\ZENER\\Documents\\dEVs\\linkup_gadgets\\staticfiles\\admin\\css\\base.css'
+ERROR 2025-09-28 15:44:21,300 log 4228 5456 Internal Server Error: /static/admin/css/dark_mode.css
+Traceback (most recent call last):
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\whitenoise\middleware.py", line 122, in __call__
+    return self.serve(static_file, request)
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\whitenoise\middleware.py", line 127, in serve
+    response = static_file.get_response(request.method, request.META)
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\whitenoise\responders.py", line 86, in get_response
+    file_handle = open(path, "rb")  # noqa: SIM115
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\ZENER\\Documents\\dEVs\\linkup_gadgets\\staticfiles\\admin\\css\\dark_mode.css'
+ERROR 2025-09-28 15:44:21,301 basehttp 4228 21408 "GET /static/admin/css/base.css HTTP/1.1" 500 145
+ERROR 2025-09-28 15:44:21,303 log 4228 3584 Internal Server Error: /static/admin/css/nav_sidebar.css
+Traceback (most recent call last):
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\whitenoise\middleware.py", line 122, in __call__
+    return self.serve(static_file, request)
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\whitenoise\middleware.py", line 127, in serve
+    response = static_file.get_response(request.method, request.META)
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\whitenoise\responders.py", line 86, in get_response
+    file_handle = open(path, "rb")  # noqa: SIM115
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\ZENER\\Documents\\dEVs\\linkup_gadgets\\staticfiles\\admin\\css\\nav_sidebar.css'
+ERROR 2025-09-28 15:44:21,306 basehttp 4228 5456 "GET /static/admin/css/dark_mode.css HTTP/1.1" 500 145
+ERROR 2025-09-28 15:44:21,306 log 4228 21456 Internal Server Error: /static/admin/css/login.css
+Traceback (most recent call last):
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\whitenoise\middleware.py", line 122, in __call__
+    return self.serve(static_file, request)
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\whitenoise\middleware.py", line 127, in serve
+    response = static_file.get_response(request.method, request.META)
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\whitenoise\responders.py", line 86, in get_response
+    file_handle = open(path, "rb")  # noqa: SIM115
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\ZENER\\Documents\\dEVs\\linkup_gadgets\\staticfiles\\admin\\css\\login.css'
+ERROR 2025-09-28 15:44:21,308 log 4228 16772 Internal Server Error: /static/admin/css/responsive.css
+Traceback (most recent call last):
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\whitenoise\middleware.py", line 122, in __call__
+    return self.serve(static_file, request)
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\whitenoise\middleware.py", line 127, in serve
+    response = static_file.get_response(request.method, request.META)
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\whitenoise\responders.py", line 86, in get_response
+    file_handle = open(path, "rb")  # noqa: SIM115
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\ZENER\\Documents\\dEVs\\linkup_gadgets\\staticfiles\\admin\\css\\responsive.css'
+ERROR 2025-09-28 15:44:21,309 basehttp 4228 3584 "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 500 145
+ERROR 2025-09-28 15:44:21,317 basehttp 4228 16772 "GET /static/admin/css/responsive.css HTTP/1.1" 500 145
+ERROR 2025-09-28 15:44:21,319 basehttp 4228 21456 "GET /static/admin/css/login.css HTTP/1.1" 500 145
+ERROR 2025-09-28 15:44:32,135 log 4228 9864 Internal Server Error: /static/admin/css/base.css
+Traceback (most recent call last):
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\whitenoise\middleware.py", line 122, in __call__
+    return self.serve(static_file, request)
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\whitenoise\middleware.py", line 127, in serve
+    response = static_file.get_response(request.method, request.META)
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\whitenoise\responders.py", line 86, in get_response
+    file_handle = open(path, "rb")  # noqa: SIM115
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\ZENER\\Documents\\dEVs\\linkup_gadgets\\staticfiles\\admin\\css\\base.css'
+ERROR 2025-09-28 15:44:32,138 log 4228 13700 Internal Server Error: /static/admin/css/dark_mode.css
+Traceback (most recent call last):
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\whitenoise\middleware.py", line 122, in __call__
+    return self.serve(static_file, request)
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\whitenoise\middleware.py", line 127, in serve
+    response = static_file.get_response(request.method, request.META)
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\whitenoise\responders.py", line 86, in get_response
+    file_handle = open(path, "rb")  # noqa: SIM115
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\ZENER\\Documents\\dEVs\\linkup_gadgets\\staticfiles\\admin\\css\\dark_mode.css'
+ERROR 2025-09-28 15:44:32,141 log 4228 9048 Internal Server Error: /static/admin/css/nav_sidebar.css
+Traceback (most recent call last):
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\whitenoise\middleware.py", line 122, in __call__
+    return self.serve(static_file, request)
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\whitenoise\middleware.py", line 127, in serve
+    response = static_file.get_response(request.method, request.META)
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\whitenoise\responders.py", line 86, in get_response
+    file_handle = open(path, "rb")  # noqa: SIM115
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\ZENER\\Documents\\dEVs\\linkup_gadgets\\staticfiles\\admin\\css\\nav_sidebar.css'
+ERROR 2025-09-28 15:44:32,142 basehttp 4228 9864 "GET /static/admin/css/base.css HTTP/1.1" 500 145
+ERROR 2025-09-28 15:44:32,145 log 4228 21372 Internal Server Error: /static/admin/css/responsive.css
+Traceback (most recent call last):
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\whitenoise\middleware.py", line 122, in __call__
+    return self.serve(static_file, request)
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\whitenoise\middleware.py", line 127, in serve
+    response = static_file.get_response(request.method, request.META)
+  File "C:\Users\ZENER\Documents\dEVs\JS\linkup_gadgets\.venv\Lib\site-packages\whitenoise\responders.py", line 86, in get_response
+    file_handle = open(path, "rb")  # noqa: SIM115
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\ZENER\\Documents\\dEVs\\linkup_gadgets\\staticfiles\\admin\\css\\responsive.css'
+ERROR 2025-09-28 15:44:32,151 basehttp 4228 13700 "GET /static/admin/css/dark_mode.css HTTP/1.1" 500 145
+ERROR 2025-09-28 15:44:32,151 basehttp 4228 9048 "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 500 145
+ERROR 2025-09-28 15:44:32,153 basehttp 4228 21372 "GET /static/admin/css/responsive.css HTTP/1.1" 500 145
