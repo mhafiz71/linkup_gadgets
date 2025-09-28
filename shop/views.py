@@ -150,10 +150,11 @@ def delete_product(request, product_id):
     return render(request, 'shop/delete_confirm.html', {'product': product})
 
 def shop_view(request):
-    products_list = Product.objects.all()
+    products_list = Product.objects.select_related('vendor', 'category').all()
     categories = Category.objects.all()
     selected_category_slug = request.GET.get('category')
     query = request.GET.get('q')
+    sort_by = request.GET.get('sort', 'featured')
 
     if selected_category_slug:
         products_list = products_list.filter(category__slug=selected_category_slug)
@@ -161,10 +162,27 @@ def shop_view(request):
     if query:
         products_list = products_list.filter(
             Q(name__icontains=query) |
-            Q(description__icontains=query)
+            Q(description__icontains=query) |
+            Q(vendor__shop_name__icontains=query)
         )
 
-    paginator = Paginator(products_list, 8)
+    # Apply sorting
+    if sort_by == 'price_low':
+        products_list = products_list.order_by('price')
+    elif sort_by == 'price_high':
+        products_list = products_list.order_by('-price')
+    elif sort_by == 'newest':
+        products_list = products_list.order_by('-created_at')
+    elif sort_by == 'name':
+        products_list = products_list.order_by('name')
+    else:  # featured or default
+        products_list = products_list.order_by('-is_featured', '-created_at')
+
+    # Calculate statistics
+    total_products = products_list.count()
+    featured_products = products_list.filter(is_featured=True)[:4]
+    
+    paginator = Paginator(products_list, 12)  # Increased from 8 to 12
     page_number = request.GET.get('page')
     try:
         products = paginator.page(page_number)
@@ -178,6 +196,9 @@ def shop_view(request):
         'categories': categories,
         'selected_category_slug': selected_category_slug,
         'query': query,
+        'sort_by': sort_by,
+        'total_products': total_products,
+        'featured_products': featured_products,
     }
     return render(request, 'shop/shop_view.html', context)
 

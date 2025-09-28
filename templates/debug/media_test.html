@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load debug_tags %}
+
+{% block title %}Media Test - LinkUp Gadgets{% endblock %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto px-4 py-8">
+    <h1 class="text-3xl font-bold mb-8">Media Files Test</h1>
+
+    <!-- Debug Information -->
+    <div class="bg-gray-100 p-4 rounded-lg mb-8">
+        <h2 class="text-xl font-semibold mb-4">Debug Information</h2>
+        {% debug_info as debug %}
+        <ul class="space-y-2">
+            <li><strong>Debug Mode:</strong> {{ debug.debug }}</li>
+            <li><strong>Allowed Hosts:</strong> {{ debug.allowed_hosts }}</li>
+            <li><strong>Media URL:</strong> {{ debug.media_url }}</li>
+        </ul>
+    </div>
+
+    <!-- Test Images -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-white p-4 rounded-lg shadow">
+            <h3 class="font-semibold mb-2">Product Image Test</h3>
+            <img src="/media/product_images/WhatsApp_Image_2025-09-22_at_10.06.46_2f88389b.jpg" alt="Test Product"
+                class="w-full h-48 object-cover rounded"
+                onerror="this.parentElement.innerHTML='<p class=text-red-500>Image failed to load</p>'">
+        </div>
+
+        <div class="bg-white p-4 rounded-lg shadow">
+            <h3 class="font-semibold mb-2">Vendor Logo Test</h3>
+            <img src="/media/vendor_logos/nvidia-geforce-rtx-3840x2160-19512.png" alt="Test Logo"
+                class="w-full h-48 object-cover rounded"
+                onerror="this.parentElement.innerHTML='<p class=text-red-500>Image failed to load</p>'">
+        </div>
+
+        <div class="bg-white p-4 rounded-lg shadow">
+            <h3 class="font-semibold mb-2">Banner Test</h3>
+            <img src="/media/vendor_banners/97e211d01da6babffa624886a86f3a8286a6f050.webp" alt="Test Banner"
+                class="w-full h-48 object-cover rounded"
+                onerror="this.parentElement.innerHTML='<p class=text-red-500>Image failed to load</p>'">
+        </div>
+    </div>
+
+    <!-- CSRF Test Form -->
+    <div class="mt-8 bg-white p-6 rounded-lg shadow">
+        <h2 class="text-xl font-semibold mb-4">CSRF Test Form</h2>
+        {% csrf_debug as csrf %}
+        <div class="mb-4 text-sm text-gray-600">
+            <p><strong>CSRF Token:</strong> {{ csrf.csrf_token|default:"Not found" }}</p>
+            <p><strong>Secure Connection:</strong> {{ csrf.secure }}</p>
+            <p><strong>Host:</strong> {{ csrf.host }}</p>
+        </div>
+
+        <form method="POST" action="#" class="space-y-4">
+            {% csrf_token %}
+            <div>
+                <label class="block text-sm font-medium text-gray-700">Test Input</label>
+                <input type="text" name="test_field" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+            </div>
+            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                Test CSRF
+            </button>
+        </form>
+    </div>
+</div>
+{% endblock %}

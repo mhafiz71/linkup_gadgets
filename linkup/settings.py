@@ -5,7 +5,7 @@ from decouple import config, Csv
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = config('SECRET_KEY')
-DEBUG = config('DEBUG', default=False, cast=bool)
+DEBUG = config('DEBUG', default=True, cast=bool)
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='127.0.0.1,localhost', cast=Csv())
 
 PAYSTACK_SECRET_KEY = config('PAYSTACK_SECRET_KEY')
@@ -68,7 +68,12 @@ SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 # CSRF Protection
 CSRF_COOKIE_SECURE = not DEBUG
-CSRF_COOKIE_HTTPONLY = True
+CSRF_COOKIE_HTTPONLY = False  # Allow JavaScript access to CSRF token
+CSRF_TRUSTED_ORIGINS = [
+    'https://linkup-gadgets.onrender.com',
+    'http://127.0.0.1:8000',
+    'http://localhost:8000',
+]
 
 ROOT_URLCONF = 'linkup.urls'
 NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd"
@@ -112,6 +117,10 @@ if not DEBUG:
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Ensure media directory exists
+if not os.path.exists(MEDIA_ROOT):
+    os.makedirs(MEDIA_ROOT)
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -193,3 +202,11 @@ CACHES = {
 
 if not DEBUG:
     DATABASES['default']['CONN_MAX_AGE'] = 60
+    
+    # Production media settings
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    USE_TZ = True
+    
+    # File upload settings for production
+    FILE_UPLOAD_MAX_MEMORY_SIZE = 5242880  # 5MB
+    DATA_UPLOAD_MAX_MEMORY_SIZE = 5242880  # 5MB

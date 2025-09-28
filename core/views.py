@@ -53,3 +53,12 @@ def vendor_policies_view(request):
 
 def faq_view(request):
     return render(request, 'core/faq.html')
+
+def media_test_view(request):
+    """Test view for debugging media files and CSRF tokens"""
+    if request.method == 'POST':
+        # Handle CSRF test form submission
+        from django.contrib import messages
+        messages.success(request, 'CSRF test successful! Form submitted without errors.')
+    
+    return render(request, 'debug/media_test.html')

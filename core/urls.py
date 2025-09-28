@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from core.views import index, about_view, terms_view, vendor_policies_view, faq_view
+from core.views import index, about_view, terms_view, vendor_policies_view, faq_view, media_test_view
 
 
 urlpatterns = [
@@ -12,5 +12,6 @@ urlpatterns = [
     path('terms/', terms_view, name='terms'),
     path('vendor-policies/', vendor_policies_view, name='vendor_policies'),
     path('faq/', faq_view, name='faq'),
+    path('media-test/', media_test_view, name='media_test'),
     path("__reload__/", include("django_browser_reload.urls")), # For live reload
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
