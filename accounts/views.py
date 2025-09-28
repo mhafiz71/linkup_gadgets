@@ -35,6 +35,10 @@ def register(request):
                 vendor.user = user
                 vendor.save()
 
+                # Send welcome email
+                from core.email_utils import send_welcome_email
+                send_welcome_email(user, is_vendor=True)
+
                 messages.success(request, f'Vendor account created for {user.username}! You can now log in.')
                 return redirect('accounts:login')
             else:
@@ -47,6 +51,10 @@ def register(request):
                 user = user_form.save(commit=False)
                 user.set_password(user_form.cleaned_data['password'])
                 user.save()
+
+                # Send welcome email
+                from core.email_utils import send_welcome_email
+                send_welcome_email(user, is_vendor=False)
 
                 messages.success(request, f'Customer account created for {user.username}! You can now log in.')
                 return redirect('accounts:login')
