@@ -3,7 +3,7 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
-from django.db import transaction
+from django.db import transaction, models
 from django.http import Http404
 from django.utils import timezone
 from datetime import timedelta
@@ -98,9 +98,23 @@ def logout_view(request):
 
 @login_required
 def customer_profile(request):
-    orders = Order.objects.filter(user=request.user)
+    orders = Order.objects.filter(user=request.user).order_by('-created_at')
+    
+    total_orders = orders.count()
+    completed_orders = orders.filter(paid=True).count()
+    pending_orders = orders.filter(paid=False).count()
+    
+    # Calculate total spent from paid orders only
+    total_spent = 0
+    for order in orders.filter(paid=True):
+        total_spent += float(order.total_paid)
+    
     context = {
         'orders': orders,
+        'total_orders': total_orders,
+        'completed_orders': completed_orders,
+        'pending_orders': pending_orders,
+        'total_spent': total_spent,
     }
     return render(request, 'accounts/profile.html', context)
 

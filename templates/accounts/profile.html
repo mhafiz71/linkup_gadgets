@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load account_extras %}
 
 {% block title %}My Account & Order History - LinkUp Gadgets{% endblock %}
 
@@ -36,7 +37,7 @@
                         <div class="ml-5 w-0 flex-1">
                             <dl>
                                 <dt class="text-sm font-medium text-gray-500 truncate">Total Orders</dt>
-                                <dd class="text-lg font-medium text-gray-900">{{ orders.count }}</dd>
+                                <dd class="text-lg font-medium text-gray-900">{{ total_orders }}</dd>
                             </dl>
                         </div>
                     </div>
@@ -54,7 +55,7 @@
                         <div class="ml-5 w-0 flex-1">
                             <dl>
                                 <dt class="text-sm font-medium text-gray-500 truncate">Completed Orders</dt>
-                                <dd class="text-lg font-medium text-gray-900">{{ orders|length|add:"-1" }}</dd>
+                                <dd class="text-lg font-medium text-gray-900">{{ completed_orders }}</dd>
                             </dl>
                         </div>
                     </div>
@@ -72,7 +73,7 @@
                         <div class="ml-5 w-0 flex-1">
                             <dl>
                                 <dt class="text-sm font-medium text-gray-500 truncate">Pending Orders</dt>
-                                <dd class="text-lg font-medium text-gray-900">{% for order in orders %}{% if not order.paid %}1{% endif %}{% empty %}0{% endfor %}</dd>
+                                <dd class="text-lg font-medium text-gray-900">{{ pending_orders }}</dd>
                             </dl>
                         </div>
                     </div>
@@ -90,7 +91,7 @@
                         <div class="ml-5 w-0 flex-1">
                             <dl>
                                 <dt class="text-sm font-medium text-gray-500 truncate">Total Spent</dt>
-                                <dd class="text-lg font-medium text-gray-900">GH₵ {% for order in orders %}{% if order.paid %}{{ order.total_paid|add:0 }}{% endif %}{% empty %}0{% endfor %}</dd>
+                                <dd class="text-lg font-medium text-gray-900">GH₵ {{ total_spent|currency }}</dd>
                             </dl>
                         </div>
                     </div>
@@ -116,7 +117,7 @@
                                     <div class="flex items-center space-x-4">
                                         <div>
                                             <p class="text-base font-medium text-indigo-600">
-                                                Order #{{ order.id|truncatechars:12 }}
+                                                Order #{{ order.id|format_order_id }}
                                             </p>
                                             <p class="text-sm text-gray-500">
                                                 {{ order.created_at|date:"F j, Y \a\t g:i A" }}
@@ -129,20 +130,31 @@
                                             <p class="text-sm text-gray-500">{{ order.items.count }} item{{ order.items.count|pluralize }}</p>
                                         </div>
                                         <div class="flex flex-col space-y-2">
-                                            {% if order.status %}
-                                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium
-                                                    {% if order.status == 'paid' %}bg-green-100 text-green-800
-                                                    {% elif order.status == 'pending' %}bg-yellow-100 text-yellow-800
-                                                    {% elif order.status == 'processing' %}bg-blue-100 text-blue-800
-                                                    {% elif order.status == 'shipped' %}bg-purple-100 text-purple-800
-                                                    {% elif order.status == 'delivered' %}bg-green-100 text-green-800
-                                                    {% elif order.status == 'cancelled' %}bg-red-100 text-red-800
-                                                    {% else %}bg-gray-100 text-gray-800{% endif %}">
-                                                    {{ order.get_status_display }}
-                                                </span>
+                                            {% if order.paid %}
+                                                {% if order.status == 'processing' %}
+                                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                                                        Processing
+                                                    </span>
+                                                {% elif order.status == 'shipped' %}
+                                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
+                                                        Shipped
+                                                    </span>
+                                                {% elif order.status == 'delivered' %}
+                                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                                        Delivered
+                                                    </span>
+                                                {% elif order.status == 'cancelled' %}
+                                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
+                                                        Cancelled
+                                                    </span>
+                                                {% else %}
+                                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                                        Paid
+                                                    </span>
+                                                {% endif %}
                                             {% else %}
-                                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium {% if order.paid %}bg-green-100 text-green-800{% else %}bg-yellow-100 text-yellow-800{% endif %}">
-                                                    {% if order.paid %}Paid{% else %}Pending Payment{% endif %}
+                                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
+                                                    Pending Payment
                                                 </span>
                                             {% endif %}
                                         </div>
