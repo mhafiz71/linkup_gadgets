@@ -59,8 +59,8 @@ Follow these instructions to get a copy of the project up and running on your lo
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/[your-github-username]/[your-repo-name].git
-cd [your-repo-name]
+git clone https://github.com/[mhafiz71]/linkup_gadgets].git
+cd [linkup_gadgets]
 ```
 
 ### 2. Set Up a Virtual Environment
